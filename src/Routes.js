@@ -1,30 +1,30 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // 태규's 컴포넌트
-import LoginTae from "./pages/taegyukim/Login/Login";
-import ListTae from "./pages/taegyukim/List/List";
-import DetailTae from "./pages/taegyukim/Detail/Detail";
+import LoginTae from './pages/taegyukim/Login/Login';
+import ListTae from './pages/taegyukim/List/List';
+import DetailTae from './pages/taegyukim/Detail/Detail';
 // 은정's 컴포넌트
-import LoginEun from "./pages/eunjeonglee/Login/Login";
-import ListEun from "./pages/eunjeonglee/List/List";
-import DetailEun from "./pages/eunjeonglee/Detail/Detail";
+import LoginEun from './pages/eunjeonglee/Login/Login';
+import ListEun from './pages/eunjeonglee/List/List';
+import DetailEun from './pages/eunjeonglee/Detail/Detail';
 // 지현's 컴포넌트
-import LoginJi from "./pages/jihyunkim/Login/Login";
-import ListJi from "./pages/jihyunkim/List/List";
-import DetailJi from "./pages/jihyunkim/Detail/Detail";
+import LoginJi from './pages/jihyunkim/Login/Login';
+import ListJi from './pages/jihyunkim/List/List';
+import DetailJi from './pages/jihyunkim/Detail/Detail';
 // 기철's 컴포넌트
-import LoginKi from "./pages/kichulshin/Login/Login";
-import ListKi from "./pages/kichulshin/List/List";
-import DetailKi from "./pages/kichulshin/Detail/Detail";
+import LoginKi from './pages/kichulshin/Login/Login';
+import ListKi from './pages/kichulshin/List/List';
+import DetailKi from './pages/kichulshin/Detail/Detail';
 // 지수's 컴포넌트
-import LoginSeong from "./pages/seongjisue/Login/Login";
-import ListSeong from "./pages/seongjisue/List/List";
-import DetailSeong from "./pages/seongjisue/Detail/Detail";
+import LoginSeong from './pages/seongjisue/Login/Login';
+import ListSeong from './pages/seongjisue/List/List';
+import DetailSeong from './pages/seongjisue/Detail/Detail';
 // 종훈's 컴포넌트
-import LoginPak from "./pages/pakjonghun/Login/Login";
-import ListPak from "./pages/pakjonghun/List/List";
-import DetailPak from "./pages/pakjonghun/Detail/Detail";
+import LoginPak from './pages/pakjonghun/Login/Login';
+import ListPak from './pages/pakjonghun/List/List';
+import DetailPak from './pages/pakjonghun/Detail/Detail';
 
 class Routes extends React.Component {
   render() {
