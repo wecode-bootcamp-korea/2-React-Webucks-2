@@ -1,0 +1,59 @@
+@import '../Common.scss';
+
+.Detail {
+  .detail__outer-container {
+    position: relative;
+    padding: 0 20px;
+    padding-bottom: 200px;
+  }
+
+  .ingredient__allegy {
+    padding: 10px 5px;
+    margin-top: 5px;
+    background-color: lightgray;
+  }
+
+  .ingredient__column:not(:last-child) {
+    padding: 10px 5px;
+    border-right: 1px solid lightgray;
+  }
+
+  .ingredient__row {
+    @include flex($justify: space-between);
+    margin-bottom: 5px;
+  }
+
+  .detail__ingredient {
+    @include flex($justify: space-between);
+    font-size: 14px;
+  }
+
+  .detailTitle {
+    @include flex($justify: space-between);
+    padding: 0 5px;
+  }
+
+  .detail__img {
+    width: 100%;
+  }
+
+  .divied__grid {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: minmax(200px, 0.5fr) minmax(300px, 1fr);
+  }
+
+  .detail__ingredient-ingredient {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  h3 {
+    margin: 10px 5px;
+    font-size: 20px;
+  }
+
+  h2 {
+    margin: 15px 5px;
+    font-size: 25px;
+  }
+}

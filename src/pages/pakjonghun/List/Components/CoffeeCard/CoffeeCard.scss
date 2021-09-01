@@ -1,0 +1,29 @@
+@import '../../../Common.scss';
+
+.CoffeeCard {
+  .imgContainer {
+    margin-bottom: 5px;
+    height: 201px;
+    overflow: hidden;
+  }
+
+  .coffeeImg {
+    width: 100%;
+    transition: 0.3s linear all;
+  }
+
+  .coffeeImg:hover {
+    transform: scale(1.2);
+  }
+
+  .coffeeInfo {
+    @include flex();
+    padding: 0 5px;
+  }
+
+  .coffeeName {
+    display: block;
+    margin-left: 5px;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,23 @@
+@import '../../../Common.scss';
+
+.Footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  @include flex($justify: space-between, $align: flex-start);
+  padding: 5px;
+  background-color: black;
+
+  .footerColumn {
+    @include flex($justify: flex-start, $direction: column);
+    margin: 10px;
+  }
+
+  .footerItem {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+  }
+}
