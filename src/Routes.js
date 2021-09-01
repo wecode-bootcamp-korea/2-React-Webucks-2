@@ -53,7 +53,7 @@ class Routes extends React.Component {
 
           <Route exact path="/login-jonghun" component={LoginPak} />
           <Route exact path="/list-jonghun" component={ListPak} />
-          <Route exact path="/detail-jonghun" component={DetailPak} />
+          <Route exact path="/detail-jonghun/:id" component={DetailPak} />
         </Switch>
       </Router>
     );
