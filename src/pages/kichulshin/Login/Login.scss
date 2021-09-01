@@ -1,13 +1,8 @@
 .Login {
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    background-color: #edefef;
-    display: flex;
-    justify-content: center;
-  }
+  display: flex;
+  background-color: #edefef;
+  justify-content: center;
+  margin-top: 250px;
 
   h1 {
     font-family: 'Dancing Script', cursive;

@@ -5,7 +5,8 @@ import Nav from '../Nav/Nav';
 class List extends React.Component {
   render() {
     return (
-      <div>
+      <div className="list">
+        <Nav></Nav>
         <main>
           <section className="coldbrew">
             <dt className="introEach">
