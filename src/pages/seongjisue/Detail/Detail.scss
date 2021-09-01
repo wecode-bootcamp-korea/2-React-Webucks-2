@@ -1,0 +1,226 @@
+.Detail {
+  @import '../common.scss';
+  @import '../Nav/Nav.scss';
+
+  @mixin flexDisplay() {
+    display: flex;
+  }
+
+  $border: 1px solid black;
+
+  @mixin flexStyle($justifyContent: flex-start, $flexDirection: row) {
+    @include flexDisplay();
+    justify-content: $justifyContent;
+    flex-direction: $flexDirection;
+  }
+
+  .flex {
+    /*태그에서 공통사용*/
+    @include flexStyle();
+  }
+
+  #total {
+    @include flexStyle(space-between, column);
+    min-height: 100vh;
+
+    #sub {
+      @include flexStyle(space-between, column);
+    }
+  }
+
+  /*경로표시 route*/
+  #title {
+    &Menu {
+      margin: 20px 0 20px 0;
+      font: {
+        size: 24px;
+        weight: bold;
+      }
+    }
+
+    &Root {
+      @include flexStyle(flex-end);
+      margin: 0 0 10px 0;
+      font-size: 10px;
+      color: #c0c0ba;
+    }
+  }
+
+  /*중단 상세설명*/
+
+  #main {
+    @include flexStyle();
+    align-self: center;
+    flex-direction: column;
+    margin-top: 20px;
+
+    .item {
+      @include flexStyle(center);
+
+      .itemImg {
+        width: 450px;
+        height: 450px;
+        margin-right: 50px;
+      }
+
+      .itemContent {
+        width: 500px;
+      }
+    }
+  }
+
+  /*item-content 부분중 top*/
+
+  .itemNav {
+    @include flexStyle(space-between);
+    align-items: center;
+    border-bottom: $border;
+    height: 55px;
+    .itemTitle {
+      h3 {
+        font: {
+          size: 18px;
+          weight: bold;
+        }
+      }
+
+      p {
+        margin: 5px 0 10px 0;
+        font-size: 10px;
+      }
+    }
+
+    // .heartIcon {
+    //   @include flexStyle();
+    //   align-self: center;
+    //   margin-right: 20px;
+
+    //   &:hover {
+    //     transition-duration: 0.2s;
+    //     transform: rotate(45deg);
+    //     cursor: pointer;
+    //     opacity: 0.8;
+    //   }
+    // }
+  }
+
+  #contentFontSize {
+    margin: 13px 0 13px 0;
+    font-size: 13px;
+  }
+
+  /*item-content 부분중 middle*/
+
+  .tableHeader {
+    @include flexStyle(space-between);
+    padding: 16px 0 16px 0;
+    border: {
+      top: $border;
+      bottom: $border;
+    }
+  }
+
+  .list {
+    @include flexStyle(space-between);
+    width: 305px;
+
+    .listStyle {
+      padding: 5px;
+      margin: 7px 0 16px 0;
+      list-style: none;
+
+      li {
+        font-size: 12px;
+
+        &:not(:last-child) {
+          margin-bottom: 11px;
+        }
+      }
+    }
+  }
+
+  .tableFooter {
+    padding: 12px;
+    background-color: #f4f4f2;
+
+    p {
+      font-size: 10px;
+    }
+  }
+
+  /*item-content 부분중 botton*/
+
+  .contentFooter {
+    h5 {
+      margin: 25px 0 0 0;
+      border-bottom: $border;
+      font: {
+        weight: bold;
+        size: 15px;
+      }
+    }
+
+    div p {
+      margin: 10px 0 10px;
+      font-size: 8px;
+    }
+
+    .reveiwResults .reveiwContent {
+      font: {
+        weight: bold;
+        size: 10px;
+      }
+    }
+
+    #reveiwBox {
+      width: 100%;
+
+      input {
+        padding: 7px;
+        background-color: #f4f4f2;
+        font-size: 8px;
+        color: #c0c0ba;
+        border: none;
+
+        &:nth-child(1) {
+          width: 30%;
+        }
+
+        &:nth-child(2) {
+          width: 68%;
+        }
+      }
+    }
+  }
+
+  /*리뷰 부분*/
+
+  /*하단 메모부분*/
+
+  #footer {
+    padding: 20px 200px 0 200px;
+    background-color: #333333;
+    height: 160px;
+
+    .footerList {
+      @include flexStyle(space-around);
+      #footerTitle {
+        font-size: 15px;
+      }
+
+      .footerMenu {
+        padding: 0;
+
+        li {
+          list-style: none;
+          font-size: 5px;
+          color: white;
+
+          &:not(:first-child) {
+            margin-top: 8px;
+          }
+        }
+      }
+    }
+  }
+}

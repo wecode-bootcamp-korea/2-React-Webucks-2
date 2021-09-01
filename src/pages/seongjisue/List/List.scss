@@ -1,0 +1,80 @@
+.List {
+  @import '../common.scss';
+  @import '../Nav/Nav.scss';
+
+  @mixin flexDisplay() {
+    display: flex;
+  }
+
+  $boxShadow: 0.5px 0.5px 15px 10px #eeefef;
+
+  /*태그에서 공통사용*/
+
+  /*중간바*/
+  .navbarSub {
+    @include flexDisplay();
+    align-items: center;
+    margin: 50px 0 20px 0;
+    width: 90%;
+    height: 70px;
+    background-color: #f6f5f0;
+    box-shadow: $boxShadow;
+
+    h3 {
+      font-size: 15px;
+      font-weight: bold;
+      margin: 12px 0 12px 15px;
+    }
+
+    img {
+      margin: 0px 20px 0 15px;
+      width: 40px;
+      height: 40px;
+    }
+
+    p {
+      font: {
+        size: 11px;
+        weight: bold;
+      }
+    }
+
+    .navbarSubMenu {
+      &:not(:last-child) {
+        margin-left: 15px;
+      }
+    }
+  }
+
+  /*메인 메뉴 리스트*/
+
+  .menuList {
+    @include flexDisplay();
+    flex-wrap: wrap;
+
+    .menu {
+      @include flexDisplay();
+      flex-direction: column;
+      align-items: center;
+      width: 250px;
+      height: 300px;
+      margin: 15px;
+
+      .menuImg {
+        width: 230px;
+        height: 250px;
+      }
+
+      .overflower .menuImg:hover {
+        transition-duration: 1.5s;
+        transform: scale(1.2);
+        cursor: pointer;
+      }
+
+      p {
+        margin: 10px 0 5px 0;
+        font-size: 15px;
+      }
+    }
+  }
+}

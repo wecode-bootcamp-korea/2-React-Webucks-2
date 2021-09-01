@@ -1,0 +1,79 @@
+.Login {
+  @import '../common.scss';
+
+  @mixin flexDisplay() {
+    display: flex;
+  }
+
+  @mixin flexStyle() {
+    @include flexDisplay();
+    align-items: $flexCenter;
+  }
+
+  $flexCenter: center;
+
+  #mainLogin {
+    @include flexStyle();
+    justify-content: $flexCenter;
+    min-height: 100vh;
+    #mainForm {
+      @include flexStyle();
+      flex-direction: column;
+      padding: 20px 30px 150px 30px;
+      background-color: white;
+      box-shadow: 1px 1px 15px 0px gray;
+    }
+  }
+  /*logo-Jibucks*/
+  @mixin fontSizeWight($size, $weight: bold) {
+    font: {
+      size: $size;
+      weight: $weight;
+    }
+  }
+  #mainForm {
+    $blueColor: #add3eb;
+    $opacitySize: 0.8;
+
+    h1 {
+      @include fontSizeWight(60px);
+      margin: 40px 0 40px 0;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    /*input-boxs*/
+    .boxTotalCSS {
+      @include fontSizeWight(11px);
+      margin-top: 20px;
+      width: 300px;
+      height: 40px;
+      border: 1px solid gainsboro;
+      border-radius: 5px;
+      &:not(:last-child) {
+        background-color: #f7f7f7;
+        padding-left: 15px;
+      }
+    }
+
+    #loginButton {
+      @include fontSizeWight(16px);
+      background-color: $blueColor;
+      color: white;
+      cursor: pointer;
+      opacity: $opacitySize;
+      &:hover {
+        border: 2px solid black;
+      }
+    }
+
+    /*pw-forget*/
+    a {
+      @include fontSizeWight(12px);
+      position: relative;
+      top: 120px;
+      color: $blueColor;
+      text-decoration: none;
+      opacity: $opacitySize;
+    }
+  }
+}

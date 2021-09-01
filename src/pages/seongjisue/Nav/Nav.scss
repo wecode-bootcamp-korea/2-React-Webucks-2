@@ -1,0 +1,51 @@
+/*태그에서 공통사용*/
+.Nav {
+  @mixin flexDisplay() {
+    display: flex;
+  }
+
+  .navbarFlex {
+    @include flexDisplay();
+  }
+
+  /*상단 navbar*/
+
+  .navbar {
+    @include flexDisplay();
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0 20px 0;
+    height: 70px;
+    background-color: #f6f5f0;
+    box-shadow: 0.5px 0.5px 15px 10px #eeefef;
+    overflow: hidden;
+
+    .navbarFlex {
+      img {
+        margin-top: 10px;
+        margin-left: 10px;
+        width: 40px;
+        height: 40px;
+      }
+
+      h1 {
+        margin: 14px 5px 14px 30px;
+        font: {
+          weight: bold;
+          size: 28px;
+          family: 'Dancing Script', cursive;
+        }
+      }
+    }
+
+    #navbarMenu {
+      margin: 16px 0 16px 0;
+      li {
+        margin-right: 20px;
+        list-style: none;
+        font-size: 12px;
+        color: #c0c0ba;
+      }
+    }
+  }
+}
