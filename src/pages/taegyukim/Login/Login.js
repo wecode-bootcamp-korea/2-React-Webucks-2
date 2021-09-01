@@ -4,7 +4,7 @@ import './Login.scss';
 
 class Login extends React.Component {
   goToList = () => {
-    this.props.history.push('/list');
+    this.props.history.push('/list-taegyu');
   };
   render() {
     return (
