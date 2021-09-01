@@ -1,0 +1,58 @@
+$theme-color: #eeefef;
+
+%flex-center {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  margin: 0 175px 25px 175px;
+  background-color: $theme-color;
+}
+
+.List {
+  .listMain {
+    .coffee {
+      .description {
+        @extend %flex-center;
+        .coffeeName {
+          margin: 0 20px;
+        }
+        .coffeeOption {
+          margin: 0 13px;
+          font-size: 13px;
+        }
+      }
+      .img {
+        margin: 0 175px;
+        &Row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 25px;
+          img {
+            display: block;
+            width: 250px;
+            height: 260px;
+            transform: scale(1);
+            transition: all 0.8s ease-in-out;
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+          div {
+            text-align: center;
+            span {
+              display: block;
+              margin-top: 18px;
+              margin-bottom: 35px;
+            }
+          }
+          a {
+            display: block;
+            width: 250px;
+            height: 260px;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+}

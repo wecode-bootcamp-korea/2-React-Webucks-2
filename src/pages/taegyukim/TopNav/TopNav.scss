@@ -1,0 +1,30 @@
+$theme-color: #eeefef;
+
+%flex-center {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  margin: 0 175px 25px 175px;
+  background-color: $theme-color;
+}
+
+.nav {
+  @extend %flex-center;
+  justify-content: space-between;
+  &Logo {
+    margin-left: 20px;
+    font: {
+      family: 'Dancing Script', cursive;
+      size: 20px;
+    }
+  }
+  &SideMenu {
+    li {
+      display: inline;
+      margin: 0 15px;
+      font-size: 13px;
+      letter-spacing: 3px;
+      opacity: 0.3;
+    }
+  }
+}
