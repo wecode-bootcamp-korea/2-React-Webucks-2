@@ -1,6 +1,6 @@
-.Login {
-  @import '../common.scss';
+@import '../common.scss';
 
+.Login {
   @mixin flexDisplay() {
     display: flex;
   }

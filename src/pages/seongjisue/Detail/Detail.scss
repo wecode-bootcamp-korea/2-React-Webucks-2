@@ -1,7 +1,7 @@
-.Detail {
-  @import '../common.scss';
-  @import '../Nav/Nav.scss';
+@import '../common.scss';
+@import '../Nav/Nav.scss';
 
+.Detail {
   @mixin flexDisplay() {
     display: flex;
   }
