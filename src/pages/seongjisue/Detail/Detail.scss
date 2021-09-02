@@ -52,8 +52,7 @@
     @include flexStyle();
     align-self: center;
     flex-direction: column;
-    margin-top: 20px;
-
+    margin: 0px 0px 80px 0;
     .item {
       @include flexStyle(center);
 
