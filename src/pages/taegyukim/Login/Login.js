@@ -28,11 +28,6 @@ class Login extends React.Component {
           </form>
           <a className="forgetPws">비밀번호를 잊으셨나요?</a>
         </div>
-        <script src="js/login.js"></script>
-        <script
-          src="https://kit.fontawesome.com/e3186f2480.js"
-          crossorigin="anonymous"
-        ></script>
       </div>
     );
   }
