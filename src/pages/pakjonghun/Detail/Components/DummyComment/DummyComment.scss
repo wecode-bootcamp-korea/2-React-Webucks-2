@@ -1,4 +1,7 @@
+@import '../../../Common.scss';
+
 .DummyComment {
+  @include flex($justify: flex-start);
   margin: 5px;
   .writer {
     font-weight: 800;

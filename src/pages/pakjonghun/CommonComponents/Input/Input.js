@@ -1,10 +1,18 @@
 import React from 'react';
 import './Input.scss';
 
-function Input({ reff, ...rest }) {
+function Input({ isValid, rref, set, value, ...rest }) {
   return (
     <div className="Input">
-      <input {...rest} ref={reff} />
+      <input
+        className={isValid ? 'green' : null}
+        value={value}
+        ref={rref}
+        {...rest}
+        onChange={e => {
+          set(e.target.value);
+        }}
+      />
     </div>
   );
 }

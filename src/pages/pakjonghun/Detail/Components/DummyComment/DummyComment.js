@@ -2,8 +2,16 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './DummyComment.scss';
 import { faRemoveFormat } from '@fortawesome/free-solid-svg-icons';
+import Heart from '../../../CommonComponents/Heart/Heart';
 
-function DummyComment({ writer, desc, index, comments, setComments }) {
+function DummyComment({
+  writer,
+  desc,
+  index,
+  comments,
+  setComments,
+  isGetHeart,
+}) {
   return (
     <div className="DummyComment">
       <span className="writer">{writer}</span>
@@ -12,6 +20,12 @@ function DummyComment({ writer, desc, index, comments, setComments }) {
         icon={faRemoveFormat}
         className="remove"
         onClick={() => deleteComment(index, comments, setComments)}
+      />
+      <Heart
+        isGetHeart={isGetHeart}
+        setDb={setComments}
+        id={index}
+        db={comments}
       />
     </div>
   );
