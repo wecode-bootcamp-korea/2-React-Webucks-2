@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+.TopNav {
+  nav {
+    display: flex;
+    justify-content: space-between;
+    width: 850px;
+    margin: 0 auto;
+    padding: 20px 15px;
+    background-color: #f6f5ef;
+    .title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 22px;
+      font-weight: 700;
+    }
+    ul {
+      display: flex;
+      align-items: flex-end;
+      li {
+        display: flex;
+        padding: 0 10px;
+      }
+    }
+  }
+}
