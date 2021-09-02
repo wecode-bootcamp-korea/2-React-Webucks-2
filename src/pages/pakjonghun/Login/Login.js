@@ -2,75 +2,98 @@ import { faCoins } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useRef, useState, useEffect } from 'react/cjs/react.development';
 import Input from '../CommonComponents/Input/Input';
 import Form from './Form';
 import './Login.scss';
 
-function Login() {
-  const btnRef = useRef();
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { id: '', pw: '', pwType: false };
+    this.changeId = this.changeId.bind(this);
+    this.changePw = this.changePw.bind(this);
+  }
+  btnRef = React.createRef();
 
-  const [id, setId] = useState('');
-  const [pw, setPw] = useState('');
-  const [pwType, setpwType] = useState(false);
+  idValid(val) {
+    return val.includes('@');
+  }
 
-  useEffect(() => {
-    if (idValid(id) && pwValid(pw)) {
-      btnRef.current.classList.add('active');
+  pwValid(val) {
+    return val.length >= 8;
+  }
+
+  changeId(val) {
+    this.setState({ ...this.state, id: val });
+  }
+
+  changePw(val) {
+    this.setState({ ...this.state, pw: val });
+  }
+
+  componentDidUpdate() {
+    if (this.idValid(this.state.id) && this.pwValid(this.state.pw)) {
+      this.btnRef.current.classList.add('active');
     } else {
-      btnRef.current.classList.remove('active');
+      this.btnRef.current.classList.remove('active');
     }
-  }, [id, pw]);
+  }
 
-  return (
-    <div className="Login">
-      <section className="loginContainer">
-        <Form isValid={idValid(id) && pwValid(pw)}>
-          <h1 className="title">WeBucks</h1>
+  render() {
+    return (
+      <div className="Login">
+        <section className="loginContainer">
+          <Form
+            isValid={this.idValid(this.state.id) && this.pwValid(this.state.pw)}
+          >
+            <h1 className="title">WeBucks</h1>
 
-          <Input
-            value={id}
-            set={setId}
-            className={`idInput ${idValid(id) ? 'green' : null} `}
-            isValid={idValid(id)}
-            type={'string'}
-            placeholder={'ID나 이메일을 입력하세요'}
-          />
-
-          <div className={`pwInput ${pwValid(pw) ? 'green' : null}`}>
             <Input
-              value={pw}
-              set={setPw}
-              isValid={pwValid(id)}
-              type={`${pwType ? 'text' : 'password'}`}
-              placeholder="비밀번호를 입력하세요"
+              value={this.state.id}
+              set={this.changeId}
+              className={`idInput ${
+                this.idValid(this.state.id) ? 'green' : null
+              } `}
+              isValid={this.idValid(this.state.id)}
+              type={'string'}
+              placeholder={'ID나 이메일을 입력하세요'}
             />
-            <span className="passwordIcon" onClick={() => setpwType(!pwType)}>
-              <FontAwesomeIcon icon={faCoins} />
-            </span>
-          </div>
 
-          <Input
-            rref={btnRef}
-            className="loginSubmit"
-            type="submit"
-            placeholder="비밀번호를 입력하세요"
-            value="로그인"
-          />
+            <div
+              className={`pwInput ${
+                this.pwValid(this.state.pw) ? 'green' : null
+              }`}
+            >
+              <Input
+                value={this.state.pw}
+                set={this.changePw}
+                type={this.state.pwType ? 'text' : 'password'}
+                placeholder="비밀번호를 입력하세요"
+              />
+              <span
+                className="passwordIcon"
+                onClick={() => {
+                  this.setState({ ...this.state, pwType: !this.state.pwType });
+                }}
+              >
+                <FontAwesomeIcon icon={faCoins} />
+              </span>
+            </div>
 
-          <Link to="#">비밀번호를 잊으셨나요</Link>
-        </Form>
-      </section>
-    </div>
-  );
-}
+            <Input
+              rref={this.btnRef}
+              className="loginSubmit"
+              type="submit"
+              placeholder="비밀번호를 입력하세요"
+              value="로그인"
+            />
 
-function idValid(val) {
-  return val.includes('@');
-}
-
-function pwValid(val) {
-  return val.length >= 8;
+            <Link to="#">비밀번호를 잊으셨나요</Link>
+          </Form>
+        </section>
+      </div>
+    );
+  }
 }
 
 export default Login;
