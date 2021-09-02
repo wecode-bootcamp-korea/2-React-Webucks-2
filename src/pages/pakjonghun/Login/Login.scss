@@ -11,6 +11,21 @@
     background-color: white;
   }
 
+  .pwInput {
+    width: 100%;
+    margin: 10px 0;
+    border: 1px solid black;
+    @include flex();
+    input {
+      border: none;
+    }
+
+    .passwordIcon {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  }
+
   h1 {
     margin-bottom: 36px;
     font-family: 'Dancing Script', cursive;

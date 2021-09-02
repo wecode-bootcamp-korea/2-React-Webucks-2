@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import BorderLine from './Components/BorderLine/BorderLine';
 import Footer from './Components/Footer/Footer';
 import Heart from '../CommonComponents/Heart/Heart';
@@ -9,15 +9,17 @@ import Nav from '../CommonComponents/Nav/Nav';
 
 function Detail({
   location: {
-    state: { imgUrl, coffeeName, isGetHeart },
+    state: { db, id },
   },
 }) {
+  const [temp, setTemp] = useState(db);
+  const { img, coffeeName, isGetHeart } = temp.find(item => item.id === id);
   return (
     <div className="Detail">
       <Nav />
       <main className="detail__main divied__grid">
         <img
-          src={imgUrl}
+          src={img}
           alt={coffeeName}
           className="detail__img"
           id="detail__img"
@@ -28,7 +30,7 @@ function Detail({
               <h2 id="detail__title">{coffeeName}</h2>
               <h3 className="title__title2">White Choocolate Mocha</h3>
             </div>
-            <Heart isGetHeart={isGetHeart} />
+            <Heart isGetHeart={isGetHeart} id={id} setDb={setTemp} db={db} />
           </div>
           <BorderLine classNameName={'deatil__light-line'} />
           <span className="detail__desc">

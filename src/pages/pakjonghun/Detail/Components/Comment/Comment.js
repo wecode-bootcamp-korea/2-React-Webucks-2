@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Comment.scss';
 import DummyComment from '../DummyComment/DummyComment';
-import Input from '../../../CommonComponents/Input/Input';
 
 function CommentChanger(content) {
   const [value, setDesc] = useState(content);
@@ -17,7 +16,10 @@ function HandleSubmit(desc) {
   const [comments, setComments] = useState([]);
   function onSubmit(e) {
     e.preventDefault();
-    setComments([...comments, { writer: '익명', desc }]);
+    setComments([
+      ...comments,
+      { writer: '익명', desc, isGetHeart: false, id: comments.length },
+    ]);
   }
   return { comments, onSubmit, setComments };
 }
@@ -28,20 +30,21 @@ function Comment() {
 
   return (
     <div className="Comment">
-      {comments.map(({ writer, desc }, index) => {
+      {comments.map(({ writer, desc, isGetHeart, id }, index) => {
         return (
           <DummyComment
             writer={writer}
             desc={desc}
             key={index}
-            index={index}
+            index={id}
             comments={comments}
             setComments={setComments}
+            isGetHeart={isGetHeart}
           />
         );
       })}
       <form onSubmit={onSubmit}>
-        <Input placeholder="댓글을 적읍시다" type="text" {...attribute} />
+        <input placeholder="댓글을 적읍시다" type="text" {...attribute} />
       </form>
     </div>
   );
