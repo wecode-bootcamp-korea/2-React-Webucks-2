@@ -8,20 +8,12 @@ import { withRouter } from 'react-router-dom';
 import Nav from '../CommonComponents/Nav/Nav';
 
 class Detail extends React.Component {
-  constructor({
-    location: {
-      state: { db, id },
-    },
-  }) {
-    super({
-      location: {
-        state: { db, id },
-      },
-    });
+  constructor(props) {
+    super(props);
+    this.db = props.location.state.db;
+    this.id = props.location.state.id;
 
     this.state = { temp: [], img: '', coffeeName: '', isGetHeart: '' };
-    this.id = id;
-    this.db = db;
     this.setCommentData = this.setCommentData.bind(this);
   }
 

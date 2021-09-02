@@ -2,9 +2,9 @@ import React from 'react';
 import './BorderLine.scss';
 
 class BorderLine extends React.Component {
-  constructor({ className }) {
-    super({ className });
-    this.className = className;
+  constructor(props) {
+    super(props);
+    this.className = props.className;
   }
 
   render() {

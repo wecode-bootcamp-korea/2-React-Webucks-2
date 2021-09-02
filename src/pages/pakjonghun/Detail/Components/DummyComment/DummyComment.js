@@ -6,21 +6,32 @@ import Heart from '../../../CommonComponents/Heart/Heart';
 
 class DummyComment extends React.Component {
   constructor(props) {
-    // { writer, desc, index, comments, setComments, isGetHeart }
     super(props);
     this.writer = props.writer;
     this.desc = props.desc;
     this.index = props.index;
     this.comments = props.comments;
-    this.setComments = props.setComments;
     this.isGetHeart = props.isGetHeart;
+    this.setComments = props.setComments;
 
-    console.log(this.);
+    this.deleteComment = this.deleteComment.bind(this);
+    this.setHeart = this.setHeart.bind(this);
+    this.state = { isGetHeart: '', comments: this.comments };
   }
 
   componentDidMount() {
-    const temp = this.comments.filter((item, idx) => idx !== this.index);
+    this.setState({ isGetHeart: this.isGetHeart });
+  }
+
+  deleteComment() {
+    const temp = this.comments.filter((item, idx) => {
+      return idx !== this.index;
+    });
     this.setComments(temp);
+  }
+
+  setHeart(data) {
+    this.setState({ isGetHeart: data[this.index].isGetHeart });
   }
 
   render() {
@@ -31,13 +42,11 @@ class DummyComment extends React.Component {
         <FontAwesomeIcon
           icon={faRemoveFormat}
           className="remove"
-          onClick={() =>
-            deleteComment(this.index, this.comments, this.setComments)
-          }
+          onClick={() => this.deleteComment()}
         />
         <Heart
-          isGetHeart={this.isGetHeart}
-          setDb={this.setComments}
+          isGetHeart={this.state.isGetHeart}
+          setDb={this.setHeart}
           id={this.index}
           db={this.comments}
         />
@@ -45,7 +54,5 @@ class DummyComment extends React.Component {
     );
   }
 }
-
-function deleteComment(index, comments, setComments) {}
 
 export default DummyComment;
