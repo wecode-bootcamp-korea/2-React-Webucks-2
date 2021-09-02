@@ -3,18 +3,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import './CoffeeCategory.scss';
 
-function CoffeeCategory({ title }) {
-  return (
-    <div className="CoffeeCategory">
-      <header className="coffeeCategory">
-        <span className="coffeeCategoryName">{title}</span>
-        <span className="coffeeCategoryDesc">
-          <FontAwesomeIcon icon={faCoffee} />
-          <span className="coffeeCategorySubName">{title}</span>
-        </span>
-      </header>
-    </div>
-  );
+class CoffeeCategory extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.title = props.title;
+  }
+
+  render() {
+    return (
+      <div className="CoffeeCategory">
+        <header className="coffeeCategory">
+          <span className="coffeeCategoryName">{this.title}</span>
+          <span className="coffeeCategoryDesc">
+            <FontAwesomeIcon icon={faCoffee} />
+            <span className="coffeeCategorySubName">{this.title}</span>
+          </span>
+        </header>
+      </div>
+    );
+  }
 }
 
 export default CoffeeCategory;
