@@ -4,20 +4,14 @@ import React from 'react';
 import './CoffeeCategory.scss';
 
 class CoffeeCategory extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.title = props.title;
-  }
-
   render() {
     return (
       <div className="CoffeeCategory">
         <header className="coffeeCategory">
-          <span className="coffeeCategoryName">{this.title}</span>
+          <span className="coffeeCategoryName">{this.props.title}</span>
           <span className="coffeeCategoryDesc">
             <FontAwesomeIcon icon={faCoffee} />
-            <span className="coffeeCategorySubName">{this.title}</span>
+            <span className="coffeeCategorySubName">{this.props.title}</span>
           </span>
         </header>
       </div>

@@ -20,15 +20,15 @@ class Login extends React.Component {
   }
 
   pwValid(val) {
-    return val.length >= 8;
+    return val.length >= 5;
   }
 
   changeId(val) {
-    this.setState({ ...this.state, id: val });
+    this.setState(() => ({ id: val }));
   }
 
   changePw(val) {
-    this.setState({ ...this.state, pw: val });
+    this.setState(() => ({ pw: val }));
   }
 
   componentDidUpdate() {

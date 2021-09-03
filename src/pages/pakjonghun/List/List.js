@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import CoffeeLayout from './Components/CoffeeListLayout/CoffeeListLayout';
 import CoffeCard from './Components/CoffeeCard/CoffeCard';
 import { data1, data2 } from '../data';
@@ -14,12 +14,12 @@ class List extends React.Component {
   }
 
   componentDidMount() {
-    const newData1 = data1.map((item, id) => {
+    const newData1 = data1.map(item => {
       item.isGetHeart = false;
       return item;
     });
 
-    const newData2 = data2.map((item, id) => {
+    const newData2 = data2.map(item => {
       item.isGetHeart = false;
       return item;
     });
@@ -40,14 +40,14 @@ class List extends React.Component {
       <div className="List">
         <Nav />
         <CoffeeLayout>
-          {this.state.db1.map(({ img, title, isGetHeart, id }, index) => {
+          {this.state.db1.map(({ img, title, isGetHeart, id }) => {
             return (
               <CoffeCard
                 imgUrl={img}
                 coffeeName={title}
                 isGetHeart={isGetHeart}
-                id={index}
-                key={index}
+                id={id}
+                key={id}
                 setDb={this.setDb1}
                 db={this.state.db1}
               />
@@ -55,14 +55,14 @@ class List extends React.Component {
           })}
         </CoffeeLayout>
         <CoffeeLayout>
-          {this.state.db2.map(({ img, title, id, isGetHeart }, index) => {
+          {this.state.db2.map(({ img, title, id, isGetHeart }) => {
             return (
               <CoffeCard
                 imgUrl={img}
                 coffeeName={title}
                 isGetHeart={isGetHeart}
-                index={index}
-                key={index}
+                id={id}
+                key={id}
                 setDb={this.setDb2}
                 db={this.state.db2}
               />

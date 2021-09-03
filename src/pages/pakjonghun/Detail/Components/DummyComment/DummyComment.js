@@ -5,50 +5,34 @@ import { faRemoveFormat } from '@fortawesome/free-solid-svg-icons';
 import Heart from '../../../CommonComponents/Heart/Heart';
 
 class DummyComment extends React.Component {
-  constructor(props) {
-    super(props);
-    this.writer = props.writer;
-    this.desc = props.desc;
-    this.index = props.index;
-    this.comments = props.comments;
-    this.isGetHeart = props.isGetHeart;
-    this.setComments = props.setComments;
-
-    this.deleteComment = this.deleteComment.bind(this);
-    this.setHeart = this.setHeart.bind(this);
-    this.state = { isGetHeart: '', comments: this.comments };
-  }
-
-  componentDidMount() {
-    this.setState({ isGetHeart: this.isGetHeart });
-  }
-
   deleteComment() {
-    const temp = this.comments.filter((item, idx) => {
+    const temp = this.props.comments.filter((item, idx) => {
       return idx !== this.index;
     });
-    this.setComments(temp);
+
+    this.props.setComments(temp);
   }
 
-  setHeart(data) {
-    this.setState({ isGetHeart: data[this.index].isGetHeart });
+  setHeart() {
+    const item = this.props.comments.filter(item => item.id !== this.props.id);
+    this.props.setComments(item);
   }
 
   render() {
     return (
       <div className="DummyComment">
-        <span className="writer">{this.writer}</span>
-        <span className="desc">{this.desc}</span>
+        <span className="writer">{this.props.writer}</span>
+        <span className="desc">{this.props.desc}</span>
         <FontAwesomeIcon
           icon={faRemoveFormat}
           className="remove"
-          onClick={() => this.deleteComment()}
+          onClick={() => this.setHeart()}
         />
         <Heart
-          isGetHeart={this.state.isGetHeart}
-          setDb={this.setHeart}
-          id={this.index}
-          db={this.comments}
+          isGetHeart={this.props.isGetHeart}
+          setDb={() => this.deleteComment()}
+          id={this.props.id}
+          db={this.props.comments}
         />
       </div>
     );

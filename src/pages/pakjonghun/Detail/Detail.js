@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import BorderLine from './Components/BorderLine/BorderLine';
 import Footer from './Components/Footer/Footer';
 import Heart from '../CommonComponents/Heart/Heart';
@@ -10,24 +10,22 @@ import Nav from '../CommonComponents/Nav/Nav';
 class Detail extends React.Component {
   constructor(props) {
     super(props);
-    this.db = props.location.state.db;
-    this.id = props.location.state.id;
-
-    this.state = { temp: [], img: '', coffeeName: '', isGetHeart: '' };
-    this.setCommentData = this.setCommentData.bind(this);
+    this.data = props.location.state.data;
+    this.state = { img: '', coffeeName: '', isGetHeart: '', id: '' };
+    this.setCoffeeData = this.setCoffeeData.bind(this);
   }
 
   componentDidMount() {
-    this.setState({ temp: this.db });
-    const { img, coffeeName, isGetHeart } = this.db.find(
-      item => item.id === this.id
-    );
-    this.setState({ img, coffeeName, isGetHeart });
+    this.setState(() => ({
+      img: this.data.img,
+      coffeeName: this.data.coffeeName,
+      isGetHeart: this.data.isGetHeart,
+      id: this.data.id,
+    }));
   }
 
-  setCommentData(data) {
-    this.setState(() => ({ temp: data }));
-    this.setState(() => ({ isGetHeart: data[this.id].isGetHeart }));
+  setCoffeeData(data) {
+    this.setState(() => ({ ...data[0] }));
   }
 
   render() {
@@ -49,9 +47,9 @@ class Detail extends React.Component {
               </div>
               <Heart
                 isGetHeart={this.state.isGetHeart}
-                id={this.id}
-                setDb={this.setCommentData}
-                db={this.db}
+                id={this.state.id}
+                setDb={this.setCoffeeData}
+                db={[this.state]}
               />
             </div>
             <BorderLine classNameName={'deatil__light-line'} />
