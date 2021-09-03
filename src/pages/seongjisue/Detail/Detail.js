@@ -2,9 +2,9 @@ import './Detail.scss';
 import React, { Component } from 'react';
 import Nav from '../Nav/Nav';
 import DetailFooter from './DetailFooter';
-import { FOOTER_MENU as FooterData } from '../List/data/detailData';
+import { FOOTER_MENU as FooterData } from '../../../data/detailData';
 import DetailMiddle from './DetailMiddle';
-import { COFFEE_LIST_TITLE as MiddleData } from '../List/data/detailData';
+import { FIRST_DETAIL_DATA as MiddleData } from '../../../data/detailData';
 
 class Detail extends Component {
   render() {

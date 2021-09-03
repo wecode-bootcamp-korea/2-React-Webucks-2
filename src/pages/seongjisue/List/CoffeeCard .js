@@ -11,7 +11,7 @@ class CoffeeCard extends Component {
               <Link to="/detail-jisue">
                 <img alt={data.text} className="menuImg" src={data.img} />
               </Link>
-              <p>{data.text}</p>
+              <p>{data.name}</p>
             </article>
           );
         })}

@@ -2,9 +2,30 @@ import './Login.scss';
 import React, { Component } from 'react';
 
 class Login extends Component {
+  constructor() {
+    super();
+    this.state = {
+      id: '',
+      pw: '',
+    };
+  }
+
+  handleIdInput = e => {
+    this.setState({
+      id: e.target.value,
+    });
+  };
+
+  handlePwInput = e => {
+    this.setState({
+      pw: e.target.value,
+    });
+  };
+
   goToLogin = () => {
     this.props.history.push('/list-jisue');
   };
+
   render() {
     return (
       <div className="Login">
@@ -21,11 +42,13 @@ class Login extends Component {
               className="boxTotalCSS"
               type="text"
               placeholder="전화번호, 사용자 이름 또는 이메일"
+              onChange={this.handleIdInput}
             />
             <input
               className="boxTotalCSS"
               type="password"
               placeholder="비밀번호"
+              onChange={this.handlePwInput}
             />
             <button
               id="loginButton"
