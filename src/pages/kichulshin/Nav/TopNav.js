@@ -1,6 +1,6 @@
 import React from 'react';
-import '../Nav/Nav.scss';
-class Nav extends React.Component {
+import '../Nav/TopNav.scss';
+class TopNav extends React.Component {
   render() {
     return (
       <header className="category">
@@ -21,4 +21,4 @@ class Nav extends React.Component {
     );
   }
 }
-export default Nav;
+export default TopNav;

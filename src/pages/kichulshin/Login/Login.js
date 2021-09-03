@@ -3,6 +3,21 @@ import './Login.scss';
 import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      inputId: '',
+      inputPw: '',
+      isActive: false,
+    };
+  }
+  handleIdInput = event => {
+    this.setState({ inputId: event.target.value });
+  };
+
+  handlePwInput = event => {
+    this.setState({ inputPw: event.target.value });
+  };
   render() {
     return (
       <div className="Login">
@@ -25,5 +40,4 @@ class Login extends React.Component {
     );
   }
 }
-
 export default Login;
