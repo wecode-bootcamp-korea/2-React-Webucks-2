@@ -8,15 +8,31 @@ class Login extends React.Component {
     this.state = {
       inputId: '',
       inputPw: '',
-      isActive: false,
+      isIdPwActive: false,
     };
   }
   handleIdInput = event => {
-    this.setState({ inputId: event.target.value });
+    this.setState({ inputId: event.target.value }, this.checkValid);
   };
 
   handlePwInput = event => {
-    this.setState({ inputPw: event.target.value });
+    this.setState({ inputPw: event.target.value }, this.checkValid);
+  };
+
+  checkValid = () => {
+    this.state.inputId.indexOf('@') >= 0 && this.state.inputPw.length > 7
+      ? this.setState({
+          isIdPwActive: true,
+        })
+      : this.setState({
+          isIdPwActive: false,
+        });
+  };
+
+  moveToList = () => {
+    if (this.state.isIdPwActive) {
+      this.props.history.push('/List-kichul');
+    }
   };
   render() {
     return (
@@ -36,9 +52,13 @@ class Login extends React.Component {
               placeholder="비밀번호"
               onChange={this.handlePwInput}
             />
-            <Link to="./List-kichul">
-              <button id="logbtn">로그인</button>
-            </Link>
+            <button
+              className={this.state.isIdPwActive ? 'valid' : 'invalid'}
+              id="logbtn"
+              onClick={this.moveToList}
+            >
+              로그인
+            </button>
           </form>
           <a href="http://naver.com">비밀번호를 잊으셨나요?</a>
         </section>

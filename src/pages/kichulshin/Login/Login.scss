@@ -35,7 +35,7 @@
   }
 
   button {
-    margin-bottom: 50px;
+    margin: 10px 10px 50px 10px;
     background-color: #aed3ea;
     font-weight: bold;
     cursor: pointer;
@@ -44,5 +44,12 @@
     height: 40px;
     color: white;
     border: 0px;
+  }
+  .valid {
+    opacity: 1;
+  }
+
+  .invalid {
+    opacity: 0.5;
   }
 }
