@@ -61,6 +61,9 @@
       color: white;
       cursor: pointer;
       opacity: $opacitySize;
+      &.active {
+        background-color: blue;
+      }
       &:hover {
         border: 2px solid black;
       }

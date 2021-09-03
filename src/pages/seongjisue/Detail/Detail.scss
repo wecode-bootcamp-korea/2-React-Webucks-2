@@ -88,19 +88,12 @@
         font-size: 10px;
       }
     }
-
-    // .heartIcon {
-    //   @include flexStyle();
-    //   align-self: center;
-    //   margin-right: 20px;
-
-    //   &:hover {
-    //     transition-duration: 0.2s;
-    //     transform: rotate(45deg);
-    //     cursor: pointer;
-    //     opacity: 0.8;
-    //   }
-    // }
+    .mousePoint {
+      cursor: pointer;
+      &.likeHeart {
+        color: red;
+      }
+    }
   }
 
   #contentFontSize {

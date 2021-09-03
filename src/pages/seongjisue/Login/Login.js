@@ -7,19 +7,21 @@ class Login extends Component {
     this.state = {
       id: '',
       pw: '',
+      buttonColor: false,
     };
   }
 
-  handleIdInput = e => {
-    this.setState({
-      id: e.target.value,
-    });
+  handleInput = e => {
+    this.setState({ [e.target.name]: e.target.value });
+    this.ChangeButtonColor();
   };
 
-  handlePwInput = e => {
-    this.setState({
-      pw: e.target.value,
-    });
+  ChangeButtonColor = () => {
+    let buttonCondition =
+      this.state.id.includes('@') && this.state.pw.length > 8;
+    buttonCondition
+      ? this.setState({ buttonColor: true })
+      : this.setState({ buttonColor: false });
   };
 
   goToLogin = () => {
@@ -30,35 +32,33 @@ class Login extends Component {
     return (
       <div className="Login">
         <div id="mainLogin">
-          <form
-            id="mainForm"
-            onSubmit={function (e) {
-              e.preventDefault();
-              this.props.history.push('/list');
-            }.bind(this)}
-          >
+          <div id="mainForm">
             <h1>JiBucks</h1>
             <input
               className="boxTotalCSS"
               type="text"
               placeholder="전화번호, 사용자 이름 또는 이메일"
-              onChange={this.handleIdInput}
+              name="id"
+              onChange={this.handleInput}
             />
             <input
               className="boxTotalCSS"
               type="password"
               placeholder="비밀번호"
-              onChange={this.handlePwInput}
+              name="pw"
+              onChange={this.handleInput}
             />
             <button
               id="loginButton"
-              className="boxTotalCSS"
+              className={
+                this.state.buttonColor ? 'boxTotalCSS active' : 'boxTotalCSS'
+              }
               onClick={this.goToLogin}
             >
               로그인
             </button>
             <a href="www.naver.com">비밀번호를 잊으셨나요?</a>
-          </form>
+          </div>
         </div>
       </div>
     );

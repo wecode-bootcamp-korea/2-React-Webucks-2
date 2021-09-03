@@ -3,6 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 class DetailMiddle extends Component {
+  constructor() {
+    super();
+    this.state = {
+      likeHeart: false,
+    };
+  }
+
+  changeHeartColor = () => {
+    this.setState({
+      likeHeart: !this.state.likeHeart,
+    });
+  };
+
   render() {
     return (
       <main id="main">
@@ -26,7 +39,15 @@ class DetailMiddle extends Component {
                   <h3>바닐라 크림 콜드 브루</h3>
                   <p>Vanilla Cream Cold Brew</p>
                 </span>
-                <FontAwesomeIcon icon={faHeart} size="2x" spin />
+                <FontAwesomeIcon
+                  className={
+                    this.state.likeHeart ? 'mousePoint likeHeart' : 'mousePoint'
+                  }
+                  onClick={this.changeHeartColor}
+                  icon={faHeart}
+                  size="2x"
+                  spin
+                />
               </div>
               <p id="contentFontSize">
                 콜드 브루에 더해진 바닐라 크림으로 깔끔하면서 달콤한 콜드 브루를
