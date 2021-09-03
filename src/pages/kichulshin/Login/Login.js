@@ -28,8 +28,14 @@ class Login extends React.Component {
               id="namemail"
               type="text"
               placeholder="전화번호, 사용자 이름 또는 이메일"
+              onChange={this.handleIdInput}
             />
-            <input id="pwput" type="password" placeholder="비밀번호" />
+            <input
+              id="pwput"
+              type="password"
+              placeholder="비밀번호"
+              onChange={this.handlePwInput}
+            />
             <Link to="./List-kichul">
               <button id="logbtn">로그인</button>
             </Link>
