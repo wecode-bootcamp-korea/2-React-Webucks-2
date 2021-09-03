@@ -1,0 +1,28 @@
+@import '../../Common.scss';
+
+.Input {
+  width: 100%;
+
+  .loginSubmit {
+    background-color: rgb(184, 213, 223);
+    border: lightgray;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  input {
+    width: 100%;
+    padding: 7px 13px;
+    outline: none;
+  }
+
+  .active {
+    opacity: 1;
+    pointer-events: all;
+    cursor: pointer;
+  }
+
+  .green {
+    border: 2px solid green;
+  }
+}

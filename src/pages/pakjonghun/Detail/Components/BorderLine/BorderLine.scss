@@ -1,0 +1,11 @@
+@import '../../../Common.scss';
+
+.BorderLine {
+  .deatil__light-line {
+    @include border($height: 1.5px, $color: lightgray);
+  }
+
+  .detail__line {
+    @include border($height: 2px, $color: black);
+  }
+}

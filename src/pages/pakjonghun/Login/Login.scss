@@ -1,0 +1,52 @@
+@import '../Common.scss';
+.Login {
+  background-color: #eeefef;
+
+  .loginForm {
+    @include flex($direction: column);
+    padding: 50px 20px 30px 20px;
+    width: 300px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    background-color: white;
+  }
+
+  .pwInput {
+    width: 100%;
+    margin: 10px 0;
+    border: 1px solid black;
+    @include flex();
+    input {
+      border: none;
+    }
+
+    .passwordIcon {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  }
+
+  h1 {
+    margin-bottom: 36px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  .loginContainer {
+    @include flex($direction: column);
+    height: 100vh;
+    width: 100%;
+    background-color: white;
+  }
+
+  a {
+    margin-top: 50px;
+    color: #96b1c6;
+    text-decoration: none;
+  }
+
+  .green {
+    border: 2px solid green;
+  }
+}
