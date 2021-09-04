@@ -6,6 +6,32 @@ class Login extends React.Component {
   goToList = () => {
     this.props.history.push('/list-taegyu');
   };
+
+  constructor() {
+    super();
+    this.state = {
+      userInfo: {},
+    };
+  }
+
+  handleIdInput = event => {
+    this.setState({
+      userInfo: {
+        ...this.state.userInfo,
+        id: event.target.value,
+      },
+    });
+  };
+
+  handlePwInput = event => {
+    this.setState({
+      userInfo: {
+        ...this.state.userInfo,
+        pw: event.target.value,
+      },
+    });
+  };
+
   render() {
     return (
       <div className="Login">
@@ -13,11 +39,13 @@ class Login extends React.Component {
           <header className="header">WeBucks</header>
           <form className="userInfo">
             <input
+              onChange={this.handleIdInput}
               className="user"
               type="text"
               placeholder="전화번호, 사용자 이름 또는 이메일"
             />
             <input
+              onChange={this.handlePwInput}
               className="password"
               type="password"
               placeholder="비밀번호"
