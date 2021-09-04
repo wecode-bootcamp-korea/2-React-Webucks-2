@@ -1,7 +1,7 @@
 import React from 'react';
-import '../Nav/Nav.scss';
+import '../TopNav/TopNav.scss';
 
-class Nav extends React.Component {
+class TopNav extends React.Component {
   render() {
     return (
       <div className="nav">
@@ -17,4 +17,4 @@ class Nav extends React.Component {
   }
 }
 
-export default Nav;
+export default TopNav;

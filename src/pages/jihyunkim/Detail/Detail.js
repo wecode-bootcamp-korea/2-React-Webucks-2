@@ -1,5 +1,6 @@
 import React from 'react';
-import Nav from '../Nav/Nav';
+import TopNav from '../TopNav/TopNav';
+import { DETAIL_DATA } from '../Detail/detailData';
 import './Detail.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +10,7 @@ class Detail extends React.Component {
     return (
       <div className="Detail">
         <div className="content">
-          <Nav />
+          <TopNav />
           <div className="class">
             <p id="coldBrewClass">콜드브루</p>
             <p id="path">
@@ -23,6 +24,7 @@ class Detail extends React.Component {
                 src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[9200000002081]_20210415133656839.jpg"
                 alt="돌체 콜드 브루"
               />
+              ;
             </div>
             <div className="menuDetailRight">
               <div className="menuDetailRightTitle">
