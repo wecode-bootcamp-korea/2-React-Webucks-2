@@ -5,6 +5,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 class Detail extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isValidHeart: false,
+    };
+  }
+
+  handleHeartColor = () => {
+    this.setState({
+      isValidHeart: !this.state.isValidHeart,
+    });
+  };
+
   render() {
     return (
       <div className="Detail">
@@ -29,7 +42,11 @@ class Detail extends React.Component {
                   <h1>돌체 콜드 브루</h1>
                   <span>Dolce Cold Brew</span>
                 </div>
-                <FontAwesomeIcon icon={faHeart} />
+                <FontAwesomeIcon
+                  icon={faHeart}
+                  className={this.state.isValidHeart ? 'redHeart' : 'remove'}
+                  onClick={this.handleHeartColor}
+                />
               </div>
               <div className="detailInfoDescription">
                 <span>

@@ -3,10 +3,6 @@ import { withRouter } from 'react-router-dom';
 import './Login.scss';
 
 class Login extends React.Component {
-  goToList = () => {
-    this.props.history.push('/list-taegyu');
-  };
-
   constructor() {
     super();
     this.state = {
@@ -14,6 +10,10 @@ class Login extends React.Component {
       isValid: false,
     };
   }
+
+  goToList = () => {
+    this.props.history.push('/list-taegyu');
+  };
 
   handleIdInput = event => {
     this.setState({
@@ -44,7 +44,6 @@ class Login extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="Login">
         <div className="form">
