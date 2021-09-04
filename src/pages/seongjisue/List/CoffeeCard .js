@@ -8,8 +8,14 @@ class CoffeeCard extends Component {
         {this.props.value.map(data => {
           return (
             <article className="menu">
-              <Link to="/detail-jisue">
-                <img alt={data.text} className="menuImg" src={data.img} />
+              <Link
+                className="abc"
+                to={{
+                  pathname: '/detail-jisue',
+                  state: { imgURL: data.img, coffeeName: data.name },
+                }}
+              >
+                <img alt={data.name} className="menuImg" src={data.img} />
               </Link>
               <p>{data.name}</p>
             </article>

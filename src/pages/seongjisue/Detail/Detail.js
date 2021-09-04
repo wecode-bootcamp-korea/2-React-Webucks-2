@@ -4,7 +4,6 @@ import Nav from '../Nav/Nav';
 import DetailFooter from './DetailFooter';
 import { FOOTER_MENU as FooterData } from '../../../data/detailData';
 import DetailMiddle from './DetailMiddle';
-import { FIRST_DETAIL_DATA as MiddleData } from '../../../data/detailData';
 
 class Detail extends Component {
   render() {
@@ -14,7 +13,7 @@ class Detail extends Component {
           <div id="sub">
             <Nav></Nav>
           </div>
-          <DetailMiddle value={MiddleData}></DetailMiddle>
+          <DetailMiddle></DetailMiddle>
           <DetailFooter value={FooterData}></DetailFooter>
         </div>
       </div>

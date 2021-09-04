@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { withRouter } from 'react-router';
 
 class DetailMiddle extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    console.log(props);
     this.state = {
       likeHeart: false,
+      id: '',
+      content: '',
+      list: [],
     };
   }
 
@@ -16,13 +21,30 @@ class DetailMiddle extends Component {
     });
   };
 
+  reviewInputEnter = e => {
+    const { abc, value } = e.target;
+    this.setState({ [abc]: value });
+  };
+
+  onKeyUp = e => {
+    if (e.keyCode === 13 && this.state.id !== '' && this.state.content !== '') {
+      const { id, content, list } = this.state;
+      this.setState({
+        list: list.concat({ id: id, content: content }),
+        id: '',
+        content: '',
+      });
+      e.target.value = null;
+    }
+  };
+
   render() {
     return (
       <main id="main">
         <nav>
           <h1 id="titleMenu">콜드 브루</h1>
           <p id="titleRoot">
-            홈{'>'}MENU{'>'}음료{'>'}에스프레소{'>'}화이트 초콜릿 모카
+            홈{'>'}MENU{'>'}음료{'>'}에스프레소{'>'}
           </p>
         </nav>
         <section className="item">
@@ -45,8 +67,6 @@ class DetailMiddle extends Component {
                   }
                   onClick={this.changeHeartColor}
                   icon={faHeart}
-                  size="2x"
-                  spin
                 />
               </div>
               <p id="contentFontSize">
@@ -94,24 +114,30 @@ class DetailMiddle extends Component {
             <footer className="contentFooter">
               <h5>리뷰</h5>
               <div className="reveiwResults">
-                <p>
-                  <span className="reveiwContent">coffee_lover</span> 너무
-                  맛있어요!
-                </p>
-                <p>
-                  <span className="reveiwContent">CHOCO7</span> 나는 화이트
-                  초콜릿 모카를 마시러 갈랑다
-                </p>
-                <p>
-                  <span className="reveiwContent">legend_dev</span> 진짜
-                  콜드브루는 여기가 전설!
-                </p>
+                {this.state.list.map((el, index) => {
+                  return (
+                    <p key={index}>
+                      <span className="reveiwContent">{el.id}</span>
+                      {el.content}
+                    </p>
+                  );
+                })}
               </div>
               <div id="reveiwBox">
-                <input type="text" placeholder="아이디를 입력해주세요" />
+                <input
+                  type="text"
+                  placeholder="아이디를 입력해주세요"
+                  name="id"
+                  value={this.state.id}
+                  onChange={this.reviewInputEnter}
+                />
                 <input
                   type="text"
                   placeholder="리뷰를 입력해주세요(엔터를 눌러주세요.)"
+                  name="content"
+                  value={this.state.content}
+                  onChange={this.reviewInputEnter}
+                  onKeyUp={this.onKeyUp}
                 />
               </div>
             </footer>
@@ -121,4 +147,4 @@ class DetailMiddle extends Component {
     );
   }
 }
-export default DetailMiddle;
+export default withRouter(DetailMiddle);

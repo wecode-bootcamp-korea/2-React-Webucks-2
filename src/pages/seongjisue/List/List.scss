@@ -57,13 +57,13 @@
       flex-direction: column;
       align-items: center;
       width: 250px;
-      height: 300px;
       margin: 15px;
-      overflow: hidden;
-
-      .menuImg {
-        width: 230px;
-        height: 250px;
+      .abc {
+        height: 260px;
+        overflow: hidden;
+        .menuImg {
+          width: 100%;
+        }
       }
 
       .menuImg:hover {
