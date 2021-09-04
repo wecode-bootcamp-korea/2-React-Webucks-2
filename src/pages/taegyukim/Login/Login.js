@@ -10,7 +10,8 @@ class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      userInfo: {},
+      userInfo: { id: '', pw: '' },
+      isValid: false,
     };
   }
 
@@ -32,12 +33,23 @@ class Login extends React.Component {
     });
   };
 
+  handleButtonColor = () => {
+    this.state.userInfo.id.includes('@') && this.state.userInfo.pw.length >= 5
+      ? this.setState({
+          isValid: true,
+        })
+      : this.setState({
+          isValid: false,
+        });
+  };
+
   render() {
+    console.log(this.state);
     return (
       <div className="Login">
         <div className="form">
           <header className="header">WeBucks</header>
-          <form className="userInfo">
+          <form className="userInfo" onKeyUp={this.handleButtonColor}>
             <input
               onChange={this.handleIdInput}
               className="user"
@@ -50,7 +62,11 @@ class Login extends React.Component {
               type="password"
               placeholder="비밀번호"
             />
-            <button className="loginBtn" onClick={this.goToList}>
+            <button
+              id="loginBtn"
+              className={this.state.isValid ? 'active' : 'remove'}
+              onClick={this.goToList}
+            >
               로그인
             </button>
           </form>

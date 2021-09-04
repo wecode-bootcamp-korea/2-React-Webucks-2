@@ -45,7 +45,7 @@ $button-color: rgba(96, 173, 237, 1);
           color: #bababa;
         }
       }
-      .loginBtn {
+      #loginBtn {
         height: 50px;
         width: 400px;
         margin: 0 65px 25px 65px;
@@ -55,8 +55,9 @@ $button-color: rgba(96, 173, 237, 1);
         border: none;
         border-radius: 10px;
         font-size: 20px;
-        .loginBtn.active {
+        &.active {
           background-color: $button-color;
+          opacity: 1;
         }
       }
     }

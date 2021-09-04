@@ -25,7 +25,7 @@ class List extends React.Component {
               <div className="imgRow">
                 {FISRT_DATA.map(data => {
                   return (
-                    <CoffeeCard key={data.id} img={data.img} text={data.text} />
+                    <CoffeeCard key={data.id} img={data.img} name={data.name} />
                   );
                 })}
               </div>
@@ -43,7 +43,7 @@ class List extends React.Component {
               <div className="imgRow">
                 {SECOND_DATA.map(data => {
                   return (
-                    <CoffeeCard key={data.id} img={data.img} text={data.text} />
+                    <CoffeeCard key={data.id} img={data.img} name={data.name} />
                   );
                 })}
               </div>

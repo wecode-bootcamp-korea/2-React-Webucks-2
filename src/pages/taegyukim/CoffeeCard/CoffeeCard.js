@@ -9,10 +9,10 @@ class CoffeeCard extends React.Component {
           <img
             key={this.props.key}
             src={this.props.img}
-            alt={this.props.text}
+            alt={this.props.name}
           />
         </Link>
-        <span>{this.props.text}</span>
+        <span>{this.props.name}</span>
       </div>
     );
   }
