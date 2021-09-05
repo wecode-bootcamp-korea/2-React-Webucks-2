@@ -43,13 +43,13 @@
       height: 50px;
       margin: 10px;
       color: white;
+      text-decoration: none;
       background-color: #d4e6f8;
       border: 3px solid #dfdfdf;
       border-radius: 5px;
-    }
-
-    .loginButton.active {
-      background-color: #60aded;
+      &.active {
+        background-color: #60aded;
+      }
     }
 
     a {

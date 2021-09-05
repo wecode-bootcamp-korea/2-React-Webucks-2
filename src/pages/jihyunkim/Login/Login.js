@@ -8,6 +8,8 @@ class Login extends React.Component {
     super();
     this.state = {
       id: '',
+      pw: '',
+      isActive: false,
     };
   }
 
@@ -23,12 +25,18 @@ class Login extends React.Component {
     });
   };
 
+  handleLoginBtn = () => {
+    this.state.id.includes('@') && this.state.pw.length >= 5
+      ? this.setState({ isActive: true })
+      : this.setState({ isActive: false });
+  };
+
   render() {
     return (
       <div class="Login">
         <div className="loginBox">
           <h1 className="logo">Webucks</h1>
-          <form className="loginInput">
+          <form onKeyUp={this.handleLoginBtn} className="loginInput">
             <input
               onChange={this.handleIdInput}
               className="idInput"
@@ -41,7 +49,11 @@ class Login extends React.Component {
               type="password"
               placeholder="비밀번호"
             />
-            <button className="loginButton" disabled>
+            <button
+              className={
+                this.state.isActive ? 'loginButton active' : 'loginButton'
+              }
+            >
               <Link to="/list-jihyun">로그인</Link>
             </button>
           </form>
