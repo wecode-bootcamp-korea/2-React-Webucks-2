@@ -43,6 +43,14 @@ $theme-color: #eeefef;
               display: block;
               margin-top: 18px;
               margin-bottom: 35px;
+              .fa-heart {
+                margin-left: 10px;
+                opacity: 0.3;
+                &.redHeart {
+                  color: red;
+                  opacity: 0.7;
+                }
+              }
             }
           }
           a {
