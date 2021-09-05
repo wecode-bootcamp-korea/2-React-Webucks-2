@@ -31,12 +31,16 @@
           font-size: 12px;
           font-weight: normal;
           color: #666;
+          .heart {
+            color: red;
+          }
         }
         #heartIcon {
           position: relative;
           top: 5px;
           left: 280px;
           font-size: 18px;
+          cursor: pointer;
         }
       }
       #productDct {

@@ -4,9 +4,23 @@ import '../../../styles/common.scss';
 import TopNav from '../TopNav/TopNav';
 import './Detail.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 
 class Detail extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      likeHeart: false,
+    };
+  }
+
+  handleLike = event => {
+    this.setState({
+      likeHeart: !this.state.likeHeart,
+    });
+  };
+
   render() {
     return (
       <body className="Detail">
@@ -28,7 +42,11 @@ class Detail extends React.Component {
             <h3 id="productName">
               돌체 콜드 브루
               <span id="heartIcon">
-                <FontAwesomeIcon icon={faHeart} />
+                <FontAwesomeIcon
+                  onClick={this.handleLike}
+                  icon={this.state.likeHeart ? solidHeart : regularHeart}
+                  className={this.state.likeHeart ? 'heart' : ''}
+                />
               </span>
               <br />
               <span>Dolce Cold Brew</span>
