@@ -9,6 +9,8 @@ class Detail extends React.Component {
     super();
     this.state = {
       isValidHeart: false,
+      reviewComment: '',
+      reviewArray: [],
     };
   }
 
@@ -16,6 +18,24 @@ class Detail extends React.Component {
     this.setState({
       isValidHeart: !this.state.isValidHeart,
     });
+  };
+
+  handleReviewInput = event => {
+    event.preventDefault();
+    this.setState({
+      reviewComment: event.target.value,
+    });
+  };
+
+  pushReviewComment = event => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      this.state.reviewArray.push(this.state.reviewComment);
+      event.target.value = '';
+      this.setState({
+        reviewComment: '',
+      });
+    }
   };
 
   render() {
@@ -109,9 +129,18 @@ class Detail extends React.Component {
                     <span>legend_dev</span>
                     <span>진짜 돌체 콜드 브루는 전설이다.</span>
                   </div>
-                  <ul id="reviewList"></ul>
+                  <ul id="reviewList">
+                    {this.state.reviewArray.map((review, idx) => {
+                      return <li key={idx}>{review}</li>;
+                    })}
+                  </ul>
                   <form id="reviewForm">
-                    <input type="text" placeholder="리뷰를 입력해주세요." />
+                    <input
+                      onChange={this.handleReviewInput}
+                      onKeyPress={this.pushReviewComment}
+                      type="text"
+                      placeholder="리뷰를 입력해주세요."
+                    />
                   </form>
                 </div>
               </div>

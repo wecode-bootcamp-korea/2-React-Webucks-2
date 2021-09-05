@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMugHot } from '@fortawesome/free-solid-svg-icons';
 import { FISRT_DATA } from '../data/listData';
 import { SECOND_DATA } from '../data/listData';
-import CoffeeCard from '../CoffeeCard/CoffeeCard';
+import CoffeeCard from './CoffeeCard';
 
 class List extends React.Component {
   render() {
@@ -50,12 +50,6 @@ class List extends React.Component {
             </div>
           </article>
         </section>
-
-        <script src="js/list.js"></script>
-        <script
-          src="https://kit.fontawesome.com/e3186f2480.js"
-          crossorigin="anonymous"
-        ></script>
       </div>
     );
   }

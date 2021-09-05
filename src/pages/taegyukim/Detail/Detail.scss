@@ -141,6 +141,13 @@ $theme-color: #eeefef;
               font-weight: normal;
               font-size: 14px;
             }
+            #reviewList {
+              li {
+                font-weight: normal;
+                font-size: 14px;
+                margin-bottom: 7px;
+              }
+            }
             #reviewForm {
               input {
                 display: block;
