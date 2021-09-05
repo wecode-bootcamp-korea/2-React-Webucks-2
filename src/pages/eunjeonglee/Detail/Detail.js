@@ -26,7 +26,7 @@ class Detail extends React.Component {
 
           <section className="container">
             <h3 id="productName">
-              돌체 콜드 브루{' '}
+              돌체 콜드 브루
               <span id="heartIcon">
                 <FontAwesomeIcon icon={faHeart} />
               </span>

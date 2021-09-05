@@ -35,7 +35,7 @@
       margin-bottom: 10px;
       width: 300px;
     }
-    .loginBtn {
+    .logOutBtn {
       width: 300px;
       background-color: #add3ea;
       color: white;
@@ -44,8 +44,14 @@
       border-radius: 5px;
       margin-bottom: 100px;
     }
-    .btn {
+    .logInBtn {
+      width: 300px;
       background-color: #60aded;
+      color: white;
+      padding: 8px;
+      border: 0px;
+      border-radius: 5px;
+      margin-bottom: 100px;
     }
   }
   #forgotPw {
