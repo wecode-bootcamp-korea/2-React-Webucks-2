@@ -25,7 +25,7 @@ class List extends React.Component {
                   <CoffeeCard
                     key={coffeeData.id}
                     src={coffeeData.img}
-                    alt={coffeeData.text}
+                    alt={coffeeData.name}
                   />
                 );
               })}
@@ -43,7 +43,7 @@ class List extends React.Component {
                   <CoffeeCard
                     key={coffeeData.id}
                     src={coffeeData.img}
-                    alt={coffeeData.text}
+                    alt={coffeeData.name}
                   />
                 );
               })}
