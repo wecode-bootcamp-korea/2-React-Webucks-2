@@ -1,53 +1,69 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Comment.scss';
 import DummyComment from '../DummyComment/DummyComment';
 
-function CommentChanger(content) {
-  const [value, setDesc] = useState(content);
+class Comment extends React.Component {
+  constructor(props) {
+    super(props);
 
-  function onChange(e) {
-    setDesc(e.target.value);
+    this.state = {
+      comments: [],
+      desc: '',
+    };
+    this.setComments = this.setComments.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
-  return { value, onChange };
-}
-
-function HandleSubmit(desc) {
-  const [comments, setComments] = useState([]);
-  function onSubmit(e) {
+  onSubmit(e) {
     e.preventDefault();
-    setComments([
-      ...comments,
-      { writer: '익명', desc, isGetHeart: false, id: comments.length },
-    ]);
+    this.setState(() => ({
+      comments: [
+        ...this.state.comments,
+        {
+          writer: '익명',
+          desc: this.state.desc,
+          isGetHeart: false,
+          id: this.state.comments.length,
+        },
+      ],
+    }));
   }
-  return { comments, onSubmit, setComments };
-}
 
-function Comment() {
-  const attribute = CommentChanger('');
-  const { comments, onSubmit, setComments } = HandleSubmit(attribute.value);
+  onChange(e) {
+    this.setState(() => ({ desc: e.target.value }));
+  }
 
-  return (
-    <div className="Comment">
-      {comments.map(({ writer, desc, isGetHeart, id }, index) => {
-        return (
-          <DummyComment
-            writer={writer}
-            desc={desc}
-            key={index}
-            index={id}
-            comments={comments}
-            setComments={setComments}
-            isGetHeart={isGetHeart}
+  setComments(comments) {
+    this.setState(() => ({ comments }));
+  }
+
+  render() {
+    return (
+      <div className="Comment">
+        {this.state.comments.map(({ writer, desc, isGetHeart, id }) => {
+          return (
+            <DummyComment
+              writer={writer}
+              desc={desc}
+              key={id}
+              id={id}
+              comments={this.state.comments}
+              setComments={this.setComments}
+              isGetHeart={isGetHeart}
+            />
+          );
+        })}
+        <form onSubmit={this.onSubmit}>
+          <input
+            placeholder="댓글을 적읍시다"
+            type="text"
+            onChange={this.onChange}
           />
-        );
-      })}
-      <form onSubmit={onSubmit}>
-        <input placeholder="댓글을 적읍시다" type="text" {...attribute} />
-      </form>
-    </div>
-  );
+        </form>
+      </div>
+    );
+  }
 }
 
 export default Comment;

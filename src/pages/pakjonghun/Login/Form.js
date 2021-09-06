@@ -1,23 +1,21 @@
 import React from 'react';
-import { useHistory } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import './Form.scss';
 
-function Form({ children, isValid }) {
-  const history = useHistory();
-
-  return (
-    <form
-      className="Form"
-      onSubmit={e => {
-        {
+class Form extends React.Component {
+  render() {
+    return (
+      <form
+        className="Form"
+        onSubmit={e => {
           e.preventDefault();
-          if (isValid) history.push('list-jonghun');
-        }
-      }}
-    >
-      {children}
-    </form>
-  );
+          if (this.props.isValid) this.props.history.push('list-jonghun');
+        }}
+      >
+        {this.props.children}
+      </form>
+    );
+  }
 }
 
-export default Form;
+export default withRouter(Form);

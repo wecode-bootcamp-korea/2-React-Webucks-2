@@ -1,0 +1,14 @@
+.Photo {
+  .detailImg {
+    width: 100%;
+  }
+
+  .coffeeImg {
+    width: 100%;
+    transition: 0.3s linear all;
+  }
+
+  .coffeeImg:hover {
+    transform: scale(1.2);
+  }
+}
