@@ -4,6 +4,7 @@ import './Detail.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+import ReviewLike from '../List/ReviewLike';
 
 class Detail extends React.Component {
   constructor() {
@@ -132,14 +133,18 @@ class Detail extends React.Component {
                     return (
                       <div className="review">
                         <li>{review}</li>
-                        <span
-                          key={idx}
-                          className="reviewDelete"
-                          onClick={event => {
-                            this.deleteReview(idx, event);
-                          }}
-                        >
-                          ❌
+                        <span>
+                          <ReviewLike />
+                          &nbsp; &nbsp;
+                          <span
+                            key={idx}
+                            className="reviewDelete"
+                            onClick={event => {
+                              this.deleteReview(idx, event);
+                            }}
+                          >
+                            ❌
+                          </span>
                         </span>
                       </div>
                     );
