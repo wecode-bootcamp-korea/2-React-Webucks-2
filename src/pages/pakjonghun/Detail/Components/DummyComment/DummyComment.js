@@ -1,21 +1,23 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './DummyComment.scss';
 import { faRemoveFormat } from '@fortawesome/free-solid-svg-icons';
+import './DummyComment.scss';
 import Heart from '../../../CommonComponents/Heart/Heart';
 
 class DummyComment extends React.Component {
   deleteComment() {
-    const temp = this.props.comments.filter((item, idx) => {
-      return idx !== this.index;
-    });
-
+    const temp = this.props.comments.filter(item => item.id !== this.props.id);
     this.props.setComments(temp);
   }
 
   setHeart() {
-    const item = this.props.comments.filter(item => item.id !== this.props.id);
-    this.props.setComments(item);
+    const temp = this.props.comments.map(item => {
+      if (item.id == this.props.id) {
+        item.isGetHeart = !this.props.isGetHeart;
+      }
+      return item;
+    });
+    this.props.setComments(temp);
   }
 
   render() {
@@ -26,11 +28,11 @@ class DummyComment extends React.Component {
         <FontAwesomeIcon
           icon={faRemoveFormat}
           className="remove"
-          onClick={() => this.setHeart()}
+          onClick={() => this.deleteComment()}
         />
         <Heart
           isGetHeart={this.props.isGetHeart}
-          setDb={() => this.deleteComment()}
+          setDb={() => this.setHeart()}
           id={this.props.id}
           db={this.props.comments}
         />

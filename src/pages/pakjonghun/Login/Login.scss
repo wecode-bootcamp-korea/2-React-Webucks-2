@@ -4,18 +4,19 @@
 
   .loginForm {
     @include flex($direction: column);
-    padding: 50px 20px 30px 20px;
     width: 300px;
+    padding: 50px 20px 30px 20px;
     border: 1px solid lightgray;
     border-radius: 5px;
     background-color: white;
   }
 
   .pwInput {
+    @include flex();
     width: 100%;
     margin: 10px 0;
     border: 1px solid black;
-    @include flex();
+
     input {
       border: none;
     }

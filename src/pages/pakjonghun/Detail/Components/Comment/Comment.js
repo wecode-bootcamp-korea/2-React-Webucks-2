@@ -29,6 +29,7 @@ class Comment extends React.Component {
           id: this.state.comments.length,
         },
       ],
+      desc: '',
     }));
   }
 
@@ -37,7 +38,7 @@ class Comment extends React.Component {
   }
 
   setComments(comments) {
-    this.setState(() => ({ comments }));
+    this.setState({ comments });
   }
 
   render() {

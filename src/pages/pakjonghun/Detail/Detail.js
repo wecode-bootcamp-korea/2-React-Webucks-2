@@ -6,6 +6,7 @@ import Comment from './Components/Comment/Comment';
 import './Detail.scss';
 import { withRouter } from 'react-router-dom';
 import Nav from '../CommonComponents/Nav/Nav';
+import Photo from '../CommonComponents/Photo/Photo';
 
 class Detail extends React.Component {
   constructor(props) {
@@ -33,11 +34,10 @@ class Detail extends React.Component {
       <div className="Detail">
         <Nav />
         <main className="detail__main divied__grid">
-          <img
-            src={this.state.img}
+          <Photo
+            imgUrl={this.state.img}
             alt={this.state.coffeeName}
             className="detail__img"
-            id="detail__img"
           />
           <div>
             <div className="detailTitle">
@@ -108,8 +108,9 @@ class Detail extends React.Component {
             <h3 className="detail__bottom-title title--h1">리뷰</h3>
 
             <BorderLine className={'deatil__light-line'} />
-
-            <Comment />
+            <div className="commentContainer">
+              <Comment />
+            </div>
           </div>
         </main>
         <Footer />

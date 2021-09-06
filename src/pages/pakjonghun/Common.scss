@@ -2,9 +2,9 @@
 
 @mixin flex($align: center, $justify: center, $direction: row) {
   display: flex;
+  flex-direction: $direction;
   align-items: $align;
   justify-content: $justify;
-  flex-direction: $direction;
 }
 
 @mixin border($height, $color) {

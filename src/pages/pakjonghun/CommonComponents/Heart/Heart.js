@@ -6,7 +6,7 @@ import './Heart.scss';
 class Heart extends React.Component {
   render() {
     return (
-      <div className="Heart">
+      <div className={'Heart'}>
         <FontAwesomeIcon
           icon={faHeart}
           className={`heartIcon ${this.props.isGetHeart ? 'red' : null}`}
