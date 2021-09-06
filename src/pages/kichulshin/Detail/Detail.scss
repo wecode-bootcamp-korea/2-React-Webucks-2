@@ -1,0 +1,174 @@
+.Detail {
+  .content {
+    display: grid;
+    place-items: center;
+    margin: 0 0 5% 0;
+    .category {
+      display: column;
+      width: 80%;
+      height: 60px;
+      #coldBrewClass {
+        font-size: 25px;
+        font-weight: bold;
+        text-align: left;
+      }
+      #path {
+        color: gray;
+        text-align: right;
+      }
+    }
+    .menuDetail {
+      display: flex;
+      width: 80%;
+      .menuDetailLeft {
+        display: flex;
+        width: 40%;
+        img {
+          width: 95%;
+        }
+      }
+      .menuDetailRight {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        height: 100%;
+        padding-left: 20px;
+        .menuDetailRightTitle {
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 3px solid #333333;
+          .menuNames {
+            #menuName {
+              margin-bottom: 3px;
+              font-size: 22px;
+              font-weight: bold;
+            }
+            #menuNameEnglish {
+              padding-bottom: 5px;
+              font-size: 20px;
+            }
+          }
+          .fa-heart {
+            font-size: 30px;
+            &:hover {
+              cursor: pointer;
+            }
+            &.fas {
+              color: red;
+            }
+          }
+        }
+      }
+    }
+  }
+  .menuDetailRightMain {
+    display: flex;
+    flex-direction: column;
+    .menuIntro {
+      width: 100%;
+      height: 30%;
+      line-height: 130%;
+      padding: 20px 0 10px 0;
+    }
+  }
+
+  .menuNutritionTitle {
+    display: flex;
+    justify-content: space-between;
+    height: 25%;
+    line-height: 50px;
+    padding: 0 20px;
+    border-top: solid silver 2px;
+    border-bottom: solid silver 2px;
+    font-size: 90%;
+  }
+  .menuNutritionMain {
+    .menuNutritionBox {
+      display: flex;
+      flex-direction: row;
+      margin: 5px;
+      .nutritionBoxLeft {
+        width: 100%;
+        border-right: dashed 1px black;
+      }
+      .nutritionBoxRight {
+        width: 100%;
+      }
+      .nutri1,
+      .nutri2,
+      .nutri3,
+      .nutri4,
+      .nutri5,
+      .nutri6 {
+        display: flex;
+        justify-content: space-between;
+        margin: 15px 10px;
+        font-size: 90%;
+      }
+    }
+    #alergy {
+      background-color: #efefef;
+      height: 50px;
+      line-height: 50px;
+      padding: 0 10px;
+    }
+  }
+  .menuDetailRightReview {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0px;
+    margin: 15px 0;
+    #reviewTitle {
+      height: 30%;
+      line-height: 50px;
+      font-size: 100%;
+      font-weight: bold;
+      border-bottom: solid silver 2px;
+    }
+    .reviews {
+      width: 100%;
+      padding: 10px;
+      line-height: 20px;
+      font-size: 100%;
+      list-style-type: square;
+    }
+    #reviewInput {
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      padding: 0 10px;
+      margin: 20px 0;
+      background-color: #efefef;
+      border: none;
+      &::placeholder {
+        font-size: 100%;
+      }
+    }
+  }
+  .footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+    padding: 30px 2%;
+    line-height: 35px;
+    color: #efefef;
+    background-color: #333333;
+    .company,
+    .corporate-sales,
+    .partnership,
+    .online-community {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    .company-list,
+    .corporate-sales-list,
+    .partnership-list,
+    .online-community-list {
+      padding-top: 15px;
+      line-height: 100%;
+      color: #efefef;
+    }
+  }
+}

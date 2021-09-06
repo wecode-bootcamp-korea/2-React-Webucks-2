@@ -2,9 +2,27 @@ import React from 'react';
 import './List.scss';
 import CoffeeCard from '../coffeeCard/CoffeeCard';
 import TopNav from '../Nav/TopNav';
-import { FIRST_DATA, SECOND_DATA } from './listData';
 
 class List extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      firstProducts: [],
+      secondProducts: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/data/listData.json')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          firstProducts: data.FIRST_DATA,
+          secondProducts: data.SECOND_DATA,
+        });
+      });
+  }
+
   render() {
     return (
       <div className="list">
@@ -21,12 +39,12 @@ class List extends React.Component {
               <span>디카페인 에스프레소 샷 추가 가능 (일부 음료 제외)</span>
             </dt>
             <ul>
-              {FIRST_DATA.map(firstCoffeePic => {
+              {this.state.firstProducts.map(coldbrew => {
                 return (
                   <CoffeeCard
-                    key={firstCoffeePic.id}
-                    src={firstCoffeePic.img}
-                    alt={firstCoffeePic.name}
+                    key={coldbrew.id}
+                    src={coldbrew.img}
+                    alt={coldbrew.name}
                   />
                 );
               })}
@@ -43,12 +61,12 @@ class List extends React.Component {
               <span>디카페인 에스프레소 샷 추가 가능 (일부 음료 제외)</span>
             </dt>
             <ul>
-              {SECOND_DATA.map(secondCoffeePic => {
+              {this.state.secondProducts.map(product => {
                 return (
                   <CoffeeCard
-                    key={secondCoffeePic.id}
-                    src={secondCoffeePic.img}
-                    alt={secondCoffeePic.name}
+                    key={product.id}
+                    src={product.img}
+                    alt={product.name}
                   />
                 );
               })}

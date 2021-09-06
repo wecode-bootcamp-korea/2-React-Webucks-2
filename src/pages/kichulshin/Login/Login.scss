@@ -4,9 +4,9 @@
   justify-content: center;
 
   h1 {
+    margin-bottom: 40px;
     font-family: 'Dancing Script', cursive;
     font-size: 120px;
-    margin-bottom: 40px;
   }
 
   .loginall {
@@ -26,22 +26,21 @@
   }
 
   input {
-    margin: 10px;
     width: 300px;
     height: 40px;
+    margin: 10px;
     border: 1px solid black;
     border-radius: 10px;
     background-color: #f7f7f7;
   }
 
   button {
+    height: 40px;
     margin: 10px 10px 50px 10px;
     background-color: #aed3ea;
     font-weight: bold;
     cursor: pointer;
-    opacity: 0.5;
     border-radius: 5px;
-    height: 40px;
     color: white;
     border: 0px;
   }
