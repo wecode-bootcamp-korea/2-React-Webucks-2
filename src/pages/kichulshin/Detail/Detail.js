@@ -2,8 +2,25 @@ import React from 'react';
 import TopNav from '../Nav/TopNav';
 import './Detail.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 class Detail extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isLike: false,
+      review: '',
+      reviews: [],
+    };
+  }
+
+  checkLike = () => {
+    this.setState({
+      isLike: !this.state.isLike,
+      icon: { fasHeart },
+    });
+  };
+
   render() {
     return (
       <div className="Detail">
@@ -30,7 +47,11 @@ class Detail extends React.Component {
                   <div id="menuNameEnglish">Dolce Cold Brew</div>
                 </div>
                 <div className="like">
-                  <FontAwesomeIcon icon={faHeart} />
+                  <FontAwesomeIcon
+                    onClick={this.checkLike}
+                    icon={this.state.isLike ? fasHeart : farHeart}
+                    className={this.state.isLike ? 'fas' : 'fa-heart'}
+                  />
                 </div>
               </div>
               <div className="menuDetailRightMain">

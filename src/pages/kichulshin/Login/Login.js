@@ -7,7 +7,7 @@ class Login extends React.Component {
     this.state = {
       inputId: '',
       inputPw: '',
-      isIdPwActive: false,
+      isIdPwValid: false,
     };
   }
   handleIdInput = event => {
@@ -21,16 +21,16 @@ class Login extends React.Component {
   checkValid = () => {
     this.state.inputId.indexOf('@') >= 0 && this.state.inputPw.length > 7
       ? this.setState({
-          isIdPwActive: true,
+          isIdPwValid: true,
         })
       : this.setState({
-          isIdPwActive: false,
+          isIdPwValid: false,
         });
   };
 
   moveToList = () => {
-    if (this.state.isIdPwActive) {
-      this.props.history.push('/List-kichul');
+    if (this.state.isIdPwValid) {
+      this.props.history.push('/list-kichul');
     }
   };
   render() {
@@ -38,7 +38,7 @@ class Login extends React.Component {
       <div className="Login">
         <section class="loginall">
           <h1>WeBucks</h1>
-          <form action="list.html">
+          <form>
             <input
               id="namemail"
               type="text"
@@ -52,8 +52,9 @@ class Login extends React.Component {
               onChange={this.handlePwInput}
             />
             <button
-              className={this.state.isIdPwActive ? 'valid' : 'invalid'}
+              className={this.state.isIdPwValid ? 'valid' : 'invalid'}
               id="logbtn"
+              disabled={this.state.isIdPwValid ? null : 'disabled'}
               onClick={this.moveToList}
             >
               로그인
