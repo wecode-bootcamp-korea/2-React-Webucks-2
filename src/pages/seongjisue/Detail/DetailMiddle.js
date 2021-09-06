@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import HeartIcon from '../Heart/HeartIcon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRemoveFormat } from '@fortawesome/free-solid-svg-icons';
 
 class DetailMiddle extends Component {
   constructor(props) {
     super(props);
     let listLocation = this.props.location.state;
     this.state = {
-      id: '',
+      name: '',
       content: '',
       list: [],
       menu:
@@ -27,18 +29,28 @@ class DetailMiddle extends Component {
   };
 
   onKeyUp = e => {
-    if (e.keyCode === 13 && this.state.id !== '' && this.state.content !== '') {
-      const { id, content, list } = this.state;
+    if (
+      e.keyCode === 13 &&
+      this.state.name !== '' &&
+      this.state.content !== ''
+    ) {
+      const { name, content, list } = this.state;
       this.setState({
-        list: list.concat({ id: id, content: content }),
-        id: '',
+        list: list.concat({ name: name, content: content }),
+        name: '',
         content: '',
       });
       e.target.value = null;
     }
   };
 
+  reviewDelete = content => {
+    const list = this.state.list.filter(el => el !== content);
+    this.setState({ list });
+  };
+
   render() {
+    console.log(this.state.list);
     return (
       <main id="main">
         <nav>
@@ -104,13 +116,21 @@ class DetailMiddle extends Component {
 
             <footer className="contentFooter">
               <h5>리뷰</h5>
-              <div className="reveiwResults">
+              <div>
                 {this.state.list.map((el, index) => {
                   return (
-                    <p key={index}>
-                      <span className="reveiwContent">{el.id}</span>
-                      {el.content}
-                    </p>
+                    <div className="reveiwResults">
+                      <span className="reveiwContent">{el.name}</span>
+                      <p>{el.content}</p>
+                      <FontAwesomeIcon
+                        icon={faRemoveFormat}
+                        className="reviewDelete"
+                        onClick={() => {
+                          this.reviewDelete(el);
+                        }}
+                      />
+                      <HeartIcon className="reviewHeart"></HeartIcon>
+                    </div>
                   );
                 })}
               </div>
@@ -118,8 +138,8 @@ class DetailMiddle extends Component {
                 <input
                   type="text"
                   placeholder="아이디를 입력해주세요"
-                  name="id"
-                  value={this.state.id}
+                  name="name"
+                  value={this.state.name}
                   onChange={this.onChange}
                 />
                 <input

@@ -144,16 +144,21 @@
         size: 15px;
       }
     }
-
-    div p {
-      margin: 10px 0 10px;
-      font-size: 8px;
-    }
-
-    .reveiwResults .reveiwContent {
-      font: {
-        weight: bold;
-        size: 10px;
+    div .reveiwResults {
+      margin: 10px 0 10px 0;
+      display: flex;
+      align-content: center;
+      font-size: 10px;
+      .reveiwContent {
+        margin: 0 10px 0 0;
+        font: {
+          weight: bold;
+          size: 10px;
+        }
+      }
+      .reviewDelete {
+        margin: 0 6px 0 10px;
+        cursor: pointer;
       }
     }
 
