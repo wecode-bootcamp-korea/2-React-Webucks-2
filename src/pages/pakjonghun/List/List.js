@@ -1,7 +1,6 @@
 import React from 'react';
 import CoffeeLayout from './Components/CoffeeListLayout/CoffeeListLayout';
 import CoffeCard from './Components/CoffeeCard/CoffeCard';
-import { data1, data2 } from '../data';
 import Nav from '../CommonComponents/Nav/Nav';
 
 class List extends React.Component {
@@ -14,17 +13,23 @@ class List extends React.Component {
   }
 
   componentDidMount() {
-    const newData1 = data1.map(item => {
-      item.isGetHeart = false;
-      return item;
-    });
+    fetch('/data/data.json')
+      .then(res => res.json())
+      .then(data => {
+        const db1 = data.data1.map(item => {
+          item.isGetHeart = false;
+          return item;
+        });
 
-    const newData2 = data2.map(item => {
-      item.isGetHeart = false;
-      return item;
-    });
+        this.setState({ db1 });
 
-    this.setState({ db1: newData1, db2: newData2 });
+        const db2 = data.data2.map(item => {
+          item.isGetHeart = false;
+          return item;
+        });
+
+        this.setState({ db2 });
+      });
   }
 
   setDb1(data) {
@@ -40,11 +45,11 @@ class List extends React.Component {
       <div className="List">
         <Nav />
         <CoffeeLayout>
-          {this.state.db1.map(({ img, title, isGetHeart, id }) => {
+          {this.state.db1.map(({ img, name, isGetHeart, id }) => {
             return (
               <CoffeCard
                 imgUrl={img}
-                coffeeName={title}
+                coffeeName={name}
                 isGetHeart={isGetHeart}
                 id={id}
                 key={id}
@@ -55,11 +60,11 @@ class List extends React.Component {
           })}
         </CoffeeLayout>
         <CoffeeLayout>
-          {this.state.db2.map(({ img, title, id, isGetHeart }) => {
+          {this.state.db2.map(({ img, name, id, isGetHeart }) => {
             return (
               <CoffeCard
                 imgUrl={img}
-                coffeeName={title}
+                coffeeName={name}
                 isGetHeart={isGetHeart}
                 id={id}
                 key={id}
