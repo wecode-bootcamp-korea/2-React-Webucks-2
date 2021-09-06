@@ -8,7 +8,11 @@ import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 class Detail extends React.Component {
   constructor() {
     super();
-    this.state = { isRed: false };
+    this.state = {
+      isRed: false,
+      review: '',
+      reviews: [],
+    };
   }
 
   checkLike = () => {
@@ -18,12 +22,29 @@ class Detail extends React.Component {
     });
   };
 
+  handleReviewInput = ev => {
+    this.setState({
+      review: ev.target.value,
+    });
+  };
+
+  addReview = ev => {
+    if (ev.key === 'Enter') {
+      ev.preventDefault();
+      this.state.reviews.push(this.state.review);
+      ev.target.value = '';
+      this.setState({
+        review: '',
+      });
+    }
+  };
+
   render() {
     return (
       <div className="Detail">
         <div className="content">
           <TopNav />
-          <div className="class">
+          <div className="category">
             <p id="coldBrewClass">콜드브루</p>
             <p id="path">
               {' '}
@@ -100,9 +121,15 @@ class Detail extends React.Component {
               </div>
               <div className="menuDetailRightReview">
                 <div id="reviewTitle">리뷰</div>
-                <div className="reviews"></div>
+                <div className="reviews">
+                  {this.state.reviews.map(review => (
+                    <li>{review}</li>
+                  ))}
+                </div>
                 <form>
                   <input
+                    onChange={this.handleReviewInput}
+                    onKeyPress={this.addReview}
                     id="reviewInput"
                     type="text"
                     placeholder="리뷰를 입력해주세요"
@@ -118,7 +145,7 @@ class Detail extends React.Component {
             <ul className="company-list">
               <li>한눈에 보기</li>
               <li>스타벅스 사명</li>
-              <liv>스타벅스 소개</liv>
+              <li>스타벅스 소개</li>
               <li>국내 뉴스룸</li>
               <li>세계의 스타벅스</li>
               <li>글로벌 뉴스룸</li>

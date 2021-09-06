@@ -1,13 +1,33 @@
 import React from 'react';
 import TopNav from '../TopNav/TopNav';
-import { FIRST_DATA } from '../List/listData';
-import { SECOND_DATA } from '../List/listData';
 import CoffeeCard from './CoffeeCard';
 import './List.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 class List extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      firstProducts: [],
+      secondProducts: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/data/listData.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+
+      .then(data => {
+        this.setState({
+          firstProducts: data.FIRST_DATA,
+          secondProducts: data.SECOND_DATA,
+        });
+      });
+  }
+
   render() {
     return (
       <div className="List">
@@ -20,12 +40,12 @@ class List extends React.Component {
               <span> 디카페인 에스프레소 샷 추가 가능 (일부 음료 제외)</span>
             </div>
             <ul className="coldBrewList">
-              {FIRST_DATA.map(coffeeData => {
+              {this.state.firstProducts.map(product => {
                 return (
                   <CoffeeCard
-                    key={coffeeData.id}
-                    src={coffeeData.img}
-                    alt={coffeeData.name}
+                    key={product.id}
+                    src={product.img}
+                    alt={product.name}
                   />
                 );
               })}
@@ -38,12 +58,12 @@ class List extends React.Component {
               <span> 디카페인 에스프레소 샷 추가 가능 (일부 음료 제외)</span>
             </div>
             <ul className="brewedCoffeeList">
-              {SECOND_DATA.map(coffeeData => {
+              {this.state.secondProducts.map(product => {
                 return (
                   <CoffeeCard
-                    key={coffeeData.id}
-                    src={coffeeData.img}
-                    alt={coffeeData.name}
+                    key={product.id}
+                    src={product.img}
+                    alt={product.name}
                   />
                 );
               })}
