@@ -3,15 +3,32 @@ import TopNav from '../TopNav/TopNav';
 import './List.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMugHot } from '@fortawesome/free-solid-svg-icons';
-import { FISRT_DATA } from '../data/listData';
-import { SECOND_DATA } from '../data/listData';
 import CoffeeCard from './CoffeeCard';
 
 class List extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      firstProducts: [],
+      secondProducts: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/data/listData.json')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          firstProducts: data.FIRST_DATA,
+          secondProducts: data.SECOND_DATA,
+        });
+      });
+  }
+
   render() {
     return (
       <div className="List">
-        <TopNav></TopNav>
+        <TopNav />
         <section className="listMain">
           <article className="coffee">
             <h1 className="description">
@@ -23,9 +40,13 @@ class List extends React.Component {
             </h1>
             <div className="img">
               <div className="imgRow">
-                {FISRT_DATA.map(data => {
+                {this.state.firstProducts.map(product => {
                   return (
-                    <CoffeeCard key={data.id} img={data.img} name={data.name} />
+                    <CoffeeCard
+                      key={product.id}
+                      img={product.img}
+                      name={product.name}
+                    />
                   );
                 })}
               </div>
@@ -41,9 +62,13 @@ class List extends React.Component {
             </h1>
             <div className="img">
               <div className="imgRow">
-                {SECOND_DATA.map(data => {
+                {this.state.secondProducts.map(product => {
                   return (
-                    <CoffeeCard key={data.id} img={data.img} name={data.name} />
+                    <CoffeeCard
+                      key={product.id}
+                      img={product.img}
+                      name={product.name}
+                    />
                   );
                 })}
               </div>

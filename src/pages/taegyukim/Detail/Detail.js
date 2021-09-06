@@ -22,7 +22,6 @@ class Detail extends React.Component {
   };
 
   handleReviewInput = event => {
-    event.preventDefault();
     this.setState({
       reviewComment: event.target.value,
     });
@@ -39,10 +38,18 @@ class Detail extends React.Component {
     }
   };
 
+  deleteReviewComment = idx => {
+    this.state.reviewArray.splice(idx, 1);
+    const newReviewArray = this.state.reviewArray;
+    this.setState({
+      reviewArray: newReviewArray,
+    });
+  };
+
   render() {
     return (
       <div className="Detail">
-        <TopNav></TopNav>
+        <TopNav />
         <nav className="secondNav">
           <div className="title">
             <span className="titleCoffee">돌체 콜드 브루</span>
@@ -132,7 +139,19 @@ class Detail extends React.Component {
                   </div>
                   <ul id="reviewList">
                     {this.state.reviewArray.map((review, idx) => {
-                      return <li key={idx}>{review}</li>;
+                      return (
+                        <li key={idx}>
+                          {review}
+                          <button
+                            key={idx}
+                            onClick={event =>
+                              this.deleteReviewComment(idx, event)
+                            }
+                          >
+                            ❌
+                          </button>
+                        </li>
+                      );
                     })}
                   </ul>
                   <form id="reviewForm">

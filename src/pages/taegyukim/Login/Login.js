@@ -7,7 +7,6 @@ class Login extends React.Component {
     super();
     this.state = {
       userInfo: { id: '', pw: '' },
-      isValid: false,
     };
   }
 
@@ -33,16 +32,6 @@ class Login extends React.Component {
     });
   };
 
-  handleButtonColor = () => {
-    this.state.userInfo.id.includes('@') && this.state.userInfo.pw.length >= 5
-      ? this.setState({
-          isValid: true,
-        })
-      : this.setState({
-          isValid: false,
-        });
-  };
-
   render() {
     return (
       <div className="Login">
@@ -63,7 +52,12 @@ class Login extends React.Component {
             />
             <button
               id="loginBtn"
-              className={this.state.isValid ? 'active' : 'remove'}
+              className={
+                this.state.userInfo.id.includes('@') &&
+                this.state.userInfo.pw.length >= 5
+                  ? 'active'
+                  : 'remove'
+              }
               onClick={this.goToList}
             >
               로그인
