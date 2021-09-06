@@ -21,8 +21,7 @@
       gap: 60px 60px;
       width: 1200px;
 
-      .coldBrewImage,
-      .brewedCoffeeImage {
+      .coffeeImage {
         width: 250px;
         height: 250px;
         margin-bottom: 30px;
@@ -38,8 +37,13 @@
           }
         }
       }
+
       p {
         text-align: center;
+
+        .fas {
+          color: red;
+        }
       }
     }
   }

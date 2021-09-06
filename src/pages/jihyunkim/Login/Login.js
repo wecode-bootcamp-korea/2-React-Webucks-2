@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../../styles/reset.scss';
 import './Login.scss';
-import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
   constructor() {
@@ -31,6 +30,12 @@ class Login extends React.Component {
       : this.setState({ isActive: false });
   };
 
+  goToList = () => {
+    if (this.state.isActive) {
+      this.props.history.push('/list-jihyun');
+    }
+  };
+
   render() {
     return (
       <div class="Login">
@@ -50,11 +55,12 @@ class Login extends React.Component {
               placeholder="비밀번호"
             />
             <button
+              onClick={this.goToList}
               className={
                 this.state.isActive ? 'loginButton active' : 'loginButton'
               }
             >
-              <Link to="/list-jihyun">로그인</Link>
+              로그인
             </button>
           </form>
           <a href="">비밀번호를 잊으셨나요?</a>

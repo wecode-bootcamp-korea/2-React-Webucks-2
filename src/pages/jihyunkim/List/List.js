@@ -11,6 +11,7 @@ class List extends React.Component {
     this.state = {
       firstProducts: [],
       secondProducts: [],
+      isRed: false,
     };
   }
 
@@ -61,6 +62,7 @@ class List extends React.Component {
               {this.state.secondProducts.map(product => {
                 return (
                   <CoffeeCard
+                    onClick={this.checkLike}
                     key={product.id}
                     src={product.img}
                     alt={product.name}
