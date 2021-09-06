@@ -10,16 +10,6 @@ class DummyComment extends React.Component {
     this.props.setComments(temp);
   }
 
-  setHeart() {
-    const temp = this.props.comments.map(item => {
-      if (item.id == this.props.id) {
-        item.isGetHeart = !this.props.isGetHeart;
-      }
-      return item;
-    });
-    this.props.setComments(temp);
-  }
-
   render() {
     return (
       <div className="DummyComment">
@@ -30,12 +20,7 @@ class DummyComment extends React.Component {
           className="remove"
           onClick={() => this.deleteComment()}
         />
-        <Heart
-          isGetHeart={this.props.isGetHeart}
-          setDb={() => this.setHeart()}
-          id={this.props.id}
-          db={this.props.comments}
-        />
+        {this.props.children}
       </div>
     );
   }

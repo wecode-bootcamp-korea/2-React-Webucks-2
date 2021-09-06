@@ -3,6 +3,7 @@ import './Comment.scss';
 import DummyComment from '../DummyComment/DummyComment';
 import Form from '../../../CommonComponents/Form/Form';
 import Input from '../../../CommonComponents/Input/Input';
+import Heart from '../../../CommonComponents/Heart/Heart';
 
 class Comment extends React.Component {
   constructor(props) {
@@ -54,7 +55,14 @@ class Comment extends React.Component {
               comments={this.state.comments}
               setComments={this.setComments}
               isGetHeart={isGetHeart}
-            />
+            >
+              <Heart
+                isGetHeart={isGetHeart}
+                setDb={this.setComments}
+                id={id}
+                db={this.state.comments}
+              />
+            </DummyComment>
           );
         })}
         <Form callBack={this.onSubmit}>
