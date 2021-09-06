@@ -1,4 +1,4 @@
-@import '../Common.scss';
+@import '../../Common.scss';
 .Form {
   @include flex($direction: column);
   padding: 50px 20px 30px 20px;

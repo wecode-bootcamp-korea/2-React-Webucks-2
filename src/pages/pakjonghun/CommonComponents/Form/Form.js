@@ -9,7 +9,7 @@ class Form extends React.Component {
         className="Form"
         onSubmit={e => {
           e.preventDefault();
-          if (this.props.isValid) this.props.history.push('list-jonghun');
+          this.props.callBack();
         }}
       >
         {this.props.children}

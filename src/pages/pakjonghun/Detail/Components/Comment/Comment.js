@@ -1,6 +1,8 @@
 import React from 'react';
 import './Comment.scss';
 import DummyComment from '../DummyComment/DummyComment';
+import Form from '../../../CommonComponents/Form/Form';
+import Input from '../../../CommonComponents/Input/Input';
 
 class Comment extends React.Component {
   constructor(props) {
@@ -10,13 +12,13 @@ class Comment extends React.Component {
       comments: [],
       desc: '',
     };
-    this.setComments = this.setComments.bind(this);
+
     this.onSubmit = this.onSubmit.bind(this);
+    this.setComments = this.setComments.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
-  onSubmit(e) {
-    e.preventDefault();
+  onSubmit() {
     this.setState(() => ({
       comments: [
         ...this.state.comments,
@@ -54,13 +56,13 @@ class Comment extends React.Component {
             />
           );
         })}
-        <form onSubmit={this.onSubmit}>
-          <input
+        <Form callBack={this.onSubmit}>
+          <Input
             placeholder="댓글을 적읍시다"
-            type="text"
+            value={this.state.desc}
             onChange={this.onChange}
           />
-        </form>
+        </Form>
       </div>
     );
   }
