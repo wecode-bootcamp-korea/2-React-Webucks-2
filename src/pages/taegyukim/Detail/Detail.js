@@ -1,6 +1,7 @@
 import React from 'react';
 import TopNav from '../TopNav/TopNav';
 import BottomFooter from './BottomFooter';
+import LikeBtn from './LikeBtn';
 import './Detail.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -150,6 +151,7 @@ class Detail extends React.Component {
                           >
                             ❌
                           </button>
+                          <LikeBtn />
                         </li>
                       );
                     })}

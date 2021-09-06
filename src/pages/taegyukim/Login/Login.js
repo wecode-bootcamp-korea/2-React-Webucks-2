@@ -59,6 +59,12 @@ class Login extends React.Component {
                   : 'remove'
               }
               onClick={this.goToList}
+              disabled={
+                this.state.userInfo.id.includes('@') &&
+                this.state.userInfo.pw.length >= 5
+                  ? null
+                  : 'disabled'
+              }
             >
               로그인
             </button>

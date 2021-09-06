@@ -149,6 +149,13 @@ $theme-color: #eeefef;
                 button {
                   border: none;
                   background-color: white;
+                  .fa-thumbs-up {
+                    opacity: 0.3;
+                    &.like {
+                      color: blue;
+                      opacity: 0.7;
+                    }
+                  }
                 }
               }
             }
