@@ -1,4 +1,5 @@
-/*태그에서 공통사용*/
+@import '../../../styles/common.scss';
+
 .Nav {
   @mixin flexDisplay() {
     display: flex;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import HeartIcon from '../Heart/HeartIcon';
 
 class CoffeeCard extends Component {
   render() {
@@ -12,12 +13,18 @@ class CoffeeCard extends Component {
                 className="abc"
                 to={{
                   pathname: '/detail-jisue',
-                  state: { imgURL: data.img, coffeeName: data.name },
+                  state: {
+                    imgURL: data.img,
+                    coffeeName: data.name,
+                  },
                 }}
               >
                 <img alt={data.name} className="menuImg" src={data.img} />
               </Link>
-              <p>{data.name}</p>
+              <div id="heartSide">
+                <p>{data.name}</p>
+                <HeartIcon></HeartIcon>
+              </div>
             </article>
           );
         })}

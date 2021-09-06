@@ -1,5 +1,4 @@
 @import '../../../styles/common.scss';
-@import '../Nav/Nav.scss';
 
 .List {
   @mixin flexDisplay() {
@@ -70,10 +69,14 @@
         transform: scale(1.1);
         transition-duration: 1s;
       }
-
-      p {
+      #heartSide {
+        display: flex;
+        align-items: center;
         margin: 10px 0 5px 0;
-        font-size: 15px;
+        p {
+          font-size: 15px;
+          margin: 0 7px 0 0;
+        }
       }
     }
   }

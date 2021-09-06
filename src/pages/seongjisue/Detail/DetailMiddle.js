@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { withRouter } from 'react-router';
+import HeartIcon from '../Heart/HeartIcon';
 
 class DetailMiddle extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    let listLocation = this.props.location.state;
     this.state = {
-      likeHeart: false,
       id: '',
       content: '',
       list: [],
+      menu:
+        listLocation !== undefined
+          ? listLocation.coffeeName
+          : '시그니처 더 블랙 콜드 브루',
+      img:
+        listLocation !== undefined
+          ? listLocation.imgURL
+          : 'https://image.istarbucks.co.kr/upload/store/skuimg/2021/08/[9200000003661]_20210819094346176.jpg',
     };
   }
 
-  changeHeartColor = () => {
-    this.setState({
-      likeHeart: !this.state.likeHeart,
-    });
-  };
-
-  reviewInputEnter = e => {
-    const { abc, value } = e.target;
-    this.setState({ [abc]: value });
+  onChange = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
   };
 
   onKeyUp = e => {
@@ -43,31 +43,22 @@ class DetailMiddle extends Component {
       <main id="main">
         <nav>
           <h1 id="titleMenu">콜드 브루</h1>
-          <p id="titleRoot">
+          <p id="titleRoot" name="menu">
             홈{'>'}MENU{'>'}음료{'>'}에스프레소{'>'}
+            {this.state.menu}
           </p>
         </nav>
         <section className="item">
-          <img
-            className="itemImg"
-            alt="sigblue"
-            src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/08/[9200000003661]_20210819094346176.jpg"
-          />
+          <img className="itemImg" alt={this.state.menu} src={this.state.img} />
 
           <aside className="itemContent">
             <header>
               <div className="itemNav">
                 <span className="itemTitle">
-                  <h3>바닐라 크림 콜드 브루</h3>
+                  <h3>{this.state.menu}</h3>
                   <p>Vanilla Cream Cold Brew</p>
                 </span>
-                <FontAwesomeIcon
-                  className={
-                    this.state.likeHeart ? 'mousePoint likeHeart' : 'mousePoint'
-                  }
-                  onClick={this.changeHeartColor}
-                  icon={faHeart}
-                />
+                <HeartIcon></HeartIcon>
               </div>
               <p id="contentFontSize">
                 콜드 브루에 더해진 바닐라 크림으로 깔끔하면서 달콤한 콜드 브루를
@@ -129,14 +120,14 @@ class DetailMiddle extends Component {
                   placeholder="아이디를 입력해주세요"
                   name="id"
                   value={this.state.id}
-                  onChange={this.reviewInputEnter}
+                  onChange={this.onChange}
                 />
                 <input
                   type="text"
                   placeholder="리뷰를 입력해주세요(엔터를 눌러주세요.)"
                   name="content"
                   value={this.state.content}
-                  onChange={this.reviewInputEnter}
+                  onChange={this.onChange}
                   onKeyUp={this.onKeyUp}
                 />
               </div>
