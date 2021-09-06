@@ -6,10 +6,29 @@ import './List.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import CoffeeCard from '../CoffeeCard/CoffeeCard';
-import { FIRST_DATA } from '../data/listData';
-import { SECOND_DATA } from '../data/listData';
 
 class List extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      products1: [],
+      products2: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/data/listData.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          products1: data.FIRST_DATA,
+          products2: data.SECOND_DATA,
+        });
+      });
+  }
+
   render() {
     return (
       <body className="List">
@@ -22,12 +41,12 @@ class List extends React.Component {
 
         <section className="coffee">
           <ul className="items">
-            {FIRST_DATA.map(coffeeData => {
+            {this.state.products1.map(product => {
               return (
                 <CoffeeCard
-                  key={coffeeData.id}
-                  name={coffeeData.name}
-                  img={coffeeData.img}
+                  key={product.id}
+                  img={product.img}
+                  name={product.name}
                 />
               );
             })}
@@ -42,12 +61,12 @@ class List extends React.Component {
 
         <section className="coffee">
           <ul className="items" id="brewedItmes">
-            {SECOND_DATA.map(coffeeData => {
+            {this.state.products2.map(product => {
               return (
                 <CoffeeCard
-                  key={coffeeData.id}
-                  name={coffeeData.name}
-                  img={coffeeData.img}
+                  key={product.id}
+                  img={product.img}
+                  name={product.name}
                 />
               );
             })}

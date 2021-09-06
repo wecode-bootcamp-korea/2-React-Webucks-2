@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../../styles/common.scss';
 import '../../../styles/reset.scss';
 import './Login.scss';
@@ -56,12 +57,14 @@ class Login extends React.Component {
               type="password"
               placeholder="비밀번호"
             />
-            <button
-              className={this.state.logIn ? 'logInBtn' : 'logOutBtn'}
-              id="btn"
-            >
-              로그인
-            </button>
+            <Link to="/list-eunjeong">
+              <button
+                className={this.state.logIn ? 'logInBtn' : 'logOutBtn'}
+                id="btn"
+              >
+                로그인
+              </button>
+            </Link>
           </form>
           <a id="forgotPw" href="www.naver.com">
             비밀번호를 잊으셨나요?

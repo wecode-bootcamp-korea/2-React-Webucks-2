@@ -12,6 +12,8 @@ class Detail extends React.Component {
     super();
     this.state = {
       likeHeart: false,
+      reviewValue: '',
+      commentList: [],
     };
   }
 
@@ -19,6 +21,22 @@ class Detail extends React.Component {
     this.setState({
       likeHeart: !this.state.likeHeart,
     });
+  };
+
+  getValue = event => {
+    this.setState({
+      reviewValue: event.target.value,
+    });
+  };
+
+  pushReview = event => {
+    if (event.key === 'Enter') {
+      this.state.commentList.push(this.state.reviewValue);
+      event.target.value = '';
+      this.setState({
+        reviewValue: '',
+      });
+    }
   };
 
   render() {
@@ -86,17 +104,27 @@ class Detail extends React.Component {
             <h4>알레르기 유발요인 : 우유</h4>
             <div className="review">
               <h3>리뷰</h3>
-              <p>
-                <span>coffee_lover</span> 너무 맛있어요!
-              </p>
-              <p>
-                <span>CHOCO7</span> 오늘도 화이트 초콜릿 모카를 마시러 갑니다.
-              </p>
-              <p>
-                <span>legend_dev</span> 진짜 화이트 초콜릿 모카는 전설이다. 진짜
-                화이트 초콜릿 모카는 전설이다. 화이트 초...
-              </p>
-              <input type="text" placeholder="리뷰를 입력해주세요" />
+              <ul>
+                <li>
+                  <span>coffee_lover</span> 너무 맛있어요!
+                </li>
+                <li>
+                  <span>CHOCO7</span> 오늘도 화이트 초콜릿 모카를 마시러 갑니다.
+                </li>
+                <li>
+                  <span>legend_dev</span> 진짜 화이트 초콜릿 모카는 전설이다.
+                  진짜 화이트 초콜릿 모카는 전설이다. 화이트 초...
+                </li>
+                {this.state.commentList.map((comm, idx) => {
+                  return <li key={idx}>{comm}</li>;
+                })}
+              </ul>
+              <input
+                onChange={this.getValue}
+                onKeyPress={this.pushReview}
+                type="text"
+                placeholder="리뷰를 입력해주세요"
+              />
             </div>
           </section>
         </main>
