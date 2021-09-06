@@ -29,7 +29,7 @@ class Detail extends React.Component {
   };
 
   addReview = ev => {
-    if (ev.key === 'Enter') {
+    if (ev.key === 'Enter' && ev.target.value !== '') {
       ev.preventDefault();
       this.state.reviews.push(this.state.review);
       ev.target.value = '';
@@ -37,6 +37,12 @@ class Detail extends React.Component {
         review: '',
       });
     }
+  };
+
+  deleteReview = idx => {
+    this.state.reviews.splice(idx, 1);
+    const newReviews = this.state.reviews;
+    this.setState({ reviews: newReviews });
   };
 
   render() {
@@ -101,7 +107,7 @@ class Detail extends React.Component {
                         </div>
                       </div>
                       <div className="nutritionBoxRight">
-                        <div class="nutri4">
+                        <div className="nutri4">
                           <div>나트륨 (mg)</div>
                           <div>115</div>
                         </div>
@@ -121,11 +127,24 @@ class Detail extends React.Component {
               </div>
               <div className="menuDetailRightReview">
                 <div id="reviewTitle">리뷰</div>
-                <div className="reviews">
-                  {this.state.reviews.map(review => (
-                    <li>{review}</li>
-                  ))}
-                </div>
+                <ul className="reviews">
+                  {this.state.reviews.map((review, idx) => {
+                    return (
+                      <div className="review">
+                        <li>{review}</li>
+                        <span
+                          key={idx}
+                          className="reviewDelete"
+                          onClick={event => {
+                            this.deleteReview(idx, event);
+                          }}
+                        >
+                          ❌
+                        </span>
+                      </div>
+                    );
+                  })}
+                </ul>
                 <form>
                   <input
                     onChange={this.handleReviewInput}

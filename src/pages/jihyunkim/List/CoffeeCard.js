@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
@@ -22,7 +23,13 @@ class CoffeeCard extends React.Component {
     return (
       <li className="coffee">
         <div className="coffeeImage">
-          <img key={this.props.key} src={this.props.src} alt={this.props.alt} />
+          <Link to="/detail-jihyun">
+            <img
+              key={this.props.key}
+              src={this.props.src}
+              alt={this.props.alt}
+            />
+          </Link>
         </div>
         <p>
           {this.props.alt}

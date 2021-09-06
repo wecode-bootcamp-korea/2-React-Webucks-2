@@ -150,6 +150,14 @@
       line-height: 20px;
       font-size: 15px;
       list-style-type: square;
+      .review {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        span {
+          cursor: pointer;
+        }
+      }
     }
 
     #reviewInput {
