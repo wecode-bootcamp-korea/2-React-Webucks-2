@@ -1,0 +1,68 @@
+$logWidth: 300px;
+$logPadding: 8px;
+$logborderRadius: 5px;
+
+.Login {
+  .contents {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 100px;
+    width: 400px;
+    height: 500px;
+    background-color: white;
+    border: #dedede solid 1px;
+  }
+
+  #title {
+    margin-bottom: 50px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 60px;
+  }
+
+  #loginForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+
+    .loginInput {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: $logPadding;
+      width: $logWidth;
+      background-color: #eeefef;
+      border: #dedede solid 1px;
+      border-radius: $logborderRadius;
+    }
+
+    .logOutBtn {
+      width: $logWidth;
+      padding: $logPadding;
+      margin-bottom: 100px;
+      background-color: #add3ea;
+      color: white;
+      border: 0;
+      border-radius: $logborderRadius;
+    }
+
+    .logInBtn {
+      width: $logWidth;
+      padding: $logPadding;
+      margin-bottom: 100px;
+      background-color: #60aded;
+      color: white;
+      border: 0;
+      border-radius: $logborderRadius;
+    }
+  }
+
+  #forgotPw {
+    color: #93aec4;
+    text-decoration: none;
+    font-size: 15px;
+  }
+}

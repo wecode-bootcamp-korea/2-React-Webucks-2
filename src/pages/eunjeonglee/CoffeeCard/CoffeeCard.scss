@@ -1,0 +1,13 @@
+.CoffeeCard {
+  .hoverImg {
+    position: relative;
+
+    .heartIcon {
+      position: absolute;
+      left: 220px;
+      color: white;
+      opacity: 0.7;
+      z-index: 2;
+    }
+  }
+}
