@@ -1,9 +1,9 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import TopNav from '../TopNav/TopNav';
 import CoffeeCard from './CoffeeCard';
 import './List.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 class List extends React.Component {
   constructor() {
@@ -16,9 +16,7 @@ class List extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/listData.json', {
-      method: 'GET',
-    })
+    fetch('http://localhost:3000/data/listData.json', {})
       .then(res => res.json())
 
       .then(data => {
@@ -30,6 +28,7 @@ class List extends React.Component {
   }
 
   render() {
+    const { firstProducts, secondProducts } = this.state;
     return (
       <div className="List">
         <div className="content">
@@ -41,7 +40,7 @@ class List extends React.Component {
               <span> 디카페인 에스프레소 샷 추가 가능 (일부 음료 제외)</span>
             </div>
             <ul className="coldBrewList">
-              {this.state.firstProducts.map(product => {
+              {firstProducts.map(product => {
                 return (
                   <CoffeeCard
                     key={product.id}
@@ -59,7 +58,7 @@ class List extends React.Component {
               <span> 디카페인 에스프레소 샷 추가 가능 (일부 음료 제외)</span>
             </div>
             <ul className="brewedCoffeeList">
-              {this.state.secondProducts.map(product => {
+              {secondProducts.map(product => {
                 return (
                   <CoffeeCard
                     onClick={this.checkLike}

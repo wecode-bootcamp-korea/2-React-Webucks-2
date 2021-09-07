@@ -8,9 +8,9 @@ class Login extends React.Component {
     this.state = {
       id: '',
       pw: '',
-      isActive: false,
     };
   }
+
   handleInput = ev => {
     const { value, name } = ev.target;
     this.setState({
@@ -18,42 +18,37 @@ class Login extends React.Component {
     });
   };
 
-  handleLoginBtn = () => {
-    const isValid = this.state.id.includes('@') && this.state.pw.length >= 8;
-    this.setState({ isActive: isValid ? true : false });
-  };
-
   goToList = () => {
-    if (this.state.isActive) {
-      this.props.history.push('/list-jihyun');
-    }
+    this.props.history.push('/list-jihyun');
   };
 
   render() {
+    const { handleLoginBtn, handleInput, goToList } = this;
+    const isValid = this.state.id.includes('@') && this.state.pw.length >= 5;
+
     return (
       <div class="Login">
         <div className="loginBox">
           <h1 className="logo">Webucks</h1>
-          <form onKeyUp={this.handleLoginBtn} className="loginInput">
+          <form onKeyUp={handleLoginBtn} className="loginInput">
             <input
-              onChange={this.handleInput}
+              onChange={handleInput}
               className="idInput"
               name="id"
               type="text"
               placeholder="전화번호, 사용자 이름 또는 이메일"
             />
             <input
-              onChange={this.handleInput}
+              onChange={handleInput}
               className="pwInput"
               name="pw"
               type="password"
               placeholder="비밀번호"
             />
             <button
-              onClick={this.goToList}
-              className={
-                this.state.isActive ? 'loginButton active' : 'loginButton'
-              }
+              onClick={goToList}
+              className={isValid ? 'loginButton active' : 'loginButton'}
+              disabled={isValid ? false : true}
             >
               로그인
             </button>

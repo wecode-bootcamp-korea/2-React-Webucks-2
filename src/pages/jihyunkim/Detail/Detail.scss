@@ -9,8 +9,10 @@
       height: 60px;
 
       #coldBrewTitle {
-        font-size: 25px;
-        font-weight: bold;
+        font: {
+          size: 25px;
+          weight: bold;
+        }
         text-align: left;
       }
 
@@ -71,6 +73,7 @@
             }
           }
         }
+
         .DetailRightMain {
           display: flex;
           flex-direction: column;
@@ -90,6 +93,7 @@
           border-bottom: solid silver 2px;
           line-height: 50px;
         }
+
         .nutritionMain {
           .nutritionBox {
             display: flex;

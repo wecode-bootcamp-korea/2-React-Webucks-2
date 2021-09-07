@@ -1,10 +1,10 @@
 import React from 'react';
-import TopNav from '../TopNav/TopNav';
-import ReviewLike from './ReviewLike';
-import './Detail.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+import TopNav from '../TopNav/TopNav';
+import ReviewLike from './ReviewLike';
+import './Detail.scss';
 
 class Detail extends React.Component {
   constructor() {
@@ -17,22 +17,25 @@ class Detail extends React.Component {
   }
 
   checkLike = () => {
+    const { isLike } = this.state;
     this.setState({
-      isLike: !this.state.isLike,
+      isLike: !isLike,
       icon: { fasHeart },
     });
   };
 
   handleReviewInput = ev => {
+    const { value } = ev.target;
     this.setState({
-      review: ev.target.value,
+      review: value,
     });
   };
 
   addReview = ev => {
+    const { reviewList, review } = this.state;
     if (ev.key === 'Enter' && ev.target.value !== '') {
       ev.preventDefault();
-      this.state.reviewList.push(this.state.review);
+      reviewList.push(review);
       ev.target.value = '';
       this.setState({
         review: '',
@@ -41,8 +44,9 @@ class Detail extends React.Component {
   };
 
   deleteReview = idx => {
-    this.state.reviewList.splice(idx, 1);
-    const newReviewList = this.state.reviewList;
+    const { reviewList } = this.state;
+    reviewList.splice(idx, 1);
+    const { newReviewList } = reviewList;
     this.setState({ reviews: newReviewList });
   };
 
@@ -92,7 +96,7 @@ class Detail extends React.Component {
                     <div>Tall(톨) / 355ml (12 fl oz)</div>
                   </div>
                   <div className="nutritionMain">
-                    <table className="nutritionBox">
+                    <div className="nutritionBox">
                       <ul className="nutritionBoxLeft">
                         <li className="nutri1">
                           <div>1회 제공량 (kcal)</div>
@@ -121,7 +125,7 @@ class Detail extends React.Component {
                           <div>150</div>
                         </li>
                       </ul>
-                    </table>
+                    </div>
                     <div id="alergy">알레르기 유발 요인 : 우유</div>
                   </div>
                 </div>
@@ -139,8 +143,8 @@ class Detail extends React.Component {
                           <span
                             key={idx}
                             className="reviewDelete"
-                            onClick={event => {
-                              this.deleteReview(idx, event);
+                            onClick={() => {
+                              this.deleteReview(idx);
                             }}
                           >
                             ❌
