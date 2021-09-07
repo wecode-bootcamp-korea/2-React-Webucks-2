@@ -25,7 +25,9 @@ class Login extends Component {
   };
 
   goToLogin = () => {
-    this.props.history.push('/list-jisue');
+    if (this.state.buttonColor) {
+      this.props.history.push('/list-jisue');
+    }
   };
 
   render() {
