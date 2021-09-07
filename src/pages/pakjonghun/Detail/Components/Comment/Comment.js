@@ -34,7 +34,10 @@ class Comment extends React.Component {
   }
 
   onChange(e) {
-    this.setState(() => ({ desc: e.target.value }));
+    const {
+      target: { value },
+    } = e;
+    this.setState(() => ({ desc: value }));
   }
 
   setComments(comments) {

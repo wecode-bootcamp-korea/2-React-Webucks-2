@@ -1,11 +1,11 @@
 @import '../../../../../styles//mixin.scss';
 
 .BorderLine {
-  .deatil__light-line {
+  .deatilLightLine {
     @include border($height: 1.5px, $color: lightgray);
   }
 
-  .detail__line {
+  .detailLine {
     @include border($height: 2px, $color: black);
   }
 }

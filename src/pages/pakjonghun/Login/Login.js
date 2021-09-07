@@ -19,7 +19,15 @@ class Login extends React.Component {
       target: { value, name },
     } = e;
 
-    this.setState({ [name]: value });
+    this.setState({ [name]: value }, this.checkIsValid);
+  }
+
+  checkIsValid() {
+    const {
+      state: { id, pw },
+    } = this;
+    const isValid = id.includes('@') && pw.length >= 5;
+    this.setState({ isValid });
   }
 
   onSubmit() {
@@ -30,10 +38,8 @@ class Login extends React.Component {
     const {
       onChange,
       onSubmit,
-      state: { id, pw, pwType },
+      state: { id, pw, pwType, isValid },
     } = this;
-
-    const isValid = id.includes('@') && pw.length >= 5;
 
     return (
       <div className="Login">

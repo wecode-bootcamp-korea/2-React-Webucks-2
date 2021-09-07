@@ -5,7 +5,10 @@ import './DummyComment.scss';
 
 class DummyComment extends React.Component {
   deleteComment() {
-    const temp = this.props.comments.filter(item => item.id !== this.props.id);
+    const {
+      props: { id },
+    } = this;
+    const temp = this.props.comments.filter(item => item.id !== id);
     this.props.setComments(temp);
   }
 

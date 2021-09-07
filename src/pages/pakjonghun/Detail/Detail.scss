@@ -6,23 +6,23 @@
     padding-bottom: 200px;
   }
 
-  .ingredient__allegy {
+  .ingredientAllegy {
     padding: 10px 5px;
     margin-top: 5px;
     background-color: lightgray;
   }
 
-  .ingredient__column:not(:last-child) {
+  .ingredientColumn:not(:last-child) {
     padding: 10px 5px;
     border-right: 1px solid lightgray;
   }
 
-  .ingredient__row {
+  .ingredientRow {
     @include flex($justify: space-between);
     margin-bottom: 5px;
   }
 
-  .detail__ingredient {
+  .detailIngredient {
     @include flex($justify: space-between);
     font-size: 14px;
   }
@@ -32,17 +32,17 @@
     padding: 0 5px;
   }
 
-  .detail__img {
+  .detailImg {
     width: 100%;
   }
 
-  .divied__grid {
+  .diviedGrid {
     display: grid;
     grid-gap: 15px;
     grid-template-columns: minmax(200px, 0.5fr) minmax(300px, 1fr);
   }
 
-  .detail__ingredient-ingredient {
+  .detailIngredient {
     grid-template-columns: 1fr 1fr;
   }
 
