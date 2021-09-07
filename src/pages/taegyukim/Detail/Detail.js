@@ -1,10 +1,10 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import TopNav from '../TopNav/TopNav';
 import BottomFooter from './BottomFooter';
 import LikeBtn from './LikeBtn';
 import './Detail.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 class Detail extends React.Component {
   constructor() {
@@ -17,21 +17,27 @@ class Detail extends React.Component {
   }
 
   handleHeartColor = () => {
+    const { isValidHeart } = this.state;
     this.setState({
-      isValidHeart: !this.state.isValidHeart,
+      isValidHeart: !isValidHeart,
     });
   };
 
   handleReviewInput = event => {
+    const { value } = event.target;
     this.setState({
-      reviewComment: event.target.value,
+      reviewComment: value,
     });
   };
 
   pushReviewComment = event => {
+    const { reviewArray } = this.state;
+    const { reviewComment } = this.state;
     if (event.key === 'Enter') {
       event.preventDefault();
-      this.state.reviewArray.push(this.state.reviewComment);
+      if (reviewComment !== '') {
+        reviewArray.push(reviewComment);
+      }
       event.target.value = '';
       this.setState({
         reviewComment: '',
@@ -40,14 +46,21 @@ class Detail extends React.Component {
   };
 
   deleteReviewComment = idx => {
-    this.state.reviewArray.splice(idx, 1);
-    const newReviewArray = this.state.reviewArray;
+    const { reviewArray } = this.state;
+    reviewArray.splice(idx, 1);
+    const newReviewArray = reviewArray;
     this.setState({
       reviewArray: newReviewArray,
     });
   };
 
   render() {
+    const { isValidHeart } = this.state;
+    const { handleHeartColor } = this;
+    const { reviewArray } = this.state;
+    const { deleteReviewComment } = this;
+    const { handleReviewInput } = this;
+    const { pushReviewComment } = this;
     return (
       <div className="Detail">
         <TopNav />
@@ -62,8 +75,8 @@ class Detail extends React.Component {
         <section className="detailMain">
           <article className="detail">
             <img
-              src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[9200000002081]_20210415133657016.jpg"
               alt="돌체 콜드 브루"
+              src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[9200000002081]_20210415133657016.jpg"
             />
             <div className="detailInfo">
               <div className="detailInfoTitle">
@@ -73,8 +86,8 @@ class Detail extends React.Component {
                 </div>
                 <FontAwesomeIcon
                   icon={faHeart}
-                  className={this.state.isValidHeart ? 'redHeart' : 'remove'}
-                  onClick={this.handleHeartColor}
+                  className={isValidHeart ? 'redHeart' : 'remove'}
+                  onClick={handleHeartColor}
                 />
               </div>
               <div className="detailInfoDescription">
@@ -139,15 +152,13 @@ class Detail extends React.Component {
                     <span>진짜 돌체 콜드 브루는 전설이다.</span>
                   </div>
                   <ul id="reviewList">
-                    {this.state.reviewArray.map((review, idx) => {
+                    {reviewArray.map((review, idx) => {
                       return (
                         <li key={idx}>
                           {review}
                           <button
                             key={idx}
-                            onClick={event =>
-                              this.deleteReviewComment(idx, event)
-                            }
+                            onClick={event => deleteReviewComment(idx, event)}
                           >
                             ❌
                           </button>
@@ -158,8 +169,8 @@ class Detail extends React.Component {
                   </ul>
                   <form id="reviewForm">
                     <input
-                      onChange={this.handleReviewInput}
-                      onKeyPress={this.pushReviewComment}
+                      onChange={handleReviewInput}
+                      onKeyPress={pushReviewComment}
                       type="text"
                       placeholder="리뷰를 입력해주세요."
                     />

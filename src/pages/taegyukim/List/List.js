@@ -1,9 +1,9 @@
 import React from 'react';
-import TopNav from '../TopNav/TopNav';
-import './List.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMugHot } from '@fortawesome/free-solid-svg-icons';
+import TopNav from '../TopNav/TopNav';
 import CoffeeCard from './CoffeeCard';
+import './List.scss';
 
 class List extends React.Component {
   constructor() {
@@ -26,6 +26,8 @@ class List extends React.Component {
   }
 
   render() {
+    const { firstProducts } = this.state;
+    const { secondProducts } = this.state;
     return (
       <div className="List">
         <TopNav />
@@ -40,7 +42,7 @@ class List extends React.Component {
             </h1>
             <div className="img">
               <div className="imgRow">
-                {this.state.firstProducts.map(product => {
+                {firstProducts.map(product => {
                   return (
                     <CoffeeCard
                       key={product.id}
@@ -62,7 +64,7 @@ class List extends React.Component {
             </h1>
             <div className="img">
               <div className="imgRow">
-                {this.state.secondProducts.map(product => {
+                {secondProducts.map(product => {
                   return (
                     <CoffeeCard
                       key={product.id}

@@ -15,37 +15,47 @@ class Login extends React.Component {
   };
 
   handleIdInput = event => {
+    const { value } = event.target;
+    const { userInfo } = this.state;
     this.setState({
       userInfo: {
-        ...this.state.userInfo,
-        id: event.target.value,
+        ...userInfo,
+        id: value,
       },
     });
   };
 
   handlePwInput = event => {
+    const { value } = event.target;
+    const { userInfo } = this.state;
     this.setState({
       userInfo: {
-        ...this.state.userInfo,
-        pw: event.target.value,
+        ...userInfo,
+        pw: value,
       },
     });
   };
 
   render() {
+    const { handleIdInput } = this;
+    const { handlePwInput } = this;
+    const { id } = this.state.userInfo;
+    const { pw } = this.state.userInfo;
+    const { handleButtonColor } = this;
+    const { goToList } = this;
     return (
       <div className="Login">
         <div className="form">
           <header className="header">WeBucks</header>
-          <form className="userInfo" onKeyUp={this.handleButtonColor}>
+          <form className="userInfo" onKeyUp={handleButtonColor}>
             <input
-              onChange={this.handleIdInput}
+              onChange={handleIdInput}
               className="user"
               type="text"
               placeholder="전화번호, 사용자 이름 또는 이메일"
             />
             <input
-              onChange={this.handlePwInput}
+              onChange={handlePwInput}
               className="password"
               type="password"
               placeholder="비밀번호"
@@ -53,23 +63,15 @@ class Login extends React.Component {
             <button
               id="loginBtn"
               className={
-                this.state.userInfo.id.includes('@') &&
-                this.state.userInfo.pw.length >= 5
-                  ? 'active'
-                  : 'remove'
+                id.includes('@') && pw.length >= 5 ? 'active' : 'remove'
               }
-              onClick={this.goToList}
-              disabled={
-                this.state.userInfo.id.includes('@') &&
-                this.state.userInfo.pw.length >= 5
-                  ? null
-                  : 'disabled'
-              }
+              onClick={goToList}
+              disabled={id.includes('@') && pw.length >= 5 ? null : 'disabled'}
             >
               로그인
             </button>
           </form>
-          <a className="forgetPws">비밀번호를 잊으셨나요?</a>
+          <p className="forgetPws">비밀번호를 잊으셨나요?</p>
         </div>
       </div>
     );

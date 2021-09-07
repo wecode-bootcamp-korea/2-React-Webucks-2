@@ -11,17 +11,20 @@ class LikeBtn extends React.Component {
   }
 
   handleReviewBtnColor = () => {
+    const { isLikeReview } = this.state;
     this.setState({
-      isLikeReview: !this.state.isLikeReview,
+      isLikeReview: !isLikeReview,
     });
   };
 
   render() {
+    const { handleReviewBtnColor } = this;
+    const { isLikeReview } = this.state;
     return (
-      <button onClick={this.handleReviewBtnColor}>
+      <button onClick={handleReviewBtnColor}>
         <FontAwesomeIcon
           icon={faThumbsUp}
-          className={this.state.isLikeReview ? 'like' : 'remove'}
+          className={isLikeReview ? 'like' : 'remove'}
         />
       </button>
     );
