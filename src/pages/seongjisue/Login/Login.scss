@@ -1,64 +1,43 @@
 @import '../../../styles/common.scss';
+@import '../mixin.scss';
 
 .Login {
-  @mixin flexDisplay() {
-    display: flex;
-  }
-
-  @mixin flexStyle() {
-    @include flexDisplay();
-    align-items: $flexCenter;
-  }
-
-  $flexCenter: center;
-
   #mainLogin {
-    @include flexStyle();
-    justify-content: $flexCenter;
+    @include flexStyle(center, center);
     min-height: 100vh;
     #mainForm {
-      @include flexStyle();
-      flex-direction: column;
+      @include flexStyle(center, none, column);
       padding: 20px 30px 150px 30px;
       background-color: white;
       box-shadow: 1px 1px 15px 0px gray;
     }
   }
-  /*logo-Jibucks*/
-  @mixin fontSizeWight($size, $weight: bold) {
-    font: {
-      size: $size;
-      weight: $weight;
-    }
-  }
+
   #mainForm {
-    $blueColor: #add3eb;
     $opacitySize: 0.8;
 
     h1 {
-      @include fontSizeWight(60px);
+      @include fontSizeWight(60px, bold);
       margin: 40px 0 40px 0;
       font-family: 'Dancing Script', cursive;
     }
 
-    /*input-boxs*/
     .boxTotalCSS {
-      @include fontSizeWight(11px);
-      margin-top: 20px;
+      @include fontSizeWight(11px, bold);
+      margin: 20px 0 0 0;
       width: 300px;
       height: 40px;
       border: 1px solid gainsboro;
       border-radius: 5px;
       &:not(:last-child) {
+        padding: 0 0 0 15px;
         background-color: #f7f7f7;
-        padding-left: 15px;
       }
     }
 
     #loginButton {
-      @include fontSizeWight(16px);
-      background-color: $blueColor;
-      color: white;
+      @include fontSizeWight(16px, bold, white);
+      background-color: #add3eb;
       cursor: pointer;
       opacity: $opacitySize;
       &.active {
@@ -69,12 +48,10 @@
       }
     }
 
-    /*pw-forget*/
     a {
-      @include fontSizeWight(12px);
+      @include fontSizeWight(12px, bold, #add3eb);
       position: relative;
       top: 120px;
-      color: $blueColor;
       text-decoration: none;
       opacity: $opacitySize;
     }

@@ -7,7 +7,7 @@ class HeartIcon extends Component {
   constructor() {
     super();
     this.state = {
-      isHeart: false,
+      likeHeart: false,
     };
   }
 

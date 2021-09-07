@@ -1,124 +1,90 @@
 @import '../../../styles/common.scss';
+@import '../mixin.scss';
 
 .Detail {
-  @mixin flexDisplay() {
-    display: flex;
-  }
-
-  $border: 1px solid black;
-
-  @mixin flexStyle($justifyContent: flex-start, $flexDirection: row) {
-    @include flexDisplay();
-    justify-content: $justifyContent;
-    flex-direction: $flexDirection;
-  }
-
   .flex {
-    /*태그에서 공통사용*/
     @include flexStyle();
   }
 
   #total {
-    @include flexStyle(space-between, column);
+    @include flexStyle(none, space-between, column);
     min-height: 100vh;
-
     #sub {
-      @include flexStyle(space-between, column);
+      @include flexStyle(none, space-between, column);
     }
   }
 
-  /*경로표시 route*/
-  #title {
-    &Menu {
-      margin: 20px 0 20px 0;
-      font: {
-        size: 24px;
-        weight: bold;
+  .title {
+    width: 1000px;
+    #title {
+      &Menu {
+        @include fontSizeWight(24px, bold);
+        margin: 20px 0 20px 0;
+      }
+      &Root {
+        @include flexStyle(none, flex-end);
+        @include fontSizeWight(10px, bold, #c0c0ba);
+        margin: 0 0 10px 0;
       }
     }
-
-    &Root {
-      @include flexStyle(flex-end);
-      margin: 0 0 10px 0;
-      font-size: 10px;
-      color: #c0c0ba;
-    }
   }
 
-  /*중단 상세설명*/
-
   #main {
-    @include flexStyle();
+    @include flexStyle(none, none, column);
     align-self: center;
-    flex-direction: column;
     margin: 0px 0px 80px 0;
     .item {
-      @include flexStyle(center);
-
+      @include flexStyle(none, center, none);
       .itemImg {
         width: 450px;
         height: 450px;
-        margin-right: 50px;
+        margin: 0 50px 0 0;
       }
-
       .itemContent {
         width: 500px;
       }
     }
   }
 
-  /*item-content 부분중 top*/
-
   .itemNav {
-    @include flexStyle(space-between);
-    align-items: center;
-    border-bottom: $border;
+    @include flexStyle(center, space-between, none);
     height: 55px;
+    border-bottom: 1px solid black;
     .itemTitle {
       h3 {
-        font: {
-          size: 18px;
-          weight: bold;
-        }
+        @include fontSizeWight(18px, bold);
       }
-
       p {
+        @include fontSizeWight(10px);
         margin: 5px 0 10px 0;
-        font-size: 10px;
       }
     }
   }
 
   #contentFontSize {
+    @include fontSizeWight(13px);
     margin: 13px 0 13px 0;
-    font-size: 13px;
   }
-
-  /*item-content 부분중 middle*/
-
   .tableHeader {
-    @include flexStyle(space-between);
+    @include flexStyle(none, space-between, none);
     padding: 16px 0 16px 0;
     border: {
-      top: $border;
-      bottom: $border;
+      top: 1px solid black;
+      bottom: 1px solid black;
     }
   }
 
   .list {
-    @include flexStyle(space-between);
+    @include flexStyle(none, space-between, none);
     width: 305px;
-
     .listStyle {
       padding: 5px;
       margin: 7px 0 16px 0;
       list-style: none;
-
       li {
-        font-size: 12px;
-
+        @include fontSizeWight(12px);
         &:not(:last-child) {
-          margin-bottom: 11px;
+          margin: 0 0 11px 0;
         }
       }
     }
@@ -127,34 +93,25 @@
   .tableFooter {
     padding: 12px;
     background-color: #f4f4f2;
-
     p {
-      font-size: 10px;
+      @include fontSizeWight(10px);
     }
   }
 
-  /*item-content 부분중 botton*/
-
   .contentFooter {
     h5 {
+      @include fontSizeWight(15px, bold);
       margin: 25px 0 0 0;
-      border-bottom: $border;
-      font: {
-        weight: bold;
-        size: 15px;
-      }
+      padding: 0 0 13px 0;
+      border-bottom: 1px solid black;
     }
     div .reveiwResults {
+      @include flexStyle();
+      @include fontSizeWight(10px);
       margin: 10px 0 10px 0;
-      display: flex;
-      align-content: center;
-      font-size: 10px;
       .reveiwContent {
+        @include fontSizeWight(10px, bold);
         margin: 0 10px 0 0;
-        font: {
-          weight: bold;
-          size: 10px;
-        }
       }
       .reviewDelete {
         margin: 0 6px 0 10px;
@@ -164,19 +121,15 @@
 
     #reveiwBox {
       width: 100%;
-
       input {
+        @include fontSizeWight(8px, none, #c0c0ba);
         margin: 15px 5px 0px 0px;
         padding: 7px;
         background-color: #f4f4f2;
-        font-size: 8px;
-        color: #c0c0ba;
         border: none;
-
         &:nth-child(1) {
           width: 30%;
         }
-
         &:nth-child(2) {
           width: 68%;
         }
@@ -184,31 +137,21 @@
     }
   }
 
-  /*리뷰 부분*/
-
-  /*하단 메모부분*/
-
   #footer {
     padding: 20px 200px 0 200px;
-    background-color: #333333;
     height: 160px;
-
+    background-color: #333333;
     .footerList {
-      @include flexStyle(space-around);
+      @include flexStyle(none, space-around, none);
       #footerTitle {
-        font-size: 15px;
+        @include fontSizeWight(15px);
       }
-
       .footerMenu {
-        padding: 0;
-
         li {
+          @include fontSizeWight(8px, none, white);
           list-style: none;
-          font-size: 5px;
-          color: white;
-
           &:not(:first-child) {
-            margin-top: 8px;
+            margin: 8px 0 0 0;
           }
         }
       }

@@ -43,7 +43,9 @@ class CoffeeTitle extends Component {
           <main className="menuList">
             {this.state.firstTitle.map(el => {
               return (
-                <CoffeeCard value={{ name: el.name, img: el.img }}></CoffeeCard>
+                <CoffeeCard
+                  value={{ id: el.id, name: el.name, img: el.img }}
+                ></CoffeeCard>
               );
             })}
           </main>
@@ -63,7 +65,9 @@ class CoffeeTitle extends Component {
           <main className="menuList">
             {this.state.secondTitle.map(el => {
               return (
-                <CoffeeCard value={{ name: el.name, img: el.img }}></CoffeeCard>
+                <CoffeeCard
+                  value={{ id: el.id, name: el.name, img: el.img }}
+                ></CoffeeCard>
               );
             })}
           </main>

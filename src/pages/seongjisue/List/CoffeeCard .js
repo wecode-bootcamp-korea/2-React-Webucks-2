@@ -4,27 +4,24 @@ import HeartIcon from '../Heart/HeartIcon';
 
 class CoffeeCard extends Component {
   render() {
-    console.log(this.props);
+    let value = this.props.value;
     return (
       <article className="menu">
         <Link
           className="abc"
           to={{
-            pathname: '/detail-jisue',
+            pathname: `/detail-jisue`,
             state: {
-              imgURL: this.props.value.img,
-              coffeeName: this.props.value.name,
+              id: value.id,
+              img: value.img,
+              name: value.name,
             },
           }}
         >
-          <img
-            alt={this.props.value.name}
-            className="menuImg"
-            src={this.props.value.img}
-          />
+          <img alt={value.name} className="menuImg" src={value.img} />
         </Link>
         <div id="heartSide">
-          <p>{this.props.value.name}</p>
+          <p>{value.name}</p>
           <HeartIcon></HeartIcon>
         </div>
       </article>

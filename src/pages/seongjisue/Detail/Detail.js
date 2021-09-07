@@ -2,8 +2,8 @@ import './Detail.scss';
 import React, { Component } from 'react';
 import Nav from '../Nav/Nav';
 import DetailFooter from './DetailFooter';
-import { FOOTER_MENU as FooterData } from '../../../data/detailData';
 import DetailMiddle from './DetailMiddle';
+import { FOOTER_MENU as FooterData } from '../../../data/detailData';
 
 class Detail extends Component {
   render() {
