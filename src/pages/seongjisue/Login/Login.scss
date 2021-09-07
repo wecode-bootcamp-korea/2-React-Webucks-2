@@ -29,7 +29,7 @@
       height: 40px;
       border: 1px solid gainsboro;
       border-radius: 5px;
-      &:not(:last-child) {
+      &.inputBox {
         padding: 0 0 0 15px;
         background-color: #f7f7f7;
       }

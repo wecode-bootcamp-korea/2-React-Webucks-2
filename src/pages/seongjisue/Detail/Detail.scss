@@ -92,9 +92,7 @@
 
       li {
         @include fontSizeWight(12px);
-        &:not(:last-child) {
-          margin: 0 0 11px 0;
-        }
+        margin: 0 0 11px 0;
       }
     }
   }
@@ -132,7 +130,7 @@
       }
     }
 
-    #reveiwBox {
+    #reviewBox {
       width: 100%;
 
       input {
@@ -141,12 +139,12 @@
         padding: 7px;
         background-color: #f4f4f2;
         border: none;
-        &:nth-child(1) {
-          width: 30%;
-        }
-        &:nth-child(2) {
-          width: 68%;
-        }
+      }
+      .reviewId {
+        width: 30%;
+      }
+      .reviewPw {
+        width: 60%;
       }
     }
   }

@@ -23,12 +23,6 @@
     p {
       @include fontSizeWight(11px, bold);
     }
-
-    .navbarSubMenu {
-      &:not(:last-child) {
-        margin-left: 15px;
-      }
-    }
   }
 
   .menuList {

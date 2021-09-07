@@ -65,12 +65,13 @@ class Review extends Component {
             );
           })}
         </div>
-        <div id="reveiwBox">
+        <div id="reviewBox">
           <input
             type="text"
             placeholder="아이디를 입력해주세요"
             name="name"
             value={this.state.name}
+            className="reviewId"
             onChange={this.onChange}
           />
           <input
@@ -78,6 +79,7 @@ class Review extends Component {
             placeholder="리뷰를 입력해주세요(엔터를 눌러주세요.)"
             name="content"
             value={this.state.content}
+            className="reviewPw"
             onChange={this.onChange}
             onKeyUp={this.onKeyUp}
           />

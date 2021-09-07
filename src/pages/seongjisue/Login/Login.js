@@ -30,20 +30,21 @@ class Login extends Component {
   };
 
   render() {
+    const { buttonColor } = this.state;
     return (
       <div className="Login">
         <div id="mainLogin">
           <div id="mainForm">
             <h1>JiBucks</h1>
             <input
-              className="boxTotalCSS"
+              className="boxTotalCSS inputBox"
               type="text"
               placeholder="전화번호, 사용자 이름 또는 이메일"
               name="id"
               onChange={this.handleInput}
             />
             <input
-              className="boxTotalCSS"
+              className="boxTotalCSS inputBox"
               type="password"
               placeholder="비밀번호"
               name="pw"
@@ -51,9 +52,7 @@ class Login extends Component {
             />
             <button
               id="loginButton"
-              className={
-                this.state.buttonColor ? 'boxTotalCSS active' : 'boxTotalCSS'
-              }
+              className={buttonColor ? 'boxTotalCSS active' : 'boxTotalCSS'}
               onClick={this.goToLogin}
             >
               로그인
