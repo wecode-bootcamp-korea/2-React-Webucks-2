@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './CoffeeCard.scss';
 
 class CoffeeCard extends React.Component {
@@ -7,11 +8,13 @@ class CoffeeCard extends React.Component {
       <li className="cardLi">
         <dt className="everyimg">
           <div className="mother">
-            <img
-              key={this.props.key}
-              src={this.props.src}
-              alt={this.props.alt}
-            />
+            <Link to="/detail-kichul">
+              <img
+                key={this.props.key}
+                src={this.props.src}
+                alt={this.props.alt}
+              />
+            </Link>
           </div>
         </dt>
         <dd>{this.props.alt}</dd>
