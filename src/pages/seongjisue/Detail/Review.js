@@ -18,18 +18,13 @@ class Review extends Component {
   };
 
   onKeyUp = e => {
-    if (
-      e.keyCode === 13 &&
-      this.state.name !== '' &&
-      this.state.content !== ''
-    ) {
+    if (e.keyCode === 13 && this.state.name && this.state.content) {
       const { name, content, list } = this.state;
       this.setState({
         list: list.concat({ name: name, content: content }),
         name: '',
         content: '',
       });
-      e.target.value = null;
     }
   };
 
@@ -55,7 +50,7 @@ class Review extends Component {
                     this.reviewDelete(el);
                   }}
                 />
-                <HeartIcon className="reviewHeart"></HeartIcon>
+                <HeartIcon className="reviewHeart" />
               </div>
             );
           })}

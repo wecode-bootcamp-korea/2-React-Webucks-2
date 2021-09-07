@@ -4,11 +4,11 @@ import HeartIcon from '../Heart/HeartIcon';
 
 class CoffeeCard extends Component {
   render() {
-    let value = this.props.value;
+    let { value } = this.props;
     return (
       <article className="menu">
         <Link
-          className="abc"
+          className="menuLink"
           to={{
             pathname: `/detail-jisue`,
             state: {
@@ -22,7 +22,7 @@ class CoffeeCard extends Component {
         </Link>
         <div id="heartSide">
           <p>{value.name}</p>
-          <HeartIcon></HeartIcon>
+          <HeartIcon />
         </div>
       </article>
     );

@@ -5,26 +5,24 @@ class CoffeeTitle extends Component {
   constructor() {
     super();
     this.state = {
-      firstTitle: [],
-      secondTitle: [],
+      mainTitle: [],
+      subTitle: [],
     };
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/listData.json', {
-      method: 'GET',
-    })
+    fetch('http://localhost:3000/data/listData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
-          firstTitle: data['FISRT_DATA'],
-          secondTitle: data['SECOND_DATA'],
+          mainTitle: data['FISRT_DATA'],
+          subTitle: data['SECOND_DATA'],
         });
       });
   }
 
   render() {
-    console.log(this.state.firstTitle);
+    const { mainTitle, subTitle } = this.state;
     return (
       <div>
         <section>
@@ -39,17 +37,14 @@ class CoffeeTitle extends Component {
               디카페인 에스프레소 샷 추가 가능 (일부 음료 제외)
             </p>
           </header>
-
           <main className="menuList">
-            {this.state.firstTitle.map(el => {
-              return (
-                <CoffeeCard
-                  value={{ id: el.id, name: el.name, img: el.img }}
-                ></CoffeeCard>
-              );
+            {mainTitle.map(el => {
+              const { id, name, img } = el;
+              return <CoffeeCard value={{ id, name, img }} />;
             })}
           </main>
         </section>
+
         <section>
           <header className="navbar navbarSub">
             <h3 className="navbarSubMenu">브루드 커피</h3>
@@ -63,12 +58,9 @@ class CoffeeTitle extends Component {
             </p>
           </header>
           <main className="menuList">
-            {this.state.secondTitle.map(el => {
-              return (
-                <CoffeeCard
-                  value={{ id: el.id, name: el.name, img: el.img }}
-                ></CoffeeCard>
-              );
+            {subTitle.map(el => {
+              const { id, name, img } = el;
+              return <CoffeeCard value={{ id, name, img }} />;
             })}
           </main>
         </section>

@@ -1,5 +1,4 @@
-@import '../../../styles/common.scss';
-@import '../mixin.scss';
+@import '../../../styles/mixin.scss';
 
 .Detail {
   .flex {
@@ -9,6 +8,7 @@
   #total {
     @include flexStyle(none, space-between, column);
     min-height: 100vh;
+
     #sub {
       @include flexStyle(none, space-between, column);
     }
@@ -16,6 +16,7 @@
 
   .title {
     width: 1000px;
+
     #title {
       &Menu {
         @include fontSizeWight(24px, bold);
@@ -33,13 +34,16 @@
     @include flexStyle(none, none, column);
     align-self: center;
     margin: 0px 0px 80px 0;
+
     .item {
       @include flexStyle(none, center, none);
+
       .itemImg {
         width: 450px;
         height: 450px;
         margin: 0 50px 0 0;
       }
+
       .itemContent {
         width: 500px;
       }
@@ -50,10 +54,12 @@
     @include flexStyle(center, space-between, none);
     height: 55px;
     border-bottom: 1px solid black;
+
     .itemTitle {
       h3 {
         @include fontSizeWight(18px, bold);
       }
+
       p {
         @include fontSizeWight(10px);
         margin: 5px 0 10px 0;
@@ -65,6 +71,7 @@
     @include fontSizeWight(13px);
     margin: 13px 0 13px 0;
   }
+
   .tableHeader {
     @include flexStyle(none, space-between, none);
     padding: 16px 0 16px 0;
@@ -77,10 +84,12 @@
   .list {
     @include flexStyle(none, space-between, none);
     width: 305px;
+
     .listStyle {
       padding: 5px;
       margin: 7px 0 16px 0;
       list-style: none;
+
       li {
         @include fontSizeWight(12px);
         &:not(:last-child) {
@@ -93,6 +102,7 @@
   .tableFooter {
     padding: 12px;
     background-color: #f4f4f2;
+
     p {
       @include fontSizeWight(10px);
     }
@@ -105,14 +115,17 @@
       padding: 0 0 13px 0;
       border-bottom: 1px solid black;
     }
+
     div .reveiwResults {
       @include flexStyle();
       @include fontSizeWight(10px);
       margin: 10px 0 10px 0;
+
       .reveiwContent {
         @include fontSizeWight(10px, bold);
         margin: 0 10px 0 0;
       }
+
       .reviewDelete {
         margin: 0 6px 0 10px;
         cursor: pointer;
@@ -121,6 +134,7 @@
 
     #reveiwBox {
       width: 100%;
+
       input {
         @include fontSizeWight(8px, none, #c0c0ba);
         margin: 15px 5px 0px 0px;
@@ -141,18 +155,20 @@
     padding: 20px 200px 0 200px;
     height: 160px;
     background-color: #333333;
+
     .footerList {
       @include flexStyle(none, space-around, none);
-      #footerTitle {
-        @include fontSizeWight(15px);
-      }
+
       .footerMenu {
-        li {
-          @include fontSizeWight(8px, none, white);
+        #footerTitle {
+          @include fontSizeWight(15px, bold, white);
           list-style: none;
-          &:not(:first-child) {
-            margin: 8px 0 0 0;
-          }
+        }
+
+        .footerMiddle {
+          @include fontSizeWight(8px, none, white);
+          margin: 10px 0 0 0;
+          list-style: none;
         }
       }
     }

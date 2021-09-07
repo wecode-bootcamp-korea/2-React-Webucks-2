@@ -1,5 +1,4 @@
-@import '../../../styles/common.scss';
-@import '../mixin.scss';
+@import '../../../styles/mixin.scss';
 
 .List {
   .navbarSub {
@@ -40,9 +39,11 @@
       @include flexStyle(center, none, column);
       width: 250px;
       margin: 15px;
-      .abc {
+
+      .menuLink {
         height: 260px;
         overflow: hidden;
+
         .menuImg {
           width: 100%;
         }
@@ -52,9 +53,11 @@
         transform: scale(1.1);
         transition-duration: 1s;
       }
+
       #heartSide {
         @include flexStyle(center);
         margin: 10px 0 5px 0;
+
         p {
           @include fontSizeWight(15px);
           margin: 0 7px 0 0;

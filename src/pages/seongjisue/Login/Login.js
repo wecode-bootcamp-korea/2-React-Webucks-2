@@ -1,5 +1,5 @@
-import './Login.scss';
 import React, { Component } from 'react';
+import './Login.scss';
 
 class Login extends Component {
   constructor() {
@@ -12,16 +12,15 @@ class Login extends Component {
   }
 
   handleInput = e => {
-    this.setState({ [e.target.name]: e.target.value });
-    this.ChangeButtonColor();
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+    this.changeButtonColor();
   };
 
-  ChangeButtonColor = () => {
-    let buttonCondition =
-      this.state.id.includes('@') && this.state.pw.length > 8;
-    buttonCondition
-      ? this.setState({ buttonColor: true })
-      : this.setState({ buttonColor: false });
+  changeButtonColor = () => {
+    const { id, pw } = this.state;
+    let isValid = id.includes('@') && pw.length > 8;
+    this.setState({ buttonColor: isValid });
   };
 
   goToLogin = () => {

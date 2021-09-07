@@ -1,9 +1,8 @@
-import './Detail.scss';
 import React, { Component } from 'react';
 import Nav from '../Nav/Nav';
-import DetailFooter from './DetailFooter';
-import DetailMiddle from './DetailMiddle';
-import { FOOTER_MENU as FooterData } from '../../../data/detailData';
+import DtlFooter from './DtlFooter';
+import DtlMain from './DtlMain';
+import './Detail.scss';
 
 class Detail extends Component {
   render() {
@@ -11,10 +10,10 @@ class Detail extends Component {
       <div className="Detail">
         <div id="total">
           <div id="sub">
-            <Nav></Nav>
+            <Nav />
           </div>
-          <DetailMiddle></DetailMiddle>
-          <DetailFooter value={FooterData}></DetailFooter>
+          <DtlMain />
+          <DtlFooter />
         </div>
       </div>
     );

@@ -1,10 +1,10 @@
-@import '../../../styles/common.scss';
-@import '../mixin.scss';
+@import '../../../styles/mixin.scss';
 
 .Login {
   #mainLogin {
     @include flexStyle(center, center);
     min-height: 100vh;
+
     #mainForm {
       @include flexStyle(center, none, column);
       padding: 20px 30px 150px 30px;
@@ -38,8 +38,8 @@
     #loginButton {
       @include fontSizeWight(16px, bold, white);
       background-color: #add3eb;
-      cursor: pointer;
       opacity: $opacitySize;
+      cursor: pointer;
       &.active {
         background-color: blue;
       }

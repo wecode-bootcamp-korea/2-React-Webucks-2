@@ -3,20 +3,15 @@ import { withRouter } from 'react-router';
 import HeartIcon from '../Heart/HeartIcon';
 import Review from './Review';
 
-class DetailMiddle extends Component {
+class DtlMain extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.location.state);
     let listLocation = this.props.location.state;
     this.state = {
-      name:
-        listLocation !== undefined
-          ? listLocation.name
-          : '시그니처 더 블랙 콜드 브루',
+      name: listLocation?.name || '시그니처 더 블랙 콜드 브루',
       img:
-        listLocation !== undefined
-          ? listLocation.img
-          : 'https://image.istarbucks.co.kr/upload/store/skuimg/2021/08/[9200000003661]_20210819094346176.jpg',
+        listLocation?.img ||
+        'https://image.istarbucks.co.kr/upload/store/skuimg/2021/08/[9200000003661]_20210819094346176.jpg',
     };
   }
 
@@ -40,7 +35,7 @@ class DetailMiddle extends Component {
                   <h3>{this.state.name}</h3>
                   <p>Vanilla Cream Cold Brew</p>
                 </span>
-                <HeartIcon></HeartIcon>
+                <HeartIcon />
               </div>
               <p id="contentFontSize">
                 콜드 브루에 더해진 바닐라 크림으로 깔끔하면서 달콤한 콜드 브루를
@@ -83,11 +78,11 @@ class DetailMiddle extends Component {
                 <p>알레르기 유발요인 : 우유</p>
               </footer>
             </main>
-            <Review></Review>
+            <Review />
           </aside>
         </section>
       </main>
     );
   }
 }
-export default withRouter(DetailMiddle);
+export default withRouter(DtlMain);

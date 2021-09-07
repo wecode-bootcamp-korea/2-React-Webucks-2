@@ -1,7 +1,7 @@
 #heartIcon {
   .mousePoint {
     cursor: pointer;
-    &.likeHeart {
+    &.isLiked {
       color: red;
     }
   }

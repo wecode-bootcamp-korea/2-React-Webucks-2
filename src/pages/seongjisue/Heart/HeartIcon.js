@@ -7,23 +7,23 @@ class HeartIcon extends Component {
   constructor() {
     super();
     this.state = {
-      likeHeart: false,
+      isLiked: false,
     };
   }
 
   onClick = () => {
+    let { isLiked } = this.state;
     this.setState({
-      likeHeart: !this.state.likeHeart,
+      isLiked: !isLiked,
     });
   };
 
   render() {
+    const { isLiked } = this.state;
     return (
       <div id="heartIcon">
         <FontAwesomeIcon
-          className={
-            this.state.likeHeart ? 'mousePoint likeHeart' : 'mousePoint'
-          }
+          className={isLiked ? 'mousePoint isLiked' : 'mousePoint'}
           onClick={this.onClick}
           icon={faHeart}
         />
