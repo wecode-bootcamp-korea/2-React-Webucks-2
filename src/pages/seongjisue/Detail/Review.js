@@ -9,7 +9,13 @@ class Review extends Component {
     this.state = {
       name: '',
       content: '',
-      list: [],
+      list: [
+        {
+          id: 1,
+          name: '위코드!',
+          content: '리뷰를 입력해라!',
+        },
+      ],
     };
   }
   onChange = e => {
@@ -21,7 +27,11 @@ class Review extends Component {
     if (e.keyCode === 13 && this.state.name && this.state.content) {
       const { name, content, list } = this.state;
       this.setState({
-        list: list.concat({ name: name, content: content }),
+        list: list.concat({
+          id: list.length ? list[list.length - 1].id + 1 : 1,
+          name,
+          content,
+        }),
         name: '',
         content: '',
       });
@@ -29,7 +39,7 @@ class Review extends Component {
   };
 
   reviewDelete = content => {
-    const list = this.state.list.filter(el => el !== content);
+    const list = this.state.list.filter(el => el.id !== content.id);
     this.setState({ list });
   };
 
@@ -40,7 +50,7 @@ class Review extends Component {
         <div>
           {this.state.list.map(el => {
             return (
-              <div className="reveiwResults">
+              <div className="reveiwResults" key={el.id}>
                 <span className="reveiwContent">{el.name}</span>
                 <p>{el.content}</p>
                 <FontAwesomeIcon
