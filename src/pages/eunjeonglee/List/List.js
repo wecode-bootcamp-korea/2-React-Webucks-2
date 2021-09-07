@@ -31,7 +31,7 @@ class List extends React.Component {
 
   render() {
     return (
-      <body className="List">
+      <div className="List">
         <TopNav />
         <p className="subtitle">
           <span className="coffeeTitle">콜드 브루 커피</span> &nbsp;{' '}
@@ -72,7 +72,7 @@ class List extends React.Component {
             })}
           </ul>
         </section>
-      </body>
+      </div>
     );
   }
 }

@@ -4,7 +4,7 @@ import './TopNav.scss';
 class TopNav extends Component {
   render() {
     return (
-      <body className="TopNav">
+      <div className="TopNav">
         <nav>
           <h1 className="title">Webucks</h1>
           <ul>
@@ -14,7 +14,7 @@ class TopNav extends Component {
             <li>WHAT'S NEW</li>
           </ul>
         </nav>
-      </body>
+      </div>
     );
   }
 }

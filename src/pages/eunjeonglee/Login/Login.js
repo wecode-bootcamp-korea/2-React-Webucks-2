@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import '../../../styles/common.scss';
 import '../../../styles/reset.scss';
 import './Login.scss';
@@ -33,9 +32,16 @@ class Login extends React.Component {
       });
     }
   };
+
+  goToList = event => {
+    if (this.state.logIn === true) {
+      this.props.history.push('/list-eunjeong');
+    }
+  };
+
   render() {
     return (
-      <body className="Login">
+      <div className="Login">
         <section className="contents">
           <h1 id="title">WeBucks</h1>
           <form id="loginForm">
@@ -57,20 +63,19 @@ class Login extends React.Component {
               type="password"
               placeholder="비밀번호"
             />
-            <Link to="/list-eunjeong">
-              <button
-                className={this.state.logIn ? 'logInBtn' : 'logOutBtn'}
-                id="btn"
-              >
-                로그인
-              </button>
-            </Link>
+            <button
+              onClick={this.goToList}
+              className={this.state.logIn ? 'logInBtn' : 'logOutBtn'}
+              id="btn"
+            >
+              로그인
+            </button>
           </form>
           <a id="forgotPw" href="www.naver.com">
             비밀번호를 잊으셨나요?
           </a>
         </section>
-      </body>
+      </div>
     );
   }
 }

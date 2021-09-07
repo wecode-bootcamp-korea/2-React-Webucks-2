@@ -91,11 +91,14 @@
         font-weight: 700;
       }
       .review li {
+        display: flex;
+        justify-content: space-between;
         list-style: none;
         font-size: 14px;
         padding: 5px 0;
-        span {
-          font-weight: 700;
+        .delete {
+          border: 0;
+          color: #a3a3a3;
         }
       }
       .review input {

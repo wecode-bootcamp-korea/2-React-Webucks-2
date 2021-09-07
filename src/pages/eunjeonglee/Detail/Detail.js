@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import '../../../styles/reset.scss';
 import '../../../styles/common.scss';
@@ -5,7 +6,10 @@ import TopNav from '../TopNav/TopNav';
 import './Detail.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
-import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHeart as solidHeart,
+  faTimes,
+} from '@fortawesome/free-solid-svg-icons';
 
 class Detail extends React.Component {
   constructor() {
@@ -39,9 +43,16 @@ class Detail extends React.Component {
     }
   };
 
+  deleteReview = idx => {
+    this.state.commentList.splice(idx, 1);
+    this.setState({
+      commentList: this.state.commentList,
+    });
+  };
+
   render() {
     return (
-      <body className="Detail">
+      <div className="Detail">
         <TopNav />
         <main id="wrap">
           <h2 className="title">콜드 브루</h2>
@@ -105,18 +116,25 @@ class Detail extends React.Component {
             <div className="review">
               <h3>리뷰</h3>
               <ul>
+                <li>너무 맛있어요!</li>
+                <li>오늘도 화이트 초콜릿 모카를 마시러 갑니다.</li>
                 <li>
-                  <span>coffee_lover</span> 너무 맛있어요!
-                </li>
-                <li>
-                  <span>CHOCO7</span> 오늘도 화이트 초콜릿 모카를 마시러 갑니다.
-                </li>
-                <li>
-                  <span>legend_dev</span> 진짜 화이트 초콜릿 모카는 전설이다.
-                  진짜 화이트 초콜릿 모카는 전설이다. 화이트 초...
+                  진짜 화이트 초콜릿 모카는 전설이다. 진짜 화이트 초콜릿 모카는
+                  전설이다. 화이트 초...
                 </li>
                 {this.state.commentList.map((comm, idx) => {
-                  return <li key={idx}>{comm}</li>;
+                  return (
+                    <li key={idx}>
+                      {comm}
+                      <button
+                        key={idx}
+                        onClick={event => this.deleteReview(idx, event)}
+                        className="delete"
+                      >
+                        <FontAwesomeIcon icon={faTimes} />
+                      </button>
+                    </li>
+                  );
                 })}
               </ul>
               <input
@@ -167,7 +185,7 @@ class Detail extends React.Component {
             </ul>
           </section>
         </footer>
-      </body>
+      </div>
     );
   }
 }
