@@ -31,8 +31,7 @@ class Detail extends React.Component {
   };
 
   pushReviewComment = event => {
-    const { reviewArray } = this.state;
-    const { reviewComment } = this.state;
+    const { reviewArray, reviewComment } = this.state;
     if (event.key === 'Enter') {
       event.preventDefault();
       if (reviewComment !== '') {
@@ -55,12 +54,13 @@ class Detail extends React.Component {
   };
 
   render() {
-    const { isValidHeart } = this.state;
-    const { handleHeartColor } = this;
-    const { reviewArray } = this.state;
-    const { deleteReviewComment } = this;
-    const { handleReviewInput } = this;
-    const { pushReviewComment } = this;
+    const { isValidHeart, reviewArray } = this.state;
+    const {
+      handleHeartColor,
+      deleteReviewComment,
+      handleReviewInput,
+      pushReviewComment,
+    } = this;
     return (
       <div className="Detail">
         <TopNav />

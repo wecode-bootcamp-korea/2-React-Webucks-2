@@ -26,8 +26,7 @@ class List extends React.Component {
   }
 
   render() {
-    const { firstProducts } = this.state;
-    const { secondProducts } = this.state;
+    const { firstProducts, secondProducts } = this.state;
     return (
       <div className="List">
         <TopNav />

@@ -37,12 +37,9 @@ class Login extends React.Component {
   };
 
   render() {
-    const { handleIdInput } = this;
-    const { handlePwInput } = this;
-    const { id } = this.state.userInfo;
-    const { pw } = this.state.userInfo;
-    const { handleButtonColor } = this;
-    const { goToList } = this;
+    const { handleIdInput, handlePwInput, handleButtonColor, goToList } = this;
+    const { id, pw } = this.state.userInfo;
+    const isValid = id.includes('@') && pw.length >= 5;
     return (
       <div className="Login">
         <div className="form">
@@ -62,11 +59,9 @@ class Login extends React.Component {
             />
             <button
               id="loginBtn"
-              className={
-                id.includes('@') && pw.length >= 5 ? 'active' : 'remove'
-              }
+              className={isValid ? 'active' : 'remove'}
               onClick={goToList}
-              disabled={id.includes('@') && pw.length >= 5 ? null : 'disabled'}
+              disabled={isValid ? null : 'disabled'}
             >
               로그인
             </button>
