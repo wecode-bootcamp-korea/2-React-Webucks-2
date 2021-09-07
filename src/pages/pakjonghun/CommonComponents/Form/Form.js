@@ -4,16 +4,20 @@ import './Form.scss';
 
 class Form extends React.Component {
   render() {
+    const {
+      props: { isValid, callBack, children },
+    } = this;
+
     return (
       <form
         className="Form"
         onSubmit={e => {
           e.preventDefault();
           e.currentTarget.querySelector('input').blur();
-          this.props.callBack();
+          callBack(isValid);
         }}
       >
-        {this.props.children}
+        {children}
       </form>
     );
   }

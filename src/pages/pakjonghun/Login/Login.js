@@ -9,7 +9,7 @@ import './Login.scss';
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { id: '', pw: '', pwType: 'password', isValid: false };
+    this.state = { id: '', pw: '', pwType: 'password' };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
   }
@@ -19,32 +19,24 @@ class Login extends React.Component {
       target: { value, name },
     } = e;
 
-    this.setState({ [name]: value }, this.checkIsValid);
+    this.setState({ [name]: value });
   }
 
-  checkIsValid() {
-    const {
-      state: { id, pw },
-    } = this;
-    const isValid = id.includes('@') && pw.length >= 5;
-    this.setState({ isValid });
-  }
-
-  onSubmit() {
-    if (this.state.isValid) this.props.history.push('list-jonghun');
+  onSubmit(isValid) {
+    if (isValid) this.props.history.push('list-jonghun');
   }
 
   render() {
     const {
       onChange,
       onSubmit,
-      state: { id, pw, pwType, isValid },
+      state: { id, pw, pwType },
     } = this;
-
+    const isValid = id.includes('@') && pw.length >= 5;
     return (
       <div className="Login">
         <section className="loginContainer">
-          <Form callBack={onSubmit}>
+          <Form callBack={onSubmit} isValid={isValid}>
             <h1 className="title">WeBucks</h1>
 
             <Input

@@ -37,7 +37,6 @@ class Comment extends React.Component {
   };
 
   deleteComment = id => {
-    console.log(id);
     const restComments = this.state.comments.filter(item => item.id !== id);
     this.saveComment(restComments);
   };
