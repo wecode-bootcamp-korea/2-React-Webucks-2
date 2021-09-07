@@ -3,5 +3,12 @@ import ReactDOM from 'react-dom';
 import Routes from './Routes';
 import './styles/reset.scss';
 import './styles/common.scss';
+import CoffeeContextContainer from './Context';
 
-ReactDOM.render(<Routes />, document.getElementById('root'));
+ReactDOM.render(
+  <CoffeeContextContainer>
+    <Routes />
+  </CoffeeContextContainer>,
+
+  document.getElementById('root')
+);

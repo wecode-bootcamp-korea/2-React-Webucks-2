@@ -12,66 +12,76 @@ class Comment extends React.Component {
       comments: [],
       desc: '',
     };
-
-    this.setComments = this.setComments.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
   }
 
-  onSubmit() {
-    this.setState(() => ({
-      comments: [
-        ...this.state.comments,
-        {
-          writer: '익명',
-          desc: this.state.desc,
-          isGetHeart: false,
-          id: this.state.comments.length,
-        },
-      ],
-      desc: '',
-    }));
-  }
+  onSubmit = () => {
+    const comment = {
+      id: this.state.comments.length,
+      writer: '익명',
+      desc: this.state.desc,
+      isLike: false,
+    };
 
-  onChange(e) {
+    this.setState({ comments: [...this.state.comments, comment] });
+  };
+
+  onChange = e => {
     const {
       target: { value },
     } = e;
     this.setState(() => ({ desc: value }));
-  }
+  };
 
-  setComments(comments) {
-    this.setState({ comments });
-  }
+  saveComment = comment => {
+    this.setState({ comments: comment });
+  };
+
+  deleteComment = id => {
+    console.log(id);
+    const restComments = this.state.comments.filter(item => item.id !== id);
+    this.saveComment(restComments);
+  };
+
+  updateComment = id => {
+    const updateComments = this.state.comments.map(item => {
+      if (item.id == id) {
+        item.isLike = !item.isLike;
+      }
+      return item;
+    });
+    this.saveComment(updateComments);
+  };
 
   render() {
+    const {
+      updateComment,
+      deleteComment,
+      onSubmit,
+      onChange,
+      state: { comments, desc },
+    } = this;
+
     return (
       <div className="Comment">
-        {this.state.comments.map(({ writer, desc, isGetHeart, id }) => {
+        {this.state.comments.map(({ writer, desc, isLike, id }) => {
           return (
             <DummyComment
               writer={writer}
               desc={desc}
               key={id}
               id={id}
-              comments={this.state.comments}
-              setComments={this.setComments}
-              isGetHeart={isGetHeart}
+              comments={comments}
+              deleteComment={deleteComment}
             >
-              <Heart
-                isGetHeart={isGetHeart}
-                setDb={this.setComments}
-                id={id}
-                db={this.state.comments}
-              />
+              <Heart isLike={isLike} updateById={updateComment} id={id} />
             </DummyComment>
           );
         })}
-        <Form callBack={this.onSubmit}>
+        <Form callBack={onSubmit}>
           <Input
             placeholder="댓글을 적읍시다"
-            value={this.state.desc}
-            onChange={this.onChange}
+            value={desc}
+            onChange={onChange}
           />
         </Form>
       </div>

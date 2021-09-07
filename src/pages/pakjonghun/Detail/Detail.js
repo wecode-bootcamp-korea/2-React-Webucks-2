@@ -6,50 +6,45 @@ import Heart from '../CommonComponents/Heart/Heart';
 import Comment from './Components/Comment/Comment';
 import Nav from '../CommonComponents/Nav/Nav';
 import Photo from '../CommonComponents/Photo/Photo';
+import { CoffeeContext } from '../../../Context';
 import './Detail.scss';
 
 class Detail extends React.Component {
-  constructor(props) {
-    super(props);
-    this.data = props.location.state.data;
-    this.state = { img: '', coffeeName: '', isGetHeart: '', id: '' };
-    this.setCoffeeData = this.setCoffeeData.bind(this);
-  }
-
-  componentDidMount() {
-    this.setState(() => ({
-      img: this.data.img,
-      coffeeName: this.data.coffeeName,
-      isGetHeart: this.data.isGetHeart,
-      id: this.data.id,
-    }));
-  }
-
-  setCoffeeData(data) {
-    this.setState(() => ({ ...data[0] }));
-  }
+  static contextType = CoffeeContext;
 
   render() {
+    const {
+      props: {
+        location: {
+          state: {
+            data: { layoutName, img, name, id },
+          },
+        },
+      },
+    } = this;
+
+    const {
+      context: { updateById, findHeartById },
+    } = this;
+
+    const isLike = findHeartById(id, layoutName);
+
     return (
       <div className="Detail">
         <Nav />
         <main className="diviedGrid">
-          <Photo
-            imgUrl={this.state.img}
-            alt={this.state.coffeeName}
-            className="detailImg"
-          />
+          <Photo img={img} name={name} className={'detailImg'} />
           <div>
             <div className="detailTitle">
               <div>
-                <h2>{this.state.coffeeName}</h2>
+                <h2>{name}</h2>
                 <h3>White Choocolate Mocha</h3>
               </div>
               <Heart
-                isGetHeart={this.state.isGetHeart}
-                id={this.state.id}
-                setDb={this.setCoffeeData}
-                db={[this.state]}
+                isLike={isLike}
+                id={id}
+                updateById={updateById}
+                layoutName={layoutName}
               />
             </div>
             <BorderLine classNameName={'deatilLightLine'} />

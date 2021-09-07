@@ -2,40 +2,34 @@ import React from 'react';
 import Heart from '../../../CommonComponents/Heart/Heart';
 import { Link } from 'react-router-dom';
 import './CoffeeCard.scss';
+import Photo from '../../../CommonComponents/Photo/Photo';
 
 class CoffeCard extends React.Component {
   render() {
+    const {
+      props: { id, layoutName, img, name, isLike, updateById },
+    } = this;
+
     return (
       <div className="CoffeeCard">
         <div className="imgContainer">
           <Link
             to={{
-              pathname: `/detail-jonghun/${this.props.id}`,
-              state: {
-                data: {
-                  img: this.props.imgUrl,
-                  coffeeName: this.props.coffeeName,
-                  isGetHeart: this.props.isGetHeart,
-                  id: this.props.id,
-                },
-              },
+              pathname: `/detail-jonghun/${id}`,
+              state: { data: { layoutName, img, name, isLike, id } },
             }}
           >
-            <img
-              className="coffeeImg"
-              alt={this.props.coffeeName}
-              src={this.props.imgUrl}
-            />
+            <Photo className={'coffeeImg'} name={name} img={img} />
           </Link>
         </div>
         <div className="coffeeInfo">
           <Heart
-            isGetHeart={this.props.isGetHeart}
-            setDb={this.props.setDb}
-            db={this.props.db}
-            id={this.props.id}
+            isLike={isLike}
+            updateById={updateById}
+            id={id}
+            layoutName={layoutName}
           />
-          <span className="coffeeName">{this.props.coffeeName}</span>
+          <span className="coffeeName">{name}</span>
         </div>
       </div>
     );

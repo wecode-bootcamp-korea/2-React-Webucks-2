@@ -4,23 +4,19 @@ import { faRemoveFormat } from '@fortawesome/free-solid-svg-icons';
 import './DummyComment.scss';
 
 class DummyComment extends React.Component {
-  deleteComment() {
-    const {
-      props: { id },
-    } = this;
-    const temp = this.props.comments.filter(item => item.id !== id);
-    this.props.setComments(temp);
-  }
-
   render() {
+    const {
+      props: { writer, desc, deleteComment, id },
+    } = this;
+
     return (
       <div className="DummyComment">
-        <span className="writer">{this.props.writer}</span>
-        <span className="desc">{this.props.desc}</span>
+        <span className="writer">{writer}</span>
+        <span className="desc">{desc}</span>
         <FontAwesomeIcon
           icon={faRemoveFormat}
           className="remove"
-          onClick={() => this.deleteComment()}
+          onClick={() => deleteComment(id)}
         />
         {this.props.children}
       </div>

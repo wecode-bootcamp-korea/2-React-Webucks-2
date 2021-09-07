@@ -5,21 +5,15 @@ import './Heart.scss';
 
 class Heart extends React.Component {
   render() {
+    const {
+      props: { id, isLike, updateById, layoutName },
+    } = this;
     return (
       <div className={'Heart'}>
         <FontAwesomeIcon
           icon={faHeart}
-          className={`heartIcon ${this.props.isGetHeart ? 'red' : null}`}
-          onClick={() => {
-            this.props.setDb(
-              this.props.db.map(item => {
-                if (item.id === this.props.id) {
-                  item.isGetHeart = !this.props.isGetHeart;
-                }
-                return item;
-              })
-            );
-          }}
+          className={`heartIcon ${isLike ? 'red' : null}`}
+          onClick={() => updateById(id, layoutName)}
         />
       </div>
     );

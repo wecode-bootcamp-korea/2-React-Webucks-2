@@ -2,73 +2,44 @@ import CoffeeLayout from './Components/CoffeeListLayout/CoffeeListLayout';
 import CoffeCard from './Components/CoffeeCard/CoffeCard';
 import Nav from '../CommonComponents/Nav/Nav';
 import React from 'react';
+import { CoffeeContext } from '../../../Context';
 
 class List extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { db1: [], db2: [] };
-    this.setDb1 = this.setDb1.bind(this);
-    this.setDb2 = this.setDb2.bind(this);
-  }
-
-  componentDidMount() {
-    fetch('/data/data.json')
-      .then(res => res.json())
-      .then(data => {
-        const db1 = data.data1.map(item => {
-          item.isGetHeart = false;
-          return item;
-        });
-
-        this.setState({ db1 });
-
-        const db2 = data.data2.map(item => {
-          item.isGetHeart = false;
-          return item;
-        });
-
-        this.setState({ db2 });
-      });
-  }
-
-  setDb1(data) {
-    this.setState({ db1: data });
-  }
-
-  setDb2(data) {
-    this.setState({ db2: data });
-  }
+  static contextType = CoffeeContext;
 
   render() {
+    const {
+      context: { db1, db2, updateById },
+    } = this;
     return (
       <div className="List">
         <Nav />
         <CoffeeLayout>
-          {this.state.db1.map(({ img, name, isGetHeart, id }) => {
+          {db1.map(({ img, name, isLike, id }) => {
             return (
               <CoffeCard
-                imgUrl={img}
-                coffeeName={name}
-                isGetHeart={isGetHeart}
+                layoutName={'db1'}
+                img={img}
+                name={name}
+                isLike={isLike}
                 id={id}
                 key={id}
-                setDb={this.setDb1}
-                db={this.state.db1}
+                updateById={updateById}
               />
             );
           })}
         </CoffeeLayout>
         <CoffeeLayout>
-          {this.state.db2.map(({ img, name, id, isGetHeart }) => {
+          {db2.map(({ img, name, isLike, id }) => {
             return (
               <CoffeCard
-                imgUrl={img}
-                coffeeName={name}
-                isGetHeart={isGetHeart}
+                layoutName={'db2'}
+                img={img}
+                name={name}
+                isLike={isLike}
                 id={id}
                 key={id}
-                setDb={this.setDb2}
-                db={this.state.db2}
+                updateById={updateById}
               />
             );
           })}
