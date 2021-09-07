@@ -11,32 +11,28 @@ class Login extends React.Component {
     };
   }
   handleInput = event => {
+    const { name, value } = event.target;
     this.setState({
-      [event.target.name]: event.target.value,
+      [name]: value,
     });
   };
 
-  handleLoginBtn = event => {
-    const id = this.state.id;
-    const password = this.state.password;
-    if (id.includes('@') && password.length >= 5) {
-      this.setState({
-        logIn: true,
-      });
-    } else {
-      this.setState({
-        logIn: false,
-      });
-    }
+  isValid = event => {
+    const { id, password } = this.state;
+    const isValidLogIn = id.includes('@') && password.length >= 5;
+    this.setState({
+      logIn: isValidLogIn,
+    });
   };
 
-  goToList = event => {
+  goToList = () => {
     if (this.state.logIn === true) {
       this.props.history.push('/list-eunjeong');
     }
   };
 
   render() {
+    const { handleInput, isValid, goToList, state } = this;
     return (
       <div className="Login">
         <section className="contents">
@@ -44,8 +40,7 @@ class Login extends React.Component {
           <form id="loginForm">
             <input
               name="id"
-              onChange={this.handleInput}
-              onKeyUp={this.handleLoginBtn}
+              onChange={handleInput}
               className="loginInput"
               id="userId"
               type="text"
@@ -53,16 +48,16 @@ class Login extends React.Component {
             />
             <input
               name="password"
-              onChange={this.handleInput}
-              onKeyUp={this.handleLoginBtn}
+              onChange={handleInput}
+              onKeyUp={isValid}
               className="loginInput"
               id="password"
               type="password"
               placeholder="비밀번호"
             />
             <button
-              onClick={this.goToList}
-              className={this.state.logIn ? 'logInBtn' : 'logOutBtn'}
+              onClick={goToList}
+              className={state.logIn ? 'logInBtn' : 'logOutBtn'}
               id="btn"
             >
               로그인

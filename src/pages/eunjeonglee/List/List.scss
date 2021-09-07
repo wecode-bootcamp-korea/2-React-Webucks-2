@@ -9,6 +9,7 @@
     padding: 15px 15px;
     margin: 15px auto;
     background-color: #f6f5ef;
+
     .coffeeTitle {
       font-weight: 700;
     }
@@ -17,30 +18,36 @@
   .coffee {
     margin: 0 auto;
     width: 850px;
+
     .items {
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-start;
       padding-inline-start: 0;
+
       li {
         margin: 15px 15px;
         width: 250px;
         list-style: none;
+
         span {
           display: flex;
           justify-content: center;
           width: 100%;
           padding-top: 15px;
         }
+
         .hoverImg {
           width: 250px;
           height: 261px;
           overflow: hidden;
+
           img {
             width: 250px;
             margin: 0 auto;
             transition: 0.6s all ease-in-out;
           }
+
           img:hover {
             transform: scale(1.1);
           }

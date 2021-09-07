@@ -1,6 +1,6 @@
-/* eslint-disable no-undef */
 import React from 'react';
 import TopNav from '../TopNav/TopNav';
+import HandleLike from '../HandleLike/HandleLike';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import {
@@ -20,20 +20,23 @@ class Detail extends React.Component {
   }
 
   handleLike = event => {
+    const { likeHeart } = this.state;
     this.setState({
-      likeHeart: !this.state.likeHeart,
+      likeHeart: !likeHeart,
     });
   };
 
   getValue = event => {
+    const { value } = event.target;
     this.setState({
-      reviewValue: event.target.value,
+      reviewValue: value,
     });
   };
 
   pushReview = event => {
+    const { commentList } = this.state;
     if (event.key === 'Enter') {
-      this.state.commentList.push(this.state.reviewValue);
+      commentList.push(this.state.reviewValue);
       event.target.value = '';
       this.setState({
         reviewValue: '',
@@ -42,13 +45,15 @@ class Detail extends React.Component {
   };
 
   deleteReview = idx => {
-    this.state.commentList.splice(idx, 1);
+    const { commentList } = this.state;
+    commentList.splice(idx, 1);
     this.setState({
-      commentList: this.state.commentList,
+      commentList: commentList,
     });
   };
 
   render() {
+    const { likeHeart, commentList } = this.state;
     return (
       <div className="Detail">
         <TopNav />
@@ -71,8 +76,8 @@ class Detail extends React.Component {
               <span id="heartIcon">
                 <FontAwesomeIcon
                   onClick={this.handleLike}
-                  icon={this.state.likeHeart ? solidHeart : regularHeart}
-                  className={this.state.likeHeart ? 'heart' : ''}
+                  icon={likeHeart ? solidHeart : regularHeart}
+                  className={likeHeart ? 'heart' : ''}
                 />
               </span>
               <br />
@@ -120,10 +125,11 @@ class Detail extends React.Component {
                   진짜 화이트 초콜릿 모카는 전설이다. 진짜 화이트 초콜릿 모카는
                   전설이다. 화이트 초...
                 </li>
-                {this.state.commentList.map((comm, idx) => {
+                {commentList.map((comment, idx) => {
                   return (
                     <li key={idx}>
-                      {comm}
+                      {comment}
+                      <HandleLike id="heartIcon" />
                       <button
                         key={idx}
                         onClick={event => this.deleteReview(idx, event)}

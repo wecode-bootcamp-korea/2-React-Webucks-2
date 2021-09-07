@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+$logWidth: 300px;
+$logPadding: 8px;
+$logborderRadius: 5px;
 
 .Login {
   .contents {
@@ -26,34 +28,38 @@
     align-items: center;
     flex-direction: column;
     margin: 0 auto;
+
     .loginInput {
       display: inline-block;
       margin-bottom: 10px;
-      padding: 8px;
-      width: 300px;
+      padding: $logPadding;
+      width: $logWidth;
       background-color: #eeefef;
       border: #dedede solid 1px;
-      border-radius: 5px;
+      border-radius: $logborderRadius;
     }
+
     .logOutBtn {
-      width: 300px;
-      padding: 8px;
+      width: $logWidth;
+      padding: $logPadding;
       margin-bottom: 100px;
       background-color: #add3ea;
       color: white;
-      border: 0px;
-      border-radius: 5px;
+      border: 0;
+      border-radius: $logborderRadius;
     }
+
     .logInBtn {
-      width: 300px;
-      padding: 8px;
+      width: $logWidth;
+      padding: $logPadding;
       margin-bottom: 100px;
       background-color: #60aded;
       color: white;
-      border: 0px;
-      border-radius: 5px;
+      border: 0;
+      border-radius: $logborderRadius;
     }
   }
+
   #forgotPw {
     color: #93aec4;
     text-decoration: none;

@@ -15,9 +15,7 @@ class List extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/listData.json', {
-      method: 'GET',
-    })
+    fetch('http://localhost:3000/data/listData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -28,6 +26,7 @@ class List extends React.Component {
   }
 
   render() {
+    const { firstProducts, secondProducts } = this.state;
     return (
       <div className="List">
         <TopNav />
@@ -39,7 +38,7 @@ class List extends React.Component {
 
         <section className="coffee">
           <ul className="items">
-            {this.state.firstProducts.map(product => {
+            {firstProducts.map(product => {
               return (
                 <CoffeeCard
                   key={product.id}
@@ -59,7 +58,7 @@ class List extends React.Component {
 
         <section className="coffee">
           <ul className="items" id="brewedItmes">
-            {this.state.secondProducts.map(product => {
+            {secondProducts.map(product => {
               return (
                 <CoffeeCard
                   key={product.id}

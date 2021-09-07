@@ -12,18 +12,20 @@ class HandleLike extends React.Component {
   }
 
   handleLike = event => {
+    const { likeHeart } = this.state;
     this.setState({
-      likeHeart: !this.state.likeHeart,
+      likeHeart: !likeHeart,
     });
   };
 
   render() {
+    const { likeHeart } = this.state;
     return (
       <span id="heartIcon">
         <FontAwesomeIcon
           onClick={this.handleLike}
-          icon={this.state.likeHeart ? solidHeart : regularHeart}
-          className={this.state.likeHeart ? 'heart' : ''}
+          icon={likeHeart ? solidHeart : regularHeart}
+          className={likeHeart ? 'heart' : ''}
         />
       </span>
     );
