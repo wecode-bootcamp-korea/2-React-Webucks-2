@@ -27,7 +27,7 @@ class Login extends React.Component {
     const isValid = this.state.id.includes('@') && this.state.pw.length >= 5;
 
     return (
-      <div class="Login">
+      <div className="Login">
         <div className="loginBox">
           <h1 className="logo">Webucks</h1>
           <form onKeyUp={handleLoginBtn} className="loginInput">
