@@ -2,7 +2,6 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRemoveFormat } from '@fortawesome/free-solid-svg-icons';
 import './DummyComment.scss';
-import Heart from '../../../CommonComponents/Heart/Heart';
 
 class DummyComment extends React.Component {
   deleteComment() {

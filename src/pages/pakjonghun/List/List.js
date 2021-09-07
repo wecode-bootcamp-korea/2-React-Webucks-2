@@ -1,12 +1,11 @@
-import React from 'react';
 import CoffeeLayout from './Components/CoffeeListLayout/CoffeeListLayout';
 import CoffeCard from './Components/CoffeeCard/CoffeCard';
 import Nav from '../CommonComponents/Nav/Nav';
+import React from 'react';
 
 class List extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = { db1: [], db2: [] };
     this.setDb1 = this.setDb1.bind(this);
     this.setDb2 = this.setDb2.bind(this);

@@ -1,11 +1,11 @@
-@import '../../../Common.scss';
+@import '../../../../../styles/mixin.scss';
 
 .Footer {
+  @include flex($justify: space-between, $align: flex-start);
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  @include flex($justify: space-between, $align: flex-start);
   padding: 5px;
   background-color: black;
 
@@ -16,8 +16,8 @@
 
   .footerItem {
     margin-bottom: 5px;
-    text-align: center;
     font-size: 14px;
     color: white;
+    text-align: center;
   }
 }

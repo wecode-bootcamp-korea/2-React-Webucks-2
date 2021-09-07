@@ -1,21 +1,20 @@
 import React from 'react';
-import './Comment.scss';
 import DummyComment from '../DummyComment/DummyComment';
 import Form from '../../../CommonComponents/Form/Form';
-import Input from '../../../CommonComponents/Input/Input';
 import Heart from '../../../CommonComponents/Heart/Heart';
+import Input from '../../../CommonComponents/Input/Input';
+import './Comment.scss';
 
 class Comment extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       comments: [],
       desc: '',
     };
 
-    this.onSubmit = this.onSubmit.bind(this);
     this.setComments = this.setComments.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 

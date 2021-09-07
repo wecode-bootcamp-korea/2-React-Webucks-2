@@ -1,4 +1,4 @@
-@import '../../Common.scss';
+@import '../../../../styles//mixin.scss';
 
 %message-shared {
   @include flex($justify: space-between);
@@ -9,8 +9,8 @@
   @extend %message-shared;
 
   a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
   }
 
   h1 {

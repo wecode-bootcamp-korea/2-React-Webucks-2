@@ -1,58 +1,60 @@
+import React from 'react';
 import { faCoins } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Input from '../CommonComponents/Input/Input';
 import Form from '../CommonComponents/Form/Form';
+import Input from '../CommonComponents/Input/Input';
+import { Link } from 'react-router-dom';
 import './Login.scss';
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { id: '', pw: '', pwType: 'password' };
+    this.state = { id: '', pw: '', pwType: 'password', isValid: false };
     this.onSubmit = this.onSubmit.bind(this);
-    this.changeId = this.changeId.bind(this);
-    this.changePw = this.changePw.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
-  changeId(e) {
-    this.setState(() => ({ id: e.target.value }));
-  }
+  onChange(e) {
+    const {
+      target: { value, name },
+    } = e;
 
-  changePw(e) {
-    this.setState(() => ({ pw: e.target.value }));
+    this.setState({ [name]: value });
   }
 
   onSubmit() {
-    if (this.state.id.includes('@') && this.state.pw.length >= 5)
-      this.props.history.push('list-jonghun');
+    if (this.state.isValid) this.props.history.push('list-jonghun');
   }
 
   render() {
+    const {
+      onChange,
+      onSubmit,
+      state: { id, pw, pwType },
+    } = this;
+
+    const isValid = id.includes('@') && pw.length >= 5;
+
     return (
       <div className="Login">
         <section className="loginContainer">
-          <Form callBack={this.onSubmit}>
+          <Form callBack={onSubmit}>
             <h1 className="title">WeBucks</h1>
 
             <Input
-              value={this.state.id}
-              onChange={this.changeId}
-              className={`idInput ${
-                this.state.id.includes('@') ? 'green' : null
-              } `}
+              name="id"
+              value={id}
+              onChange={onChange}
+              className={`idInput ${id.includes('@') ? 'green' : null} `}
               placeholder={'ID나 이메일을 입력하세요'}
             />
 
-            <div
-              className={`pwInput ${
-                this.state.pw.length >= 5 ? 'green' : null
-              }`}
-            >
+            <div className={`pwInput ${pw.length >= 5 ? 'green' : null}`}>
               <Input
-                value={this.state.pw}
-                onChange={this.changePw}
-                type={this.state.pwType}
+                name="pw"
+                value={pw}
+                onChange={onChange}
+                type={pwType}
                 placeholder="비밀번호를 입력하세요"
               />
               <span
@@ -65,16 +67,12 @@ class Login extends React.Component {
                   }
                 }}
               >
-                <FontAwesomeIcon icon={faCoins} />
+                <FontAwesomeIcon icon={faCoins} className="changePwTypeBtn" />
               </span>
             </div>
 
             <Input
-              className={`loginSubmit ${
-                this.state.id.includes('@') && this.state.pw.length >= 5
-                  ? 'active'
-                  : 'null'
-              }`}
+              className={`loginSubmit ${isValid ? 'active' : 'null'}`}
               type="submit"
               placeholder="비밀번호를 입력하세요"
               value="로그인"

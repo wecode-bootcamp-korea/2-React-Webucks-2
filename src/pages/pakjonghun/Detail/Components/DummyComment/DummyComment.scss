@@ -1,4 +1,4 @@
-@import '../../../Common.scss';
+@import '../../../../../styles/mixin.scss';
 
 .DummyComment {
   @include flex($justify: flex-start);

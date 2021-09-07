@@ -1,6 +1,11 @@
-@import '../Common.scss';
+@import '../../../styles/mixin.scss';
+
 .Login {
   background-color: #eeefef;
+
+  .changePwTypeBtn {
+    cursor: pointer;
+  }
 
   .loginForm {
     @include flex($direction: column);
@@ -16,6 +21,7 @@
     width: 100%;
     margin: 10px 0;
     border: 1px solid black;
+    background-color: transparent;
 
     input {
       border: none;
@@ -24,6 +30,10 @@
     .passwordIcon {
       margin-right: 10px;
       cursor: pointer;
+
+      &:focus {
+        background-color: inherit;
+      }
     }
   }
 

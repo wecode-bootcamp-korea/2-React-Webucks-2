@@ -1,7 +1,7 @@
 import React from 'react';
+import Heart from '../../../CommonComponents/Heart/Heart';
 import { Link } from 'react-router-dom';
 import './CoffeeCard.scss';
-import Heart from '../../../CommonComponents/Heart/Heart';
 
 class CoffeCard extends React.Component {
   render() {

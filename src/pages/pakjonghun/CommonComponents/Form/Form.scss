@@ -1,4 +1,5 @@
-@import '../../Common.scss';
+@import '../../../../styles/mixin.scss';
+
 .Form {
   @include flex($direction: column);
   width: 300px;

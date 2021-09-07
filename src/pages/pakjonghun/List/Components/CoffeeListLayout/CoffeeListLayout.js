@@ -1,6 +1,6 @@
 import React from 'react';
-import './CoffeeListLayout.scss';
 import CoffeeCategory from '../CoffeeCategory/CoffeeCategory';
+import './CoffeeListLayout.scss';
 
 class CoffeeListLayout extends React.Component {
   render() {

@@ -9,6 +9,7 @@ class Form extends React.Component {
         className="Form"
         onSubmit={e => {
           e.preventDefault();
+          e.currentTarget.querySelector('input').blur();
           this.props.callBack();
         }}
       >
