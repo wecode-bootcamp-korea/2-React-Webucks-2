@@ -10,7 +10,7 @@ class Detail extends React.Component {
     this.state = {
       isLike: false,
       review: '',
-      reviews: [],
+      reviewArr: [],
     };
   }
 
@@ -21,7 +21,24 @@ class Detail extends React.Component {
     });
   };
 
+  handleReviewInput = event => {
+    this.setState({
+      review: event.target.value,
+    });
+  };
+
+  addReview = putReview => {
+    if (putReview.key === 'Enter' && putReview.target.value !== '') {
+      this.state.reviewArr.push(this.state.review);
+      putReview.target.value = '';
+      this.setState({
+        review: '',
+      });
+    }
+  };
+
   render() {
+    console.log(this.state);
     return (
       <div className="Detail">
         <TopNav />
@@ -103,18 +120,34 @@ class Detail extends React.Component {
               <div className="menuDetailRightReview">
                 <div id="reviewTitle">리뷰</div>
                 <div className="reviews"></div>
-                <form>
-                  <input
-                    id="reviewInput"
-                    type="text"
-                    placeholder="리뷰를 입력해주세요"
-                  />
-                </form>
+                <ul className="review">
+                  {this.state.reviewArr.map((comment, id) => {
+                    return (
+                      <li className="comment">
+                        {comment}
+                        <span
+                          key={id}
+                          onClick={this.deleteReview}
+                          className="delReview"
+                        >
+                          ❌
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+                <input
+                  id="reviewInput"
+                  type="text"
+                  placeholder="리뷰를 입력해주세요"
+                  onKeyPress={this.addReview}
+                  onChange={this.handleReviewInput}
+                />
               </div>
             </div>
           </div>
         </div>
-        <div className="footer">
+        <footer className="footer">
           <div className="company">
             <div>COMPANY</div>
             <ul className="company-list">
@@ -149,7 +182,7 @@ class Detail extends React.Component {
               <li>인스타그램</li>
             </ul>
           </div>
-        </div>
+        </footer>
       </div>
     );
   }
