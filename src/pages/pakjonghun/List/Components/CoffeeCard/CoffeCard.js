@@ -7,7 +7,11 @@ import Photo from '../../../CommonComponents/Photo/Photo';
 class CoffeCard extends React.Component {
   render() {
     const {
-      props: { id, layoutName, img, name, isLike, updateById },
+      props: {
+        layoutName,
+        updateById,
+        item: { img, id, name, isLike },
+      },
     } = this;
 
     return (
