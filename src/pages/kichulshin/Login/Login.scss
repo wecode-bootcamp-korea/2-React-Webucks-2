@@ -13,11 +13,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
     height: 650px;
-    background-color: white;
     padding: 80px;
     margin: 10% 0%;
+    background-color: white;
+    text-align: center;
   }
 
   form {
@@ -38,11 +38,11 @@
     height: 40px;
     margin: 10px 10px 50px 10px;
     background-color: #aed3ea;
-    font-weight: bold;
-    cursor: pointer;
+    border: 0px;
     border-radius: 5px;
     color: white;
-    border: 0px;
+    font-weight: bold;
+    cursor: pointer;
   }
   .valid {
     opacity: 1;

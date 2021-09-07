@@ -13,10 +13,15 @@
   height: auto;
   overflow: hidden;
   margin-bottom: 20px;
+  font-size: 85%;
+}
+
+dd {
+  text-align: center;
 }
 
 .everyimg {
-  margin: 0;
+  margin-bottom: 5px;
   overflow: hidden;
 
   img {
@@ -29,9 +34,4 @@
       transition-duration: 1ms;
     }
   }
-}
-
-dd {
-  text-align: center;
-  margin-top: 5px;
 }

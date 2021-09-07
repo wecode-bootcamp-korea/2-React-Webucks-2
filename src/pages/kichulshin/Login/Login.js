@@ -19,13 +19,9 @@ class Login extends React.Component {
   };
 
   checkValid = () => {
-    this.state.inputId.indexOf('@') >= 0 && this.state.inputPw.length > 7
-      ? this.setState({
-          isIdPwValid: true,
-        })
-      : this.setState({
-          isIdPwValid: false,
-        });
+    const isValid =
+      this.state.inputId.indexOf('@') >= 0 && this.state.inputPw.length > 7;
+    this.setState({ isIdPwValid: isValid });
   };
 
   moveToList = () => {
@@ -34,6 +30,8 @@ class Login extends React.Component {
     }
   };
   render() {
+    const { handleIdInput, handlePwInput, moveToList } = this;
+    const { isIdPwValid } = this.state;
     return (
       <div className="Login">
         <section class="loginall">
@@ -43,19 +41,19 @@ class Login extends React.Component {
               id="namemail"
               type="text"
               placeholder="전화번호, 사용자 이름 또는 이메일"
-              onChange={this.handleIdInput}
+              onChange={handleIdInput}
             />
             <input
               id="pwput"
               type="password"
               placeholder="비밀번호"
-              onChange={this.handlePwInput}
+              onChange={handlePwInput}
             />
             <button
-              className={this.state.isIdPwValid ? 'valid' : 'invalid'}
+              className={isIdPwValid ? 'valid' : 'invalid'}
               id="logbtn"
-              disabled={this.state.isIdPwValid ? null : 'disabled'}
-              onClick={this.moveToList}
+              disabled={isIdPwValid ? null : 'disabled'}
+              onClick={moveToList}
             >
               로그인
             </button>

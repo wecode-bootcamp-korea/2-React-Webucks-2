@@ -6,7 +6,13 @@ class CoffeeCard extends React.Component {
     return (
       <li className="cardLi">
         <dt className="everyimg">
-          <img key={this.props.key} src={this.props.src} alt={this.props.alt} />
+          <div className="mother">
+            <img
+              key={this.props.key}
+              src={this.props.src}
+              alt={this.props.alt}
+            />
+          </div>
         </dt>
         <dd>{this.props.alt}</dd>
       </li>

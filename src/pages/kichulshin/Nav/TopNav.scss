@@ -1,5 +1,21 @@
-header {
+.category {
   height: 70px;
   margin-bottom: 40px;
   background-color: #f6f5ef;
+}
+
+#logo {
+  display: inline-block;
+  margin: 20px 0px 0px 30px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.cate {
+  display: inline;
+  float: right;
+  margin: 25px 30px 0px 0px;
+  color: #555555;
+  text-decoration: none;
 }

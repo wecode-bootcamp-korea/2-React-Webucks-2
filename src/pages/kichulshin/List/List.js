@@ -1,7 +1,7 @@
 import React from 'react';
-import './List.scss';
-import CoffeeCard from '../coffeeCard/CoffeeCard';
 import TopNav from '../Nav/TopNav';
+import CoffeeCard from '../coffeeCard/CoffeeCard';
+import './List.scss';
 
 class List extends React.Component {
   constructor() {
@@ -24,6 +24,7 @@ class List extends React.Component {
   }
 
   render() {
+    const { firstProducts, secondProducts } = this.state;
     return (
       <div className="list">
         <TopNav />
@@ -39,7 +40,7 @@ class List extends React.Component {
               <span>디카페인 에스프레소 샷 추가 가능 (일부 음료 제외)</span>
             </dt>
             <ul className="coffeeCard">
-              {this.state.firstProducts.map(coldbrew => {
+              {firstProducts.map(coldbrew => {
                 return (
                   <CoffeeCard
                     key={coldbrew.id}
@@ -60,13 +61,13 @@ class List extends React.Component {
               />
               <span>디카페인 에스프레소 샷 추가 가능 (일부 음료 제외)</span>
             </dt>
-            <ul>
-              {this.state.secondProducts.map(product => {
+            <ul className="coffeeCard">
+              {secondProducts.map(brewed => {
                 return (
                   <CoffeeCard
-                    key={product.id}
-                    src={product.img}
-                    alt={product.name}
+                    key={brewed.id}
+                    src={brewed.img}
+                    alt={brewed.name}
                   />
                 );
               })}
