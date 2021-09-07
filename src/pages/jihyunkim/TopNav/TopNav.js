@@ -4,7 +4,7 @@ import '../TopNav/TopNav.scss';
 class TopNav extends React.Component {
   render() {
     return (
-      <div className="nav">
+      <header className="nav">
         <span className="navLeft">Webucks</span>
         <span className="navRight">
           <span>COFFEE</span>
@@ -12,7 +12,7 @@ class TopNav extends React.Component {
           <span>STORE</span>
           <span>WHAT'S NEW</span>
         </span>
-      </div>
+      </header>
     );
   }
 }

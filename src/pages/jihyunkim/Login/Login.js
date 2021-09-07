@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../styles/reset.scss';
+import { Link } from 'react-router-dom';
 import './Login.scss';
 
 class Login extends React.Component {
@@ -11,23 +11,16 @@ class Login extends React.Component {
       isActive: false,
     };
   }
-
-  handleIdInput = ev => {
+  handleInput = ev => {
+    const { value, name } = ev.target;
     this.setState({
-      id: ev.target.value,
-    });
-  };
-
-  handlePwInput = ev => {
-    this.setState({
-      pw: ev.target.value,
+      [name]: value,
     });
   };
 
   handleLoginBtn = () => {
-    this.state.id.includes('@') && this.state.pw.length >= 5
-      ? this.setState({ isActive: true })
-      : this.setState({ isActive: false });
+    const isValid = this.state.id.includes('@') && this.state.pw.length >= 8;
+    this.setState({ isActive: isValid ? true : false });
   };
 
   goToList = () => {
@@ -43,14 +36,16 @@ class Login extends React.Component {
           <h1 className="logo">Webucks</h1>
           <form onKeyUp={this.handleLoginBtn} className="loginInput">
             <input
-              onChange={this.handleIdInput}
+              onChange={this.handleInput}
               className="idInput"
+              name="id"
               type="text"
               placeholder="전화번호, 사용자 이름 또는 이메일"
             />
             <input
-              onChange={this.handlePwInput}
+              onChange={this.handleInput}
               className="pwInput"
+              name="pw"
               type="password"
               placeholder="비밀번호"
             />
@@ -63,7 +58,9 @@ class Login extends React.Component {
               로그인
             </button>
           </form>
-          <a href="www.naver.com">비밀번호를 잊으셨나요?</a>
+          <Link to="/login-jihyun">
+            <p>비밀번호를 잊으셨나요?</p>
+          </Link>
         </div>
       </div>
     );
