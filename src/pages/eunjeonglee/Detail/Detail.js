@@ -1,15 +1,13 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import '../../../styles/reset.scss';
-import '../../../styles/common.scss';
 import TopNav from '../TopNav/TopNav';
-import './Detail.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import {
   faHeart as solidHeart,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
+import './Detail.scss';
 
 class Detail extends React.Component {
   constructor() {

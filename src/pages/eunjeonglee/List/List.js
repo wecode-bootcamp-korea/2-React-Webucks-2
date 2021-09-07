@@ -1,18 +1,16 @@
 import React from 'react';
-import '../../../styles/reset.scss';
-import '../../../styles/common.scss';
 import TopNav from '../TopNav/TopNav';
-import './List.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import CoffeeCard from '../CoffeeCard/CoffeeCard';
+import './List.scss';
 
 class List extends React.Component {
   constructor() {
     super();
     this.state = {
-      products1: [],
-      products2: [],
+      firstProducts: [],
+      secondProducts: [],
     };
   }
 
@@ -23,8 +21,8 @@ class List extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.setState({
-          products1: data.FIRST_DATA,
-          products2: data.SECOND_DATA,
+          firstProducts: data.FIRST_DATA,
+          secondProducts: data.SECOND_DATA,
         });
       });
   }
@@ -41,7 +39,7 @@ class List extends React.Component {
 
         <section className="coffee">
           <ul className="items">
-            {this.state.products1.map(product => {
+            {this.state.firstProducts.map(product => {
               return (
                 <CoffeeCard
                   key={product.id}
@@ -61,7 +59,7 @@ class List extends React.Component {
 
         <section className="coffee">
           <ul className="items" id="brewedItmes">
-            {this.state.products2.map(product => {
+            {this.state.secondProducts.map(product => {
               return (
                 <CoffeeCard
                   key={product.id}

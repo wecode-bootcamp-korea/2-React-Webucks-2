@@ -1,6 +1,4 @@
 import React from 'react';
-import '../../../styles/common.scss';
-import '../../../styles/reset.scss';
 import './Login.scss';
 
 class Login extends React.Component {
@@ -12,7 +10,6 @@ class Login extends React.Component {
       logIn: false,
     };
   }
-
   handleInput = event => {
     this.setState({
       [event.target.name]: event.target.value,

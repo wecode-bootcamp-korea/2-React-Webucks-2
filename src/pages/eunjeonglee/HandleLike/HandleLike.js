@@ -2,7 +2,6 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
-import './HandleLike.scss';
 
 class HandleLike extends React.Component {
   constructor() {
@@ -18,7 +17,6 @@ class HandleLike extends React.Component {
     });
   };
 
-  // eslint-disable-next-line react/require-render-return
   render() {
     return (
       <span id="heartIcon">
