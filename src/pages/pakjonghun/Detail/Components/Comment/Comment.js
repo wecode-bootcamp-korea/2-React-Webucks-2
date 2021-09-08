@@ -32,8 +32,8 @@ class Comment extends React.Component {
     this.setState(() => ({ desc: value }));
   };
 
-  saveComment = comment => {
-    this.setState({ comments: comment });
+  saveComment = comments => {
+    this.setState({ comments });
   };
 
   deleteComment = id => {

@@ -2,9 +2,9 @@ import React from 'react';
 export const CoffeeContext = React.createContext();
 
 class CoffeeContextContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { db1: [], db2: [] };
+  constructor() {
+    super();
+    this.state = { wonderCoffees: [], freshCoffees: [] };
   }
 
   updateById = (id, layoutName) => {
@@ -30,27 +30,25 @@ class CoffeeContextContainer extends React.Component {
 
   findDbByName(name) {
     const {
-      state: { db1, db2 },
+      state: { wonderCoffeeList, freshCoffeeList },
     } = this;
-    return name === 'db1' ? db1 : db2;
+    return name === 'wonderCoffeeList' ? wonderCoffeeList : freshCoffeeList;
   }
 
   componentDidMount() {
     fetch('/data/data.json')
       .then(res => res.json())
       .then(data => {
-        const db1 = data.data1.map(item => {
+        const wonderCoffeeList = data.wonderCoffeeList.map(item => {
           item.isLike = false;
           return item;
         });
 
-        this.setState({ db1 });
-
-        const db2 = data.data2.map(item => {
+        const freshCoffeeList = data.freshCoffeeList.map(item => {
           item.isLike = false;
           return item;
         });
-        this.setState({ db2 });
+        this.setState({ freshCoffeeList, wonderCoffeeList });
       });
   }
 
@@ -59,11 +57,12 @@ class CoffeeContextContainer extends React.Component {
       findHeartById,
       updateById,
       props: { children },
-      state: { db1, db2 },
+      state: { wonderCoffeeList, freshCoffeeList },
     } = this;
-
     return (
-      <CoffeeContext.Provider value={{ db1, db2, updateById, findHeartById }}>
+      <CoffeeContext.Provider
+        value={{ wonderCoffeeList, freshCoffeeList, updateById, findHeartById }}
+      >
         {children}
       </CoffeeContext.Provider>
     );

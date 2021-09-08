@@ -9,16 +9,16 @@ class List extends React.Component {
 
   render() {
     const {
-      context: { db1, db2, updateById },
+      context: { wonderCoffeeList, freshCoffeeList, updateById },
     } = this;
     return (
       <div className="List">
         <Nav />
         <CoffeeLayout>
-          {db1.map(item => {
+          {wonderCoffeeList.map(item => {
             return (
               <CoffeCard
-                layoutName={'db1'}
+                layoutName={'wonderCoffeeList'}
                 item={item}
                 key={item.id}
                 updateById={updateById}
@@ -27,10 +27,10 @@ class List extends React.Component {
           })}
         </CoffeeLayout>
         <CoffeeLayout>
-          {db2.map(item => {
+          {freshCoffeeList.map(item => {
             return (
               <CoffeCard
-                layoutName={'db2'}
+                layoutName={'freshCoffeeList'}
                 item={item}
                 key={item.id}
                 updateById={updateById}

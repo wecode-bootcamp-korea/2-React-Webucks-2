@@ -10,29 +10,27 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = { id: '', pw: '', pwType: 'password' };
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
   }
 
-  onChange(e) {
+  onChange = e => {
     const {
       target: { value, name },
     } = e;
 
     this.setState({ [name]: value });
-  }
+  };
 
-  onSubmit(isValid) {
+  onSubmit = isValid => {
     if (isValid) this.props.history.push('list-jonghun');
-  }
+  };
 
-  checkValid() {
+  checkValid = () => {
     const {
       state: { id, pw },
     } = this;
 
     return id.includes('@') && pw.length >= 5;
-  }
+  };
 
   render() {
     const {
@@ -41,22 +39,21 @@ class Login extends React.Component {
       onSubmit,
       state: { id, pw, pwType },
     } = this;
-    const isValid = checkValid();
     return (
       <div className="Login">
         <section className="loginContainer">
-          <Form callBack={onSubmit} isValid={isValid}>
+          <Form callBack={onSubmit} isValid={checkValid()}>
             <h1 className="title">WeBucks</h1>
 
             <Input
               name="id"
               value={id}
               onChange={onChange}
-              className={`idInput ${id.includes('@') ? 'green' : null} `}
+              className={`idInput ${id.includes('@') ? 'green' : ''} `}
               placeholder={'ID나 이메일을 입력하세요'}
             />
 
-            <div className={`pwInput ${pw.length >= 5 ? 'green' : null}`}>
+            <div className={`pwInput ${pw.length >= 5 ? 'green' : ''}`}>
               <Input
                 name="pw"
                 value={pw}
@@ -79,7 +76,7 @@ class Login extends React.Component {
             </div>
 
             <Input
-              className={`loginSubmit ${isValid ? 'active' : 'null'}`}
+              className={`loginSubmit ${checkValid() ? 'active' : ''}`}
               type="submit"
               placeholder="비밀번호를 입력하세요"
               value="로그인"

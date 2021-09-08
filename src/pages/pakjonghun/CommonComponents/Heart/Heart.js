@@ -12,7 +12,7 @@ class Heart extends React.Component {
       <div className={'Heart'}>
         <FontAwesomeIcon
           icon={faHeart}
-          className={`heartIcon ${isLike ? 'red' : null}`}
+          className={`heartIcon ${isLike ? 'red' : ''}`}
           onClick={() => updateById(id, layoutName)}
         />
       </div>
