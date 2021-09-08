@@ -43,7 +43,7 @@ class Comment extends React.Component {
 
   updateComment = id => {
     const updateComments = this.state.comments.map(item => {
-      if (item.id == id) {
+      if (item.id === id) {
         item.isLike = !item.isLike;
       }
       return item;

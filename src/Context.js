@@ -58,12 +58,13 @@ class CoffeeContextContainer extends React.Component {
     const {
       findHeartById,
       updateById,
+      props: { children },
       state: { db1, db2 },
     } = this;
 
     return (
       <CoffeeContext.Provider value={{ db1, db2, updateById, findHeartById }}>
-        {this.props.children}
+        {children}
       </CoffeeContext.Provider>
     );
   }

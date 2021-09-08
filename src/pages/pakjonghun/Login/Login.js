@@ -58,7 +58,7 @@ class Login extends React.Component {
               <span
                 className="passwordIcon"
                 onClick={() => {
-                  if (this.state.pwType === 'password') {
+                  if (pwType === 'password') {
                     this.setState({ pwType: 'text' });
                   } else {
                     this.setState({ pwType: 'password' });
