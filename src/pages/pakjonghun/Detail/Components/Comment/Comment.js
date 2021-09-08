@@ -16,13 +16,13 @@ class Comment extends React.Component {
 
   onSubmit = () => {
     const comment = {
-      id: this.state.comments.length,
+      id: this.state.comments.length + Date.now(),
       writer: '익명',
       desc: this.state.desc,
       isLike: false,
     };
 
-    this.setState({ comments: [...this.state.comments, comment], desc: '' });
+    this.setState({ comments: [comment, ...this.state.comments], desc: '' });
   };
 
   onChange = e => {
@@ -62,6 +62,13 @@ class Comment extends React.Component {
 
     return (
       <div className="Comment">
+        <Form callBack={onSubmit}>
+          <Input
+            placeholder="댓글을 적읍시다"
+            value={desc}
+            onChange={onChange}
+          />
+        </Form>
         {this.state.comments.map(({ writer, desc, isLike, id }) => {
           return (
             <DummyComment
@@ -76,13 +83,6 @@ class Comment extends React.Component {
             </DummyComment>
           );
         })}
-        <Form callBack={onSubmit}>
-          <Input
-            placeholder="댓글을 적읍시다"
-            value={desc}
-            onChange={onChange}
-          />
-        </Form>
       </div>
     );
   }

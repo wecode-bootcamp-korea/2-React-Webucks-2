@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import BorderLine from './Components/BorderLine/BorderLine';
-import Footer from './Components/Footer/Footer';
 import Heart from '../CommonComponents/Heart/Heart';
 import Comment from './Components/Comment/Comment';
 import Nav from '../CommonComponents/Nav/Nav';
@@ -31,7 +30,6 @@ class Detail extends React.Component {
 
     return (
       <div className="Detail">
-        <Nav />
         <main className="diviedGrid">
           <Photo img={img} name={name} className={'detailImg'} />
           <div>
@@ -54,46 +52,50 @@ class Detail extends React.Component {
               부드럽게 어우러진 커피
             </span>
 
-            <BorderLine className={'detailLine'} />
-
             <div className="detailIngredient">
-              <h3>제품 영양 정보</h3>
-              <br />
-              <h3>Tall(톨)/355ml(12 fl oz)</h3>
-            </div>
-
-            <BorderLine className={'deatilLightLine'} />
-
-            <div className="detailIngredient diviedGrid">
-              <div className="ingredientColumn">
-                <div className="ingredientRow">
-                  <span>1회 지공량(kcal)</span>
-                  <span>345</span>
-                </div>
-                <div className="ingredientRow">
-                  <span>포화지방(g)</span>
-                  <span>11</span>
-                </div>
-                <div className="ingredientRow">
-                  <span>단백질(g)</span>
-                  <span>11</span>
-                </div>
-              </div>
-
-              <div className="ingredientColumn">
-                <div className="ingredientRow">
-                  <span>나트륨(mg)</span>
-                  <span>150</span>
-                </div>
-                <div className="ingredientRow">
-                  <span>당류(g)</span>
-                  <span>35</span>
-                </div>
-                <div className="ingredientRow">
-                  <span>카페인(mg)</span>
-                  <span>75</span>
-                </div>
-              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <td colSpan="4">영양소</td>
+                    <td colSpan="4">영양소</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>단백질</td>
+                    <td>200</td>
+                    <td>단백질</td>
+                    <td>500</td>
+                    <td>단백질</td>
+                    <td>200</td>
+                    <td>단백질</td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td>단백질</td>
+                    <td>200</td>
+                    <td>단백질</td>
+                    <td>500</td>
+                    <td>단백질</td>
+                    <td>200</td>
+                    <td>단백질</td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td>단백질</td>
+                    <td>200</td>
+                    <td>단백질</td>
+                    <td>500</td>
+                    <td>단백질</td>
+                    <td>200</td>
+                    <td>단백질</td>
+                    <td>500</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
 
             <div className="ingredientAllegy">
@@ -108,7 +110,6 @@ class Detail extends React.Component {
             </div>
           </div>
         </main>
-        <Footer />
       </div>
     );
   }

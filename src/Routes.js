@@ -25,6 +25,8 @@ import DetailSeong from './pages/seongjisue/Detail/Detail';
 import LoginPak from './pages/pakjonghun/Login/Login';
 import ListPak from './pages/pakjonghun/List/List';
 import DetailPak from './pages/pakjonghun/Detail/Detail';
+import Nav from './pages/pakjonghun/CommonComponents/Nav/Nav';
+import Footer from './pages/pakjonghun/Detail/Components/Footer/Footer';
 
 class Routes extends React.Component {
   render() {
@@ -52,8 +54,15 @@ class Routes extends React.Component {
           <Route exact path="/detail-jisue" component={DetailSeong} />
 
           <Route exact path="/login-jonghun" component={LoginPak} />
-          <Route exact path="/list-jonghun" component={ListPak} />
-          <Route exact path="/detail-jonghun/:id" component={DetailPak} />
+          <Route path="/list-jonghun">
+            <Nav />
+            <ListPak />
+          </Route>
+          <Route path="/detail-jonghun/:id">
+            <Nav />
+            <DetailPak />
+            <Footer />
+          </Route>
         </Switch>
       </Router>
     );

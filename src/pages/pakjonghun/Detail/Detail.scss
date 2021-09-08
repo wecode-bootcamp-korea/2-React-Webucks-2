@@ -1,6 +1,7 @@
 @import '../../../styles//mixin.scss';
 
 .Detail {
+  margin: 0 10px;
   .detail__outer-container {
     padding: 0 20px;
     padding-bottom: 200px;
@@ -10,16 +11,6 @@
     padding: 10px 5px;
     margin-top: 5px;
     background-color: lightgray;
-  }
-
-  .ingredientColumn:not(:last-child) {
-    padding: 10px 5px;
-    border-right: 1px solid lightgray;
-  }
-
-  .ingredientRow {
-    @include flex($justify: space-between);
-    margin-bottom: 5px;
   }
 
   .detailIngredient {
@@ -42,10 +33,6 @@
     grid-template-columns: minmax(200px, 0.5fr) minmax(300px, 1fr);
   }
 
-  .detailIngredient {
-    grid-template-columns: 1fr 1fr;
-  }
-
   h3 {
     margin: 10px 5px;
     font-size: 20px;
@@ -59,5 +46,50 @@
   .red {
     color: red;
     font-weight: 900;
+  }
+
+  table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+
+    td,
+    tr {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    thead {
+      tr,
+      td {
+        padding: 12px;
+      }
+      tr {
+        td {
+          font-size: 18px;
+        }
+        border-bottom: 2px solid gray;
+      }
+    }
+    tbody {
+      width: 100%;
+      tr:first-child {
+        opacity: 0;
+        font-size: 1px;
+      }
+
+      tr,
+      td {
+        padding: 8px;
+      }
+
+      tr {
+        margin-top: 25px;
+      }
+
+      td:nth-child(4) {
+        border-right: 1px solid gray;
+      }
+    }
   }
 }

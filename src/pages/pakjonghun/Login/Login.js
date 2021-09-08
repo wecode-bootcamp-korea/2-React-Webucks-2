@@ -16,7 +16,6 @@ class Login extends React.Component {
     const {
       target: { value, name },
     } = e;
-
     this.setState({ [name]: value });
   };
 
@@ -28,7 +27,6 @@ class Login extends React.Component {
     const {
       state: { id, pw },
     } = this;
-
     return id.includes('@') && pw.length >= 5;
   };
 

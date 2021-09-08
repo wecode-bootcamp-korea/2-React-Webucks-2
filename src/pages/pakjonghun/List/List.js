@@ -1,8 +1,8 @@
 import CoffeeLayout from './Components/CoffeeListLayout/CoffeeListLayout';
 import CoffeCard from './Components/CoffeeCard/CoffeCard';
-import Nav from '../CommonComponents/Nav/Nav';
 import React from 'react';
 import { CoffeeContext } from '../../../Context';
+import './List.scss';
 
 class List extends React.Component {
   static contextType = CoffeeContext;
@@ -13,7 +13,6 @@ class List extends React.Component {
     } = this;
     return (
       <div className="List">
-        <Nav />
         <CoffeeLayout>
           {wonderCoffeeList.map(item => {
             return (
