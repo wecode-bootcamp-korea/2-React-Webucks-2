@@ -22,7 +22,7 @@ class Comment extends React.Component {
       isLike: false,
     };
 
-    this.setState({ comments: [...this.state.comments, comment] });
+    this.setState({ comments: [...this.state.comments, comment], desc: '' });
   };
 
   onChange = e => {
