@@ -26,13 +26,22 @@ class Login extends React.Component {
     if (isValid) this.props.history.push('list-jonghun');
   }
 
+  checkValid() {
+    const {
+      state: { id, pw },
+    } = this;
+
+    return id.includes('@') && pw.length >= 5;
+  }
+
   render() {
     const {
+      checkValid,
       onChange,
       onSubmit,
       state: { id, pw, pwType },
     } = this;
-    const isValid = id.includes('@') && pw.length >= 5;
+    const isValid = checkValid();
     return (
       <div className="Login">
         <section className="loginContainer">
