@@ -7,52 +7,48 @@ class Login extends React.Component {
     this.state = {
       inputId: '',
       inputPw: '',
-      isIdPwValid: false,
     };
   }
-  handleIdInput = event => {
-    this.setState({ inputId: event.target.value }, this.checkValid);
-  };
 
-  handlePwInput = event => {
-    this.setState({ inputPw: event.target.value }, this.checkValid);
-  };
-
-  checkValid = () => {
-    const isValid =
-      this.state.inputId.indexOf('@') >= 0 && this.state.inputPw.length > 7;
-    this.setState({ isIdPwValid: isValid });
+  handleIdPwInput = event => {
+    const { value, name } = event.target;
+    this.setState({
+      [name]: value,
+    });
   };
 
   moveToList = () => {
-    if (this.state.isIdPwValid) {
-      this.props.history.push('/list-kichul');
-    }
+    this.props.history.push('/list-kichul');
   };
+
   render() {
-    const { handleIdInput, handlePwInput, moveToList } = this;
-    const { isIdPwValid } = this.state;
+    const { handleIdPwInput, moveToList } = this;
+    const isValid =
+      this.state.inputId.indexOf('@') >= 0 && this.state.inputPw.length > 7;
+
     return (
       <div className="Login">
-        <section class="loginall">
+        <section className="loginall">
           <h1>WeBucks</h1>
           <form>
             <input
               id="namemail"
               type="text"
               placeholder="전화번호, 사용자 이름 또는 이메일"
-              onChange={handleIdInput}
+              name="inputId"
+              onChange={handleIdPwInput}
             />
             <input
               id="pwput"
               type="password"
               placeholder="비밀번호"
-              onChange={handlePwInput}
+              name="inputPw"
+              onChange={handleIdPwInput}
             />
             <button
-              className={isIdPwValid ? 'valid' : 'invalid'}
+              className={isValid ? 'valid' : 'invalid'}
               id="logbtn"
-              disabled={isIdPwValid ? null : 'disabled'}
+              disabled={isValid ? null : 'disabled'}
               onClick={moveToList}
             >
               로그인

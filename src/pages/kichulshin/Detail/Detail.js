@@ -30,9 +30,9 @@ class Detail extends React.Component {
 
   addReview = putReview => {
     if (putReview.key === 'Enter' && putReview.target.value !== '') {
-      this.state.reviewArr.push(this.state.review);
       putReview.target.value = '';
       this.setState({
+        reviewArr: this.state.reviewArr.concat(this.state.review),
         review: '',
       });
     }
@@ -99,7 +99,7 @@ class Detail extends React.Component {
                         </li>
                       </ul>
                       <ul className="nutritionRight">
-                        <li class="natrium">
+                        <li className="natrium">
                           <div>나트륨 (mg)</div>
                           <div>115</div>
                         </li>
@@ -123,7 +123,7 @@ class Detail extends React.Component {
                 <ul className="review">
                   {this.state.reviewArr.map((comment, id) => {
                     return (
-                      <li className="comment">
+                      <li className="comment" key={id}>
                         {comment}
                         <span
                           key={id}

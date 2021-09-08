@@ -1,37 +1,28 @@
 .coffeeCard {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
-  list-style: none;
-  width: 100%;
-  padding: 0px;
-}
-
-.cardLi {
   display: inline-block;
   width: 100%;
   height: auto;
   overflow: hidden;
   margin-bottom: 20px;
   font-size: 85%;
-}
 
-dd {
-  text-align: center;
-}
+  dd {
+    text-align: center;
+  }
 
-.everyimg {
-  margin-bottom: 5px;
-  overflow: hidden;
+  .everyimg {
+    margin-bottom: 5px;
+    overflow: hidden;
 
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
 
-    &:hover {
-      transform: scale(1.1, 1.1);
-      transition-duration: 1ms;
+      &:hover {
+        transform: scale(1.1, 1.1);
+        transition-duration: 1ms;
+      }
     }
   }
 }

@@ -5,17 +5,15 @@ import './CoffeeCard.scss';
 class CoffeeCard extends React.Component {
   render() {
     return (
-      <li className="cardLi">
+      <li className="coffeeCard">
         <dt className="everyimg">
-          <div className="mother">
-            <Link to="/detail-kichul">
-              <img
-                key={this.props.key}
-                src={this.props.src}
-                alt={this.props.alt}
-              />
-            </Link>
-          </div>
+          <Link to="/detail-kichul">
+            <img
+              key={this.props.id}
+              src={this.props.src}
+              alt={this.props.alt}
+            />
+          </Link>
         </dt>
         <dd>{this.props.alt}</dd>
       </li>
