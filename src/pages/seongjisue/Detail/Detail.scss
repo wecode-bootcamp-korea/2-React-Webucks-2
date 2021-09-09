@@ -22,6 +22,7 @@
         @include fontSizeWight(24px, bold);
         margin: 20px 0 20px 0;
       }
+
       &Root {
         @include flexStyle(none, flex-end);
         @include fontSizeWight(10px, bold, #c0c0ba);

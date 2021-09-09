@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class DtlFooter extends Component {
+class DetailFooter extends Component {
   constructor() {
     super();
     this.state = {
@@ -25,10 +25,14 @@ class DtlFooter extends Component {
         <div className="footerList">
           {dtlData.map(dtTitle => {
             return (
-              <ul className="footerMenu">
+              <ul className="footerMenu" key={dtTitle.id}>
                 <li id="footerTitle">{dtTitle.title}</li>
-                {dtTitle.menu.map(dtList => {
-                  return <li className="footerMiddle">{dtList}</li>;
+                {dtTitle.menu.map((dtList, index) => {
+                  return (
+                    <li className="footerMiddle" key={index}>
+                      {dtList}
+                    </li>
+                  );
                 })}
               </ul>
             );
@@ -39,4 +43,4 @@ class DtlFooter extends Component {
   }
 }
 
-export default DtlFooter;
+export default DetailFooter;

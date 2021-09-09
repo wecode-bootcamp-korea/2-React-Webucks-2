@@ -5,8 +5,8 @@ class CoffeeTitle extends Component {
   constructor() {
     super();
     this.state = {
-      mainTitle: [],
-      subTitle: [],
+      coldData: [],
+      brewData: [],
     };
   }
 
@@ -14,15 +14,17 @@ class CoffeeTitle extends Component {
     fetch('http://localhost:3000/data/listData.json')
       .then(res => res.json())
       .then(data => {
+        const coldData = data.filter(el => el.id < 200);
+        const brewData = data.filter(el => el.id > 200);
         this.setState({
-          mainTitle: data['FISRT_DATA'],
-          subTitle: data['SECOND_DATA'],
+          coldData,
+          brewData,
         });
       });
   }
 
   render() {
-    const { mainTitle, subTitle } = this.state;
+    const { coldData, brewData } = this.state;
     return (
       <div>
         <section>
@@ -38,9 +40,8 @@ class CoffeeTitle extends Component {
             </p>
           </header>
           <main className="menuList">
-            {mainTitle.map(el => {
-              const { id, name, img } = el;
-              return <CoffeeCard value={{ id, name, img }} />;
+            {coldData.map(el => {
+              return <CoffeeCard data={{ ...el }} key={el.id} />;
             })}
           </main>
         </section>
@@ -58,9 +59,8 @@ class CoffeeTitle extends Component {
             </p>
           </header>
           <main className="menuList">
-            {subTitle.map(el => {
-              const { id, name, img } = el;
-              return <CoffeeCard value={{ id, name, img }} />;
+            {brewData.map(el => {
+              return <CoffeeCard data={{ ...el }} key={el.id} />;
             })}
           </main>
         </section>

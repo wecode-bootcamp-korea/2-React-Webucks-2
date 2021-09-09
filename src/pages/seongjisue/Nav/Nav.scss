@@ -31,6 +31,7 @@
 
     #navbarMenu {
       margin: 16px 0 16px 0;
+
       li {
         @include fontSizeWight(12px, bold, #c0c0ba);
         margin-right: 20px;

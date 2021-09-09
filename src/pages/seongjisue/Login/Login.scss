@@ -18,7 +18,7 @@
 
     h1 {
       @include fontSizeWight(60px, bold);
-      margin: 40px 0 40px 0;
+      margin: 40px 0;
       font-family: 'Dancing Script', cursive;
     }
 
@@ -29,7 +29,13 @@
       height: 40px;
       border: 1px solid gainsboro;
       border-radius: 5px;
+      &:focus {
+        outline: none;
+      }
       &.inputBox {
+        &.inputColorChange {
+          border: 3px solid blue;
+        }
         padding: 0 0 0 15px;
         background-color: #f7f7f7;
       }
@@ -40,6 +46,7 @@
       background-color: #add3eb;
       opacity: $opacitySize;
       cursor: pointer;
+
       &.active {
         background-color: blue;
       }

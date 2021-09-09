@@ -7,40 +7,52 @@ class Review extends Component {
   constructor() {
     super();
     this.state = {
+      isLiked: false,
       name: '',
-      content: '',
-      list: [
+      comment: '',
+      cmntList: [
         {
           id: 1,
           name: '위코드!',
-          content: '리뷰를 입력해라!',
+          comment: '리뷰를 입력해라!',
         },
       ],
     };
   }
+
+  clickLiked = () => {
+    let { isLiked } = this.state;
+    this.setState({
+      isLiked: !isLiked,
+    });
+  };
+
   onChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
 
   onKeyUp = e => {
-    if (e.keyCode === 13 && this.state.name && this.state.content) {
-      const { name, content, list } = this.state;
+    if (e.keyCode === 13 && this.state.name && this.state.comment) {
+      const { name, comment, cmntList } = this.state;
       this.setState({
-        list: list.concat({
-          id: list.length ? list[list.length - 1].id + 1 : 1,
-          name,
-          content,
-        }),
+        cmntList: [
+          ...cmntList,
+          {
+            id: cmntList.length ? cmntList[cmntList.length - 1].id + 1 : 1,
+            name,
+            comment,
+          },
+        ],
         name: '',
-        content: '',
+        comment: '',
       });
     }
   };
 
-  reviewDelete = content => {
-    const list = this.state.list.filter(el => el.id !== content.id);
-    this.setState({ list });
+  reviewDelete = id => {
+    const cmntList = this.state.cmntList.filter(el => el.id !== id);
+    this.setState({ cmntList });
   };
 
   render() {
@@ -48,19 +60,24 @@ class Review extends Component {
       <footer className="contentFooter">
         <h5>리뷰</h5>
         <div>
-          {this.state.list.map(el => {
+          {this.state.cmntList.map(el => {
+            const { id, name } = el;
             return (
-              <div className="reveiwResults" key={el.id}>
-                <span className="reveiwContent">{el.name}</span>
-                <p>{el.content}</p>
+              <div className="reveiwResults" key={id}>
+                <span className="reveiwContent">{name}</span>
+                <p>{el.comment}</p>
                 <FontAwesomeIcon
                   icon={faRemoveFormat}
                   className="reviewDelete"
                   onClick={() => {
-                    this.reviewDelete(el);
+                    this.reviewDelete(id);
                   }}
                 />
-                <HeartIcon className="reviewHeart" />
+                <HeartIcon
+                  className="reviewHeart"
+                  isLiked={this.state.isLiked}
+                  clickLiked={this.clickLiked}
+                />
               </div>
             );
           })}
@@ -77,8 +94,8 @@ class Review extends Component {
           <input
             type="text"
             placeholder="리뷰를 입력해주세요(엔터를 눌러주세요.)"
-            name="content"
-            value={this.state.content}
+            name="comment"
+            value={this.state.comment}
             className="reviewPw"
             onChange={this.onChange}
             onKeyUp={this.onKeyUp}

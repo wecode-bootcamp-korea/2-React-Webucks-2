@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Nav from '../Nav/Nav';
-import DtlFooter from './DtlFooter';
-import DtlMain from './DtlMain';
+import DetailFooter from './DetailFooter';
+import DetailMain from './DetailMain';
 import './Detail.scss';
 
 class Detail extends Component {
@@ -12,8 +12,8 @@ class Detail extends Component {
           <div id="sub">
             <Nav />
           </div>
-          <DtlMain />
-          <DtlFooter />
+          <DetailMain />
+          <DetailFooter />
         </div>
       </div>
     );

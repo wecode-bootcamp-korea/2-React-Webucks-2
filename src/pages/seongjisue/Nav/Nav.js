@@ -4,7 +4,7 @@ import './Nav.scss';
 class Nav extends Component {
   render() {
     return (
-      <div className="Nav">
+      <nav className="Nav">
         <header className="navbar">
           <div className="navbarFlex">
             <h1>JiBucks</h1>
@@ -21,7 +21,7 @@ class Nav extends Component {
             <li>WHAT'S NEW</li>
           </ul>
         </header>
-      </div>
+      </nav>
     );
   }
 }
