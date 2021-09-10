@@ -3,25 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
 class ReviewLike extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      isLike: false,
-    };
-  }
-
-  checkLike = () => {
-    this.setState({
-      isLike: !this.state.isLike,
-    });
-  };
-
   render() {
+    const { checkReviewLike, isLiked, id } = this.props;
     return (
       <FontAwesomeIcon
-        onClick={this.checkLike}
+        onClick={() => checkReviewLike(id)}
         icon={faThumbsUp}
-        className={this.state.isLike ? 'like' : 'remove'}
+        className={isLiked ? 'like' : 'remove'}
       />
     );
   }

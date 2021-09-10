@@ -11,14 +11,13 @@ class List extends React.Component {
     this.state = {
       firstProducts: [],
       secondProducts: [],
-      isRed: false,
+      isLiked: false,
     };
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/listData.json', {})
+    fetch('http://localhost:3000/data/listData.json')
       .then(res => res.json())
-
       .then(data => {
         this.setState({
           firstProducts: data.FIRST_DATA,

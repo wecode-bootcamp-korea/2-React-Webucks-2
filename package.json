@@ -44,6 +44,8 @@
   "devDependencies": {
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "http-proxy-middleware": "^2.0.1",
     "prettier": "^2.3.2"
-  }
+  },
+  "proxy": "http://52.79.143.176:8000"
 }

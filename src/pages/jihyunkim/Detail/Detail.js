@@ -10,16 +10,17 @@ class Detail extends React.Component {
   constructor() {
     super();
     this.state = {
-      isLike: false,
+      isLiked: false,
       review: '',
       reviewList: [],
+      id: 0,
     };
   }
 
   checkLike = () => {
-    const { isLike } = this.state;
+    const { isLiked } = this.state;
     this.setState({
-      isLike: !isLike,
+      isLiked: !isLiked,
       icon: { fasHeart },
     });
   };
@@ -32,22 +33,43 @@ class Detail extends React.Component {
   };
 
   addReview = ev => {
-    const { reviewList, review } = this.state;
-    if (ev.key === 'Enter' && ev.target.value !== '') {
+    const { reviewList, review, id } = this.state;
+    if (ev.key === 'Enter') {
       ev.preventDefault();
-      reviewList.push(review);
       ev.target.value = '';
+      if (review !== '') {
+        const newReview = {
+          id: id + 1,
+          comment: review,
+          isLikedReview: false,
+        };
+        this.setState({
+          id: id + 1,
+          review: '',
+          reviewList: [...reviewList, newReview],
+        });
+      }
+    }
+  };
+
+  checkReviewLike = id => {
+    const { reviewList } = this.state;
+    const newReviewList = [...reviewList];
+    for (let i = 0; i < newReviewList.length; i++) {
+      if (newReviewList[i].id === id) {
+        newReviewList[i].isLikedReview = !newReviewList[i].isLikedReview;
+      }
       this.setState({
-        review: '',
+        reviewList: newReviewList,
       });
     }
   };
 
-  deleteReview = idx => {
+  deleteReview = id => {
     const { reviewList } = this.state;
-    reviewList.splice(idx, 1);
-    const { newReviewList } = reviewList;
-    this.setState({ reviews: newReviewList });
+    this.setState({
+      reviewList: reviewList.filter(review => review.id !== id),
+    });
   };
 
   render() {
@@ -68,7 +90,6 @@ class Detail extends React.Component {
                 src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[9200000002081]_20210415133656839.jpg"
                 alt="돌체 콜드 브루"
               />
-              ;
             </div>
             <div className="DetailRight">
               <div className="DetailRightTitle">
@@ -79,8 +100,8 @@ class Detail extends React.Component {
                 <div className="like">
                   <FontAwesomeIcon
                     onClick={this.checkLike}
-                    icon={this.state.isLike ? fasHeart : farHeart}
-                    className={this.state.isLike ? 'fas' : 'fa-heart'}
+                    icon={this.state.isLiked ? fasHeart : farHeart}
+                    className={this.state.isLiked ? 'fas' : 'fa-heart'}
                   />
                 </div>
               </div>
@@ -133,18 +154,21 @@ class Detail extends React.Component {
               <div className="detailRightReview">
                 <div id="reviewTitle">리뷰</div>
                 <ul className="reviews">
-                  {this.state.reviewList.map((review, idx) => {
+                  {this.state.reviewList.map((review, id) => {
                     return (
-                      <li className="review">
-                        <p>{review}</p>
+                      <li key={review.id} className="review">
+                        <p>{review.comment}</p>
                         <span>
-                          <ReviewLike />
+                          <ReviewLike
+                            checkReviewLike={this.checkReviewLike}
+                            id={review.id}
+                            isLiked={review.isLikedReview}
+                          />
                           &nbsp; &nbsp;
                           <span
-                            key={idx}
                             className="reviewDelete"
                             onClick={() => {
-                              this.deleteReview(idx);
+                              this.deleteReview(review.id);
                             }}
                           >
                             ❌
@@ -158,7 +182,7 @@ class Detail extends React.Component {
                   <input
                     onChange={this.handleReviewInput}
                     onKeyPress={this.addReview}
-                    id="reviewInput"
+                    className="reviewInput"
                     type="text"
                     placeholder="리뷰를 입력해주세요"
                   />

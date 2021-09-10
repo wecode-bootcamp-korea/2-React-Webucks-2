@@ -8,13 +8,14 @@ class CoffeeCard extends React.Component {
   constructor() {
     super();
     this.state = {
-      isRed: false,
+      isLiked: false,
     };
   }
 
   checkLike = () => {
+    const { isLiked } = this.state;
     this.setState({
-      isRed: !this.state.isRed,
+      isLiked: !isLiked,
       icon: { fasHeart },
     });
   };
@@ -24,11 +25,7 @@ class CoffeeCard extends React.Component {
       <li className="coffee">
         <div className="coffeeImage">
           <Link to="/detail-jihyun">
-            <img
-              key={this.props.key}
-              src={this.props.src}
-              alt={this.props.alt}
-            />
+            <img src={this.props.src} alt={this.props.alt} />
           </Link>
         </div>
         <p>
@@ -36,8 +33,8 @@ class CoffeeCard extends React.Component {
           &nbsp;
           <FontAwesomeIcon
             onClick={this.checkLike}
-            icon={this.state.isRed ? fasHeart : farHeart}
-            className={this.state.isRed ? 'fas' : 'fa-heart'}
+            icon={this.state.isLiked ? fasHeart : farHeart}
+            className={this.state.isLiked ? 'fas' : 'fa-heart'}
           />
         </p>
       </li>

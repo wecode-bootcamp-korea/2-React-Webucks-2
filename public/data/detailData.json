@@ -44,9 +44,9 @@
       "sugars": 29,
       "Caffeine": 150,
       "rewiew": [
-        { "id": "coffee_lover", "text": "너무 맛있어요!" },
-        { "id": "coffee_lover", "text": "너무 맛있어요!" },
-        { "id": "coffee_lover", "text": "너무 맛있어요!" }
+        { "id": 1, "text": "너무 맛있어요!", "isLike": false },
+        { "id": 2, "text": "너무 맛있어요!", "isLike": true },
+        { "id": 3, "text": "너무 맛있어요!", "isLike": true }
       ]
     }
   ]

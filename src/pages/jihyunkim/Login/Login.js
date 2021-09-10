@@ -18,19 +18,49 @@ class Login extends React.Component {
     });
   };
 
-  goToList = () => {
-    this.props.history.push('/list-jihyun');
+  signUp = () => {
+    fetch('/users/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: this.state.id,
+        password: this.state.pw,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => console.log(result));
   };
 
+  login = () => {
+    fetch('/users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: this.state.id,
+        password: this.state.pw,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+        if (result.token) {
+          this.props.history.push('/list-jihyun');
+        }
+      });
+  };
   render() {
-    const { handleLoginBtn, handleInput, goToList } = this;
+    const { handleInput, signUp, login } = this;
     const isValid = this.state.id.includes('@') && this.state.pw.length >= 5;
 
     return (
       <div className="Login">
         <div className="loginBox">
           <h1 className="logo">Webucks</h1>
-          <form onKeyUp={handleLoginBtn} className="loginInput">
+          <div className="loginInput">
             <input
               onChange={handleInput}
               className="idInput"
@@ -46,13 +76,20 @@ class Login extends React.Component {
               placeholder="비밀번호"
             />
             <button
-              onClick={goToList}
+              onClick={login}
               className={isValid ? 'loginButton active' : 'loginButton'}
-              disabled={isValid ? false : true}
+              disabled={!isValid}
             >
               로그인
             </button>
-          </form>
+            <button
+              onClick={signUp}
+              className={isValid ? 'loginButton active' : 'loginButton'}
+              disabled={!isValid}
+            >
+              회원가입
+            </button>
+          </div>
           <Link to="/login-jihyun">
             <p>비밀번호를 잊으셨나요?</p>
           </Link>
