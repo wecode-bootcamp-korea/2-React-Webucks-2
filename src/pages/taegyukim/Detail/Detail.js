@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import TopNav from '../TopNav/TopNav';
-import BottomFooter from './BottomFooter';
+import Footer from './Footer';
 import LikeBtn from './LikeBtn';
 import './Detail.scss';
 
@@ -10,16 +10,17 @@ class Detail extends React.Component {
   constructor() {
     super();
     this.state = {
-      isValidHeart: false,
+      id: 0,
+      isRedHeart: false,
       reviewComment: '',
       reviewArray: [],
     };
   }
 
   handleHeartColor = () => {
-    const { isValidHeart } = this.state;
+    const { isRedHeart } = this.state;
     this.setState({
-      isValidHeart: !isValidHeart,
+      isRedHeart: !isRedHeart,
     });
   };
 
@@ -30,37 +31,56 @@ class Detail extends React.Component {
     });
   };
 
-  pushReviewComment = event => {
-    const { reviewArray, reviewComment } = this.state;
+  addReviewComment = event => {
+    const { reviewArray, reviewComment, id } = this.state;
     if (event.key === 'Enter') {
       event.preventDefault();
-      if (reviewComment !== '') {
-        reviewArray.push(reviewComment);
-      }
       event.target.value = '';
-      this.setState({
-        reviewComment: '',
-      });
+      if (reviewComment !== '') {
+        const newComment = {
+          id: id + 1,
+          comment: reviewComment,
+          isLiked: false,
+        };
+        this.setState({
+          id: id + 1,
+          reviewComment: '',
+          reviewArray: [...reviewArray, newComment],
+        });
+      }
     }
   };
 
-  deleteReviewComment = idx => {
+  deleteReviewComment = id => {
     const { reviewArray } = this.state;
-    reviewArray.splice(idx, 1);
-    const newReviewArray = reviewArray;
+    this.setState({
+      reviewArray: reviewArray.filter(comment => comment.id !== id),
+    });
+  };
+
+  handleReviewBtnColor = id => {
+    const { reviewArray } = this.state;
+    const newReviewArray = [...reviewArray];
+    for (let i = 0; i < newReviewArray.length; i++) {
+      if (newReviewArray[i].id === id) {
+        newReviewArray[i].isLiked = !newReviewArray[i].isLiked;
+      }
+    }
     this.setState({
       reviewArray: newReviewArray,
     });
   };
 
   render() {
-    const { isValidHeart, reviewArray } = this.state;
+    const { isRedHeart, reviewArray } = this.state;
     const {
       handleHeartColor,
       deleteReviewComment,
       handleReviewInput,
-      pushReviewComment,
+      addReviewComment,
+      handleReviewBtnColor,
     } = this;
+    console.log(this.state.reviewArray);
     return (
       <div className="Detail">
         <TopNav />
@@ -86,7 +106,7 @@ class Detail extends React.Component {
                 </div>
                 <FontAwesomeIcon
                   icon={faHeart}
-                  className={isValidHeart ? 'redHeart' : 'remove'}
+                  className={isRedHeart ? 'redHeart' : 'remove'}
                   onClick={handleHeartColor}
                 />
               </div>
@@ -152,17 +172,20 @@ class Detail extends React.Component {
                     <span>진짜 돌체 콜드 브루는 전설이다.</span>
                   </div>
                   <ul id="reviewList">
-                    {reviewArray.map((review, idx) => {
+                    {reviewArray.map(review => {
                       return (
-                        <li key={idx}>
-                          {review}
+                        <li key={review.id}>
+                          {review.comment}
                           <button
-                            key={idx}
-                            onClick={event => deleteReviewComment(idx, event)}
+                            onClick={() => deleteReviewComment(review.id)}
                           >
                             ❌
                           </button>
-                          <LikeBtn />
+                          <LikeBtn
+                            id={review.id}
+                            isLiked={review.isLiked}
+                            handleReviewBtnColor={handleReviewBtnColor}
+                          />
                         </li>
                       );
                     })}
@@ -170,7 +193,7 @@ class Detail extends React.Component {
                   <form id="reviewForm">
                     <input
                       onChange={handleReviewInput}
-                      onKeyPress={pushReviewComment}
+                      onKeyPress={addReviewComment}
                       type="text"
                       placeholder="리뷰를 입력해주세요."
                     />
@@ -180,7 +203,7 @@ class Detail extends React.Component {
             </div>
           </article>
         </section>
-        <BottomFooter />
+        <Footer />
       </div>
     );
   }

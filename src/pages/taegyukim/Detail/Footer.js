@@ -1,7 +1,7 @@
 import React from 'react';
-import './BottomFooter.scss';
+import './Footer.scss';
 
-class BottomFooter extends React.Component {
+class Footer extends React.Component {
   render() {
     return (
       <footer className="bottomFooter">
@@ -54,4 +54,4 @@ class BottomFooter extends React.Component {
   }
 }
 
-export default BottomFooter;
+export default Footer;

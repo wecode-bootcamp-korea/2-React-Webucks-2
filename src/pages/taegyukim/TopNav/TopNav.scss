@@ -11,6 +11,7 @@ $theme-color: #eeefef;
 .nav {
   @extend %flex-center;
   justify-content: space-between;
+
   &Logo {
     margin-left: 20px;
     font: {
@@ -18,13 +19,14 @@ $theme-color: #eeefef;
       size: 20px;
     }
   }
+
   &SideMenu {
     li {
       display: inline;
       margin: 0 15px;
+      opacity: 0.3;
       font-size: 13px;
       letter-spacing: 3px;
-      opacity: 0.3;
     }
   }
 }

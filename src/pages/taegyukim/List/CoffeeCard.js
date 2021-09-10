@@ -21,6 +21,7 @@ class CoffeeCard extends React.Component {
   render() {
     const { isValidHeart } = this.state;
     const { handleHeartColor } = this;
+
     return (
       <div>
         <Link to="/detail-taegyu">
@@ -33,6 +34,7 @@ class CoffeeCard extends React.Component {
         <span>
           {this.props.name}
           <FontAwesomeIcon
+            key={this.props.key}
             icon={faHeart}
             className={isValidHeart ? 'redHeart' : 'remove'}
             onClick={handleHeartColor}

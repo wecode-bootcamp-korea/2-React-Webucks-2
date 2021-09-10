@@ -27,6 +27,7 @@ class List extends React.Component {
 
   render() {
     const { firstProducts, secondProducts } = this.state;
+
     return (
       <div className="List">
         <TopNav />
@@ -42,13 +43,7 @@ class List extends React.Component {
             <div className="img">
               <div className="imgRow">
                 {firstProducts.map(product => {
-                  return (
-                    <CoffeeCard
-                      key={product.id}
-                      img={product.img}
-                      name={product.name}
-                    />
-                  );
+                  return <CoffeeCard {...product} />;
                 })}
               </div>
             </div>

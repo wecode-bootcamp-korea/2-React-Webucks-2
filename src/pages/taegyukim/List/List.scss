@@ -13,39 +13,49 @@ $theme-color: #eeefef;
     .coffee {
       .description {
         @extend %flex-center;
+
         .coffeeName {
           margin: 0 20px;
         }
+
         .coffeeOption {
           margin: 0 13px;
           font-size: 13px;
         }
       }
+
       .img {
         margin: 0 175px;
+
         &Row {
           display: flex;
           flex-wrap: wrap;
           gap: 25px;
+
           img {
             display: block;
             width: 250px;
             height: 260px;
             transform: scale(1);
             transition: all 0.8s ease-in-out;
+
             &:hover {
               transform: scale(1.1);
             }
           }
+
           div {
             text-align: center;
+
             span {
               display: block;
               margin-top: 18px;
               margin-bottom: 35px;
+
               .fa-heart {
                 margin-left: 10px;
                 opacity: 0.3;
+
                 &.redHeart {
                   color: red;
                   opacity: 0.7;
@@ -53,6 +63,7 @@ $theme-color: #eeefef;
               }
             }
           }
+
           a {
             display: block;
             width: 250px;

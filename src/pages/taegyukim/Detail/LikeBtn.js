@@ -3,28 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
 class LikeBtn extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      isLikeReview: false,
-    };
-  }
-
-  handleReviewBtnColor = () => {
-    const { isLikeReview } = this.state;
-    this.setState({
-      isLikeReview: !isLikeReview,
-    });
-  };
-
   render() {
-    const { handleReviewBtnColor } = this;
-    const { isLikeReview } = this.state;
+    const { id, isLiked, handleReviewBtnColor } = this.props;
     return (
-      <button onClick={handleReviewBtnColor}>
+      <button onClick={() => handleReviewBtnColor(id)}>
         <FontAwesomeIcon
           icon={faThumbsUp}
-          className={isLikeReview ? 'like' : 'remove'}
+          className={isLiked ? 'like' : 'remove'}
         />
       </button>
     );
