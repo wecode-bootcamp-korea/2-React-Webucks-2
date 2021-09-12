@@ -1,0 +1,13 @@
+.nutritionTitle {
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 0;
+  margin-bottom: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+
+  span {
+    padding: 0 12px;
+  }
+}

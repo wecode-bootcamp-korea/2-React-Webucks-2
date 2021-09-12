@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import './CoffeeCard.scss';
 
 class CoffeeCard extends React.Component {
   constructor() {
@@ -21,20 +22,16 @@ class CoffeeCard extends React.Component {
   render() {
     const { isValidHeart } = this.state;
     const { handleHeartColor } = this;
+    const { name, img } = this.props;
 
     return (
-      <div>
+      <div className="coffeeCard">
         <Link to="/detail-taegyu">
-          <img
-            key={this.props.key}
-            alt={this.props.name}
-            src={this.props.img}
-          />
+          <img alt={name} src={img} />
         </Link>
         <span>
-          {this.props.name}
+          {name}
           <FontAwesomeIcon
-            key={this.props.key}
             icon={faHeart}
             className={isValidHeart ? 'redHeart' : 'remove'}
             onClick={handleHeartColor}
