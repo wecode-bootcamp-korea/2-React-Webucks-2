@@ -27,8 +27,6 @@ class CoffeeCard extends Component {
             pathname: `/detail-jisue`,
             state: {
               id,
-              imgUrl,
-              name,
             },
           }}
         >
@@ -38,7 +36,7 @@ class CoffeeCard extends Component {
           <p>{name}</p>
           <HeartIcon
             isLiked={this.state.isLiked}
-            clickLiked={this.clickLiked}
+            clickLiked={this.clickLiked} //중복하트
           />
         </div>
       </article>

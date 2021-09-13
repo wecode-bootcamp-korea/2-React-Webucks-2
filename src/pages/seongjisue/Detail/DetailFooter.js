@@ -1,29 +1,12 @@
 import React, { Component } from 'react';
 
 class DetailFooter extends Component {
-  constructor() {
-    super();
-    this.state = {
-      dtlData: [],
-    };
-  }
-
-  componentDidMount() {
-    fetch('http://localhost:3000/data/detailData.json')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          dtlData: data['FOOTER_MENU'],
-        });
-      });
-  }
-
   render() {
-    const { dtlData } = this.state;
+    const { footerData } = this.props;
     return (
       <footer id="footer">
         <div className="footerList">
-          {dtlData.map(dtTitle => {
+          {footerData.map(dtTitle => {
             return (
               <ul className="footerMenu" key={dtTitle.id}>
                 <li id="footerTitle">{dtTitle.title}</li>

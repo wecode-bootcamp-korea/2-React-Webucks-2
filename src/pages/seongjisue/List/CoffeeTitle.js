@@ -2,29 +2,8 @@ import React, { Component } from 'react';
 import CoffeeCard from './CoffeeCard ';
 
 class CoffeeTitle extends Component {
-  constructor() {
-    super();
-    this.state = {
-      coldData: [],
-      brewData: [],
-    };
-  }
-
-  componentDidMount() {
-    fetch('http://localhost:3000/data/listData.json')
-      .then(res => res.json())
-      .then(data => {
-        const coldData = data.filter(el => el.id < 200);
-        const brewData = data.filter(el => el.id > 200);
-        this.setState({
-          coldData,
-          brewData,
-        });
-      });
-  }
-
   render() {
-    const { coldData, brewData } = this.state;
+    const { coldData, brewData } = this.props;
     return (
       <div>
         <section>

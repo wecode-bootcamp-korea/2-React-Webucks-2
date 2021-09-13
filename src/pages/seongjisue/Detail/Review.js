@@ -4,79 +4,37 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRemoveFormat } from '@fortawesome/free-solid-svg-icons';
 
 class Review extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isLiked: false,
-      name: '',
-      comment: '',
-      cmntList: [
-        {
-          id: 1,
-          name: '위코드!',
-          comment: '리뷰를 입력해라!',
-        },
-      ],
-    };
-  }
-
-  clickLiked = () => {
-    let { isLiked } = this.state;
-    this.setState({
-      isLiked: !isLiked,
-    });
-  };
-
-  onChange = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  };
-
-  onKeyUp = e => {
-    if (e.keyCode === 13 && this.state.name && this.state.comment) {
-      const { name, comment, cmntList } = this.state;
-      this.setState({
-        cmntList: [
-          ...cmntList,
-          {
-            id: cmntList.length ? cmntList[cmntList.length - 1].id + 1 : 1,
-            name,
-            comment,
-          },
-        ],
-        name: '',
-        comment: '',
-      });
-    }
-  };
-
-  reviewDelete = id => {
-    const cmntList = this.state.cmntList.filter(el => el.id !== id);
-    this.setState({ cmntList });
-  };
-
   render() {
+    const {
+      clickRewLiked,
+      name,
+      comment,
+      cmntList,
+      onChangeRew,
+      onKeyUpRew,
+      deleteRew,
+    } = this.props;
     return (
       <footer className="contentFooter">
         <h5>리뷰</h5>
         <div>
-          {this.state.cmntList.map(el => {
-            const { id, name } = el;
+          {cmntList.map(el => {
+            const { id, name, comment } = el;
             return (
               <div className="reveiwResults" key={id}>
                 <span className="reveiwContent">{name}</span>
-                <p>{el.comment}</p>
+                <p>{comment}</p>
                 <FontAwesomeIcon
                   icon={faRemoveFormat}
                   className="reviewDelete"
                   onClick={() => {
-                    this.reviewDelete(id);
+                    deleteRew(id);
                   }}
                 />
                 <HeartIcon
                   className="reviewHeart"
-                  isLiked={this.state.isLiked}
-                  clickLiked={this.clickLiked}
+                  isLiked={el.isLiked}
+                  clickLiked={clickRewLiked} //하트 중복좋아요 아이디로 접근해서 하기
                 />
               </div>
             );
@@ -87,18 +45,18 @@ class Review extends Component {
             type="text"
             placeholder="아이디를 입력해주세요"
             name="name"
-            value={this.state.name}
+            value={name}
             className="reviewId"
-            onChange={this.onChange}
+            onChange={onChangeRew}
           />
           <input
             type="text"
             placeholder="리뷰를 입력해주세요(엔터를 눌러주세요.)"
             name="comment"
-            value={this.state.comment}
+            value={comment}
             className="reviewPw"
-            onChange={this.onChange}
-            onKeyUp={this.onKeyUp}
+            onChange={onChangeRew}
+            onKeyUp={onKeyUpRew}
           />
         </div>
       </footer>

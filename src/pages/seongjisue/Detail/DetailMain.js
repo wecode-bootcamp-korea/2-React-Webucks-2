@@ -4,73 +4,46 @@ import HeartIcon from '../Heart/HeartIcon';
 import Review from './Review';
 
 class DetailMain extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLiked: 0,
-      detailData: [],
-    };
-  }
-
-  componentDidMount() {
-    fetch('http://localhost:3000/data/listData.json')
-      .then(res => res.json())
-      .then(data => {
-        const listId = this.props.location.state?.id;
-        let detailData = data.find(el => listId === el.id);
-        if (!detailData) detailData = data[0];
-        this.setState({
-          isLiked: detailData.isLiked,
-          detailData,
-        });
-      });
-  }
-
-  clickLiked = () => {
-    const { isLiked } = this.state;
-    this.setState({
-      isLiked: !isLiked,
-    });
-  };
-
   render() {
-    const { detailData } = this.state;
-    console.log(detailData.isLiked);
+    const {
+      mainData,
+      isLiked,
+      clickLiked,
+      clickRewLiked,
+      name,
+      comment,
+      cmntList,
+      onChangeRew,
+      onKeyUpRew,
+      deleteRew,
+    } = this.props;
     return (
-      <main id="main" key={detailData.id}>
+      <main id="main" key={mainData.id}>
         <nav className="title">
-          <h1 id="titleMenu">{detailData.category}</h1>
+          <h1 id="titleMenu">{mainData.category}</h1>
           <p id="titleRoot" name="menu">
-            홈{'>'}MENU{'>'}음료{'>'} {detailData.category} {'>'}{' '}
-            {detailData?.name}
+            홈{'>'}MENU{'>'}음료{'>'} {mainData.category} {'>'} {mainData.name}
           </p>
         </nav>
         <section className="item">
-          <img
-            className="itemImg"
-            alt={detailData.name}
-            src={detailData.imgUrl}
-          />
+          <img className="itemImg" alt={mainData.name} src={mainData.imgUrl} />
 
           <aside className="itemContent">
             <header>
               <div className="itemNav">
                 <span className="itemTitle">
-                  <h3>{detailData.name}</h3>
-                  <p>{detailData.engName}</p>
+                  <h3>{mainData.name}</h3>
+                  <p>{mainData.engName}</p>
                 </span>
-                <HeartIcon
-                  isLiked={this.state.isLiked}
-                  clickLiked={this.clickLiked}
-                />
+                <HeartIcon isLiked={isLiked} clickLiked={clickLiked} />
               </div>
-              <p id="contentFontSize">{detailData.summary}</p>
+              <p id="contentFontSize">{mainData.summary}</p>
             </header>
 
             <main>
               <header className="tableHeader">
                 <p>제품 영양 정보</p>
-                <p>{detailData.nutritionFacts?.servingSize}</p>
+                <p>{mainData.nutritionFacts?.servingSize}</p>
               </header>
               <main className="flex">
                 <div className="list">
@@ -80,9 +53,9 @@ class DetailMain extends Component {
                     <li>단백질 (g)</li>
                   </ul>
                   <ul className="listStyle">
-                    <li>{detailData.nutritionFacts?.kcal}</li>
-                    <li>{detailData.nutritionFacts?.fat}</li>
-                    <li>{detailData.nutritionFacts?.protein}</li>
+                    <li>{mainData.nutritionFacts?.kcal}</li>
+                    <li>{mainData.nutritionFacts?.fat}</li>
+                    <li>{mainData.nutritionFacts?.protein}</li>
                   </ul>
                 </div>
                 <div className="list">
@@ -92,17 +65,25 @@ class DetailMain extends Component {
                     <li>카페인 (mg)</li>
                   </ul>
                   <ul className="listStyle">
-                    <li>{detailData.nutritionFacts?.natrium}</li>
-                    <li>{detailData.nutritionFacts?.sugars}</li>
-                    <li>{detailData.nutritionFacts?.caffeine}</li>
+                    <li>{mainData.nutritionFacts?.natrium}</li>
+                    <li>{mainData.nutritionFacts?.sugars}</li>
+                    <li>{mainData.nutritionFacts?.caffeine}</li>
                   </ul>
                 </div>
               </main>
               <footer className="tableFooter">
-                <p>알레르기 유발요인 : {detailData.nutritionFacts?.allergen}</p>
+                <p>알레르기 유발요인 : {mainData.nutritionFacts?.allergen}</p>
               </footer>
             </main>
-            <Review />
+            <Review
+              clickRewLiked={clickRewLiked}
+              name={name}
+              comment={comment}
+              cmntList={cmntList}
+              onChangeRew={onChangeRew}
+              onKeyUpRew={onKeyUpRew}
+              deleteRew={deleteRew}
+            />
           </aside>
         </section>
       </main>

@@ -33,9 +33,41 @@ class Login extends Component {
     return isValid;
   };
 
+  goToSignUp = () => {
+    console.log(this.state.id);
+    console.log(this.state.pw);
+    if (this.changeButtonColor()) {
+      fetch('/users/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: this.state.id,
+          password: this.state.pw,
+        }),
+      })
+        .then(response => response.json())
+        .then(result => console.log(result));
+    }
+  };
   goToLogin = () => {
     if (this.changeButtonColor()) {
-      this.props.history.push('/list-jisue');
+      fetch('/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: this.state.id,
+          password: this.state.pw,
+        }),
+      })
+        .then(response => response.json())
+        .then(
+          result => console.log(result.ok),
+          this.props.history.push('/list-jisue')
+        );
     }
   };
 
@@ -75,6 +107,15 @@ class Login extends Component {
               onClick={this.goToLogin}
             >
               로그인
+            </button>
+            <button
+              id="loginButton"
+              className={
+                this.changeButtonColor() ? 'boxTotalCSS active' : 'boxTotalCSS'
+              }
+              onClick={this.goToSignUp}
+            >
+              회원가입
             </button>
             <a href="www.naver.com">비밀번호를 잊으셨나요?</a>
           </div>
