@@ -1,0 +1,20 @@
+@import '../../../styles/mixin.scss';
+
+.nav {
+  @include displayFlex(flex, row, space-between, none);
+  width: 1200px;
+  margin: 30px 0;
+  padding: 0 20px;
+  background-color: #f6f5ef;
+  line-height: 60px;
+
+  .navLeft {
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+  }
+
+  .navRight span {
+    margin: 10px;
+    color: gray;
+  }
+}
