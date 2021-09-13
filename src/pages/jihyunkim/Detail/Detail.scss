@@ -93,22 +93,26 @@
         }
 
         .nutritionMain {
-          .nutritionBox {
-            @include displayFlex(flex, row, none, none);
-            margin: 5px;
-
-            .nutritionBoxLeft {
-              width: 350px;
-              border-right: dashed 1px black;
-            }
-
-            .nutritionBoxRight {
-              width: 350px;
-            }
-
-            li {
-              @include displayFlex(flex, none, space-between, none);
-              margin: 15px 10px;
+          .nutritionDetail {
+            table {
+              width: 100%;
+              margin: 20px 0 0 0;
+              font-size: 15px;
+              tr {
+                th {
+                  width: 25%;
+                  padding: 0px 0px 15px 12px;
+                  text-align: left;
+                }
+                td {
+                  width: 25%;
+                  padding: 0px 12px 20px 0px;
+                  text-align: right;
+                }
+                .dotBorder {
+                  border-right: 1px dotted rgba(0, 0, 0, 0.2);
+                }
+              }
             }
           }
 

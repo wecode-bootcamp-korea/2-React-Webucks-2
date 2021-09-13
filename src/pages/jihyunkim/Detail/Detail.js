@@ -117,35 +117,27 @@ class Detail extends React.Component {
                     <div>Tall(톨) / 355ml (12 fl oz)</div>
                   </div>
                   <div className="nutritionMain">
-                    <div className="nutritionBox">
-                      <ul className="nutritionBoxLeft">
-                        <li className="nutri1">
-                          <div>1회 제공량 (kcal)</div>
-                          <div>265</div>
-                        </li>
-                        <li className="nutri2">
-                          <div>포화지방 (g)</div>
-                          <div>9</div>
-                        </li>
-                        <li className="nutri3">
-                          <div>단백질 (g)</div>
-                          <div>8</div>
-                        </li>
-                      </ul>
-                      <ul className="nutritionBoxRight">
-                        <li className="nutri4">
-                          <div>나트륨 (mg)</div>
-                          <div>115</div>
-                        </li>
-                        <li className="nutri5">
-                          <div>당류 (g)</div>
-                          <div>29</div>
-                        </li>
-                        <li className="nutri6">
-                          <div>카페인 (mg)</div>
-                          <div>150</div>
-                        </li>
-                      </ul>
+                    <div className="nutritionDetail">
+                      <table>
+                        <tr>
+                          <th>1회 제공량 (kcal)</th>
+                          <td className="dotBorder">265</td>
+                          <th>나트륨 (mg)</th>
+                          <td>9</td>
+                        </tr>
+                        <tr>
+                          <th>포화지방 (g)</th>
+                          <td className="dotBorder">8</td>
+                          <th>당류 (g)</th>
+                          <td>115</td>
+                        </tr>
+                        <tr>
+                          <th>단백질 (g)</th>
+                          <td className="dotBorder">29</td>
+                          <th>카페인 (mg)</th>
+                          <td>150</td>
+                        </tr>
+                      </table>
                     </div>
                     <div id="alergy">알레르기 유발 요인 : 우유</div>
                   </div>
