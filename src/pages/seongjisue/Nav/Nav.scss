@@ -1,0 +1,42 @@
+@import '../../../styles/mixin.scss';
+
+.Nav {
+  .navbarFlex {
+    @include flexStyle();
+  }
+
+  .navbar {
+    @include flexStyle(center, space-between);
+    margin: 20px 0 20px 0;
+    height: 70px;
+    background-color: #f6f5f0;
+    box-shadow: 0.5px 0.5px 15px 10px #eeefef;
+    overflow: hidden;
+
+    .navbarFlex {
+      img {
+        margin: 10px 0 0 10px;
+        width: 40px;
+        height: 40px;
+      }
+
+      h1 {
+        margin: 14px 5px 14px 30px;
+        @include fontSizeWight(28px, bold);
+        font: {
+          family: 'Dancing Script', cursive;
+        }
+      }
+    }
+
+    #navbarMenu {
+      margin: 16px 0 16px 0;
+
+      li {
+        @include fontSizeWight(12px, bold, #c0c0ba);
+        margin-right: 20px;
+        list-style: none;
+      }
+    }
+  }
+}

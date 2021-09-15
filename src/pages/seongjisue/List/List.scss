@@ -1,0 +1,64 @@
+@import '../../../styles/mixin.scss';
+
+.List {
+  .navbarSub {
+    @include flexStyle(center);
+    margin: 50px 0 20px 0;
+    width: 90%;
+    height: 70px;
+    background-color: #f6f5f0;
+    box-shadow: 0.5px 0.5px 15px 10px #eeefef;
+
+    h3 {
+      @include fontSizeWight(15px, bold);
+      margin: 12px 0 12px 15px;
+    }
+
+    img {
+      margin: 0px 20px 0 15px;
+      width: 40px;
+      height: 40px;
+    }
+
+    p {
+      @include fontSizeWight(11px, bold);
+    }
+  }
+
+  .menuList {
+    @include flexStyle();
+    flex-wrap: wrap;
+
+    .menu {
+      @include flexStyle(center, none, column);
+      width: 250px;
+      margin: 15px;
+
+      .menuLink {
+        height: 260px;
+        overflow: hidden;
+
+        .menuImg {
+          width: 100%;
+        }
+      }
+
+      .menuImg {
+        &:hover {
+          transform: scale(1.1);
+          transition-duration: 1s;
+        }
+      }
+
+      #heartSide {
+        @include flexStyle(center);
+        margin: 10px 0 5px 0;
+
+        p {
+          @include fontSizeWight(15px);
+          margin: 0 7px 0 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+@import '../../../styles/mixin.scss';
+
+.Login {
+  #mainLogin {
+    @include flexStyle(center, center);
+    min-height: 100vh;
+
+    #mainForm {
+      @include flexStyle(center, none, column);
+      padding: 20px 30px 150px 30px;
+      background-color: white;
+      box-shadow: 1px 1px 15px 0px gray;
+    }
+  }
+
+  #mainForm {
+    $opacitySize: 0.8;
+
+    h1 {
+      @include fontSizeWight(60px, bold);
+      margin: 40px 0;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .boxTotalCSS {
+      @include fontSizeWight(11px, bold);
+      margin: 20px 0 0 0;
+      width: 300px;
+      height: 40px;
+      border: 1px solid gainsboro;
+      border-radius: 5px;
+      &:focus {
+        outline: none;
+      }
+      &.inputBox {
+        &.inputColorChange {
+          border: 3px solid blue;
+        }
+        padding: 0 0 0 15px;
+        background-color: #f7f7f7;
+      }
+    }
+
+    #loginButton {
+      @include fontSizeWight(16px, bold, white);
+      background-color: #add3eb;
+      opacity: $opacitySize;
+      cursor: pointer;
+
+      &.active {
+        background-color: blue;
+      }
+      &:hover {
+        border: 2px solid black;
+      }
+    }
+
+    a {
+      @include fontSizeWight(12px, bold, #add3eb);
+      position: relative;
+      top: 120px;
+      text-decoration: none;
+      opacity: $opacitySize;
+    }
+  }
+}
